@@ -20,12 +20,12 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="W2N logo bold sans.svg"
    style="font-size:12px;overflow:visible;color-interpolation-filters:sRGB;fill:none;fill-rule:evenodd;stroke-linecap:square;stroke-miterlimit:3"
-   inkscape:export-filename="E:\Users\Jonathan\Documents\Code\GitHub\Industry-experience-studio-project\assets\branding\WIP\W2N logo light sans.png"
+   inkscape:export-filename="E:\Users\Jonathan\Documents\Code\GitHub\Industry-experience-studio-project\assets\branding\WIP\W2N logo bold sans.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"><metadata
      id="metadata36"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1"
@@ -121,7 +121,8 @@
        v:groupContext="shape"
        transform="translate(70.8661,-325.977)"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><title
+       inkscape:export-ydpi="90"
+       style="fill:#6a9ac0;fill-opacity:1"><title
          id="title21">Home</title><v:userDefs><v:ud
            v:nameU="msvShapeCategories"
            v:prompt=""
@@ -133,7 +134,7 @@
          class="st1"
          id="path23"
          inkscape:connector-curvature="0"
-         style="fill:url(#grad3-4);stroke:none;stroke-width:0.75;stroke-linecap:butt" /></g><g
+         style="fill:#6a9ac0;stroke:none;stroke-width:0.75;stroke-linecap:butt;fill-opacity:1" /></g><g
        id="shape2-5"
        v:mID="2"
        v:groupContext="shape"
@@ -160,9 +161,9 @@
          class="st3"
          v:langID="3081"
          id="text32"
-         style="font-size:19.65350151px;line-height:125%;font-family:Calibri;fill:#94b6d2"
+         style="font-size:19.65350151px;line-height:125%;font-family:Calibri;fill:#6a9ac0;"
          sodipodi:linespacing="125%"><v:paragraph
            v:horizAlign="1" /><v:tabList /><tspan
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19.65302849px;line-height:125%;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19.65302849px;line-height:125%;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#6a9ac0;"
            id="tspan3364">Where2Next?</tspan></text>
 </g></g></svg>
