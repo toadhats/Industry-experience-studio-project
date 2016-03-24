@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<script runat="server">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        systemDate.Text = DateTime.Now.ToLongDateString();
+    }
+
+
+
+</script>
+
+<html>
+<head runat="server">
+    <script type="text/javascript" src="JS/jquery-1.12.2.min.js"></script>
+    <script type="text/javascript" src="JS/jquery.SuperSlide.2.1.1.js"></script>
+
+    <title></title>
+    <link href="App_Themes/StyleSheet.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div class="menu">
+            <ul>
+                <li><a href="Default.aspx">Home</a></li>
+                <li><a href="quiz.aspx">Quiz</a></li>
+                <li><a href="search.aspx">Search</a></li>
+                <li><a href="profile.aspx">Profile</a></li>
+                <li><a href="map.aspx">Map</a></li>
+                <li><a href="Maps.aspx">MapsTest</a></li>\
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div>
+            <asp:ContentPlaceHolder ID="contentbody" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="clear"></div>
+        <div class="footer">
+            <h3>
+                <asp:Label ID="systemDate" runat="server" />
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+                Copyright@TEAM TRUSS-37P
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+                <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="White"
+                    NavigateUrl="www.google.com"
+                    Text="About US" />
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+                <asp:HyperLink ID="HyperLink2" runat="server" ForeColor="White"
+                    NavigateUrl="www.google.com"
+                    Text="Contact US" />
+            </h3>
+        </div>
+
+
+    </form>
+</body>
+</html>
