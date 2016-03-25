@@ -11,7 +11,7 @@ namespace Where2Next
 {
 
 
-    public partial class Contact
+    public partial class Quiz
     {
     }
 }

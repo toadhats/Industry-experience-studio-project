@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Where2Next
 {
-    public partial class Contact : Page
+    public partial class Quiz : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
