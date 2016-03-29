@@ -3,38 +3,36 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <img src="/Images/logo-500px.png" alt="Where2next" style="height: 100px; width: auto"/>
+        <p class="lead">Discover your ideal suburb</p>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Getting started</h2>
+            <h2>Need a hand?</h2>
             <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+                If you don't know where to begin, our guided search will help you to decide what's important to you, and guide you towards the perfect suburb for you
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+                <a class="btn btn-default" href="/Quiz">Discover &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Web Hosting</h2>
+            <h2>See for yourself</h2>
             <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
+                Take a look at our map and explore Melbourne on your own
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+                <a class="btn btn-default" href="/Map">Map &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Advanced Search</h2>
+            <p>
+                Know exactly what you're looking for? Try the advanced search tool for full access to the data we have available.
+            </p>
+            <p>
+                <a class="btn btn-default" href="/Search">Advanced Search &raquo;</a>
             </p>
         </div>
     </div>

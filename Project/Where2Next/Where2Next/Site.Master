@@ -65,7 +65,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Team TRUSS-37P</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Truss</p>
                 <p><asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Black"
                     NavigateUrl="www.google.com"
                     Text="About US" /></p>
