@@ -4,6 +4,7 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: 'Montserrat', sans-serif;
+    background-color: #F3F9FE
 }
 
 /* Wrapping element */
@@ -27,9 +28,41 @@ textarea {
         margin-top: 20px;
         max-width: 1000px;
         font-family: 'Montserrat Light', 'Montserrat', sans-serif;
+        background-color: #FDFDFD;
+        box-shadow: 0px 1px 1px 0px #222222;
     }
 
     .body-content {
         padding: 0;
     }
+}
+
+//TODO: Fix colours of links in navbar
+.navbar {
+    background-color: #0288F0;
+}
+
+.navbar-brand {
+background-color: #0288F0;
+color: #FDFDFD;
+}
+
+.navbar-collapse {
+  background-color: #0288F0;
+  height: 100%;
+}
+
+.navbar-nav {
+  color: #FDFDFD;
+}
+
+.lead {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  text-align: right;
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 1.4;
+  color: #222222;
 }

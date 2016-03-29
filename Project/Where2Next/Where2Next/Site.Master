@@ -49,7 +49,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Where2Next</a>
+                    <a class="navbar-brand" runat="server" href="~/"><img src="Images/house-250px.png" width="30" height="30"/>Where2Next</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
