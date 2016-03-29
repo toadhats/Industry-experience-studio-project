@@ -1,7 +1,9 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Wrapping element */
@@ -23,6 +25,8 @@ textarea {
 @media screen and (min-width: 768px) {
     .jumbotron {
         margin-top: 20px;
+        max-width: 1000px;
+        font-family: 'Montserrat Light', 'Montserrat', sans-serif;
     }
 
     .body-content {

@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <img src="/Images/logo-500px.png" alt="Where2next" style="height: 100px; width: auto"/>
+        <img src="/Images/logo-500px.png" alt="Where2next" style="height: auto; width: 100%"/>
         <p class="lead">Discover your ideal suburb</p>
     </div>
 
@@ -11,7 +11,7 @@
         <div class="col-md-4">
             <h2>Need a hand?</h2>
             <p>
-                If you don't know where to begin, our guided search will help you to decide what's important to you, and guide you towards the perfect suburb for you
+                If you don't know where to begin, our guided search will help you to decide what's important.
             </p>
             <p>
                 <a class="btn btn-default" href="/Quiz">Discover &raquo;</a>
