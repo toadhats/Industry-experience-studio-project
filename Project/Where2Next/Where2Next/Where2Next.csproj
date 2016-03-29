@@ -109,6 +109,7 @@
   <ItemGroup>
     <Content Include="Images\logo-500px.png" />
     <Content Include="Images\house-250px.png" />
+    <Content Include="Images\house-white-50px.png" />
     <Content Include="Map.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Quiz.aspx" />

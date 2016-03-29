@@ -36,12 +36,16 @@ textarea {
         padding: 0;
     }
 }
-
+//MARK: Navbar stuff
 //TODO: Fix colours of links in navbar
+
 .navbar {
     background-color: #0288F0;
 }
 
+.navbar-inverse {
+    background-color: #0288F0;
+}
 .navbar-brand {
 background-color: #0288F0;
 color: #FDFDFD;
@@ -64,5 +68,11 @@ color: #FDFDFD;
   font-size: 40px;
   font-weight: 200;
   line-height: 1.4;
-  color: #222222;
+  color: #00F18A;
+}
+
+.btn-default {
+  color: #333333;
+  background-color: #F2FEF9;
+  border-color: #95F7CD;
 }
