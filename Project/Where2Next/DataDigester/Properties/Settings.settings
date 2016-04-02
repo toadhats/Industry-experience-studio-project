@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataDigester.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="storageConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;DefaultEndpointsProtocol=https;AccountName=where2next;AccountKey=5/o577jx5tpc3XZDhQ+PxI9VmK/gd5goRpjRZPNVSspZtIklPp/tuU+JlCNb1VvJZ4I3Wz/qaaNjKf7yTdnPVA==;BlobEndpoint=https://where2next.blob.core.windows.net/;TableEndpoint=https://where2next.table.core.windows.net/;QueueEndpoint=https://where2next.queue.core.windows.net/;FileEndpoint=https://where2next.file.core.windows.net/&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=where2next;AccountKey=5/o577jx5tpc3XZDhQ+PxI9VmK/gd5goRpjRZPNVSspZtIklPp/tuU+JlCNb1VvJZ4I3Wz/qaaNjKf7yTdnPVA==;BlobEndpoint=https://where2next.blob.core.windows.net/;TableEndpoint=https://where2next.table.core.windows.net/;QueueEndpoint=https://where2next.queue.core.windows.net/;FileEndpoint=https://where2next.file.core.windows.net/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
