@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataDigester.Properties {
+namespace Where2Next.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -8,16 +8,20 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.Azure;
 
 namespace DataDigester
 {
     public class Functions
     {
         [NoAutomaticTrigger]
-        public static void UpdateData([Table("Services")] IQueryable<Service> tableBinding)
+        public static void UpdateData()
         {
             // Job code goes here
-            
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"];);
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("Services");
+            table.CreateIfNotExists();
 
 
         }
