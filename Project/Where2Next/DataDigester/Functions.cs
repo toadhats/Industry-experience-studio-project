@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,18 +20,27 @@ namespace DataDigester
     public class Functions
     {
         [NoAutomaticTrigger]
-        public static void UpdateData()
+        public static async void UpdateData()
         {
             // Job code goes here
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
             CloudTable table = tableClient.GetTableReference("Services");
             table.CreateIfNotExists();
+            var serviceList = await getCentrelink();
+            TableBatchOperation batchOperation = new TableBatchOperation();
+            foreach (var result in serviceList)
+            {
+                result.PartitionKey = result.serviceType;
+                result.RowKey = result.address;
+                batchOperation.Insert(result); 
+            }
+            table.ExecuteBatch(batchOperation);
 
 
         }
 
-        async Task<IEnumerable<Service>> getCentrelink()
+        static async Task<IEnumerable<Service>> getCentrelink()
         {
             using (var client = new HttpClient())
             {
@@ -68,7 +78,7 @@ namespace DataDigester
                         Console.WriteLine("{0}\t-\t{1}", vicOffice.postcode, vicOffice.suburb);
                     }
                     Console.WriteLine("{0} offices found in Victoria", inVic.Count());
-                    return inVic;
+                    return inVic.ToList<Service>();
 
                 } else
                 {
