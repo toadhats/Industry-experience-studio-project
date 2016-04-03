@@ -18,6 +18,7 @@ namespace DataDigester
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
+            Console.WriteLine("Attempting to run DataDigester");
             var host = new JobHost();
             // The following code will invoke a function called ManualTrigger and 
             // pass in data (value in this case) to the function
