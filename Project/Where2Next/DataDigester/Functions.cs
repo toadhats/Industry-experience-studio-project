@@ -20,7 +20,7 @@ namespace DataDigester
     public class Functions
     {
         [NoAutomaticTrigger]
-        public static async void UpdateData()
+        public static async Task UpdateData()
         {
             Console.WriteLine("UpdateData is running");
             // Job code goes here
@@ -34,8 +34,15 @@ namespace DataDigester
             foreach (var result in serviceList)
             {
                 result.PartitionKey = result.serviceType;
-                result.RowKey = result.address;
-                batchOperation.Insert(result); 
+                result.RowKey = EncodeAddressForRowKey(result.address + result.suburb);
+                batchOperation.InsertOrReplace(result);
+                Console.WriteLine("{0} entries batched for insertion", batchOperation.Count);
+                if (batchOperation.Count > 98)
+                {
+                    Console.WriteLine("This batch is full. Sending to cloud");
+                    table.ExecuteBatch(batchOperation);
+                    batchOperation = new TableBatchOperation();
+                }
             }
             table.ExecuteBatch(batchOperation);
 
@@ -71,6 +78,7 @@ namespace DataDigester
                         // deserialise the JSON into our object and add it to the list
                         Service serviceEntry = JsonConvert.DeserializeObject<Service>(record.ToString());
                         Console.WriteLine("{0}\t-\t{1}", serviceEntry.address, serviceEntry.suburb, serviceEntry.postcode);
+                        serviceEntry.serviceType = "centrelink";
                         offices.Add(serviceEntry);
                     }
                     //Console.WriteLine("VICTORIA:\n-------------------------------");
@@ -93,6 +101,20 @@ namespace DataDigester
                 }
             }
 
+        }
+
+        private static string EncodeAddressForRowKey(string address)
+        {
+            var keyBytes = System.Text.Encoding.UTF8.GetBytes(address);
+            var base64 = System.Convert.ToBase64String(keyBytes);
+            return base64.Replace('/', '_');
+        }
+
+        private static string DecodeAddressFromRowKey(string rowKey)
+        {
+            var base64 = rowKey.Replace('_', '/');
+            byte[] bytes = System.Convert.FromBase64String(base64);
+            return System.Text.Encoding.UTF8.GetString(bytes);
         }
     }
 }
