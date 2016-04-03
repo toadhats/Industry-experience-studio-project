@@ -22,7 +22,10 @@ namespace DataDigester
             var host = new JobHost();
             // The following code will invoke a function called ManualTrigger and 
             // pass in data (value in this case) to the function
-            host.Call(typeof(Functions).GetMethod("UpdateData"));
+            Task callTask = host.CallAsync(typeof(Functions).GetMethod("UpdateData"));
+            Console.WriteLine("Waiting for UpdateData to run asynchronously");
+            callTask.Wait();
+            Console.WriteLine("Task completed: " + callTask.Status);
         }
     }
 }

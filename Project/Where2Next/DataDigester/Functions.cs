@@ -53,6 +53,7 @@ namespace DataDigester
                 // Make the actual request. Returns an HTTP response
                 Console.WriteLine("Attempting to send request for data");
                 HttpResponseMessage response = await client.GetAsync("api/action/datastore_search?resource_id=5a45d7b2-8579-425b-bb46-53a0e0bfa053&limit=1000");
+                Console.WriteLine("HTTP request sent");
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine("Recieved successful response.");
