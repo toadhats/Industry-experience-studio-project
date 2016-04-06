@@ -4,13 +4,11 @@
 
     public List<DataDigester.Service> getData()
     {
-        var storageAccount = Microsoft.WindowsAzure.Storage.CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-        var tableClient = storageAccount.CreateCloudTableClient();
-        var table = tableClient.GetTableReference("Services");
-        var query = new Microsoft.WindowsAzure.Storage.Table.TableQuery<DataDigester.Service>().Where(Microsoft.WindowsAzure.Storage.Table.TableQuery.GenerateFilterCondition("PartitionKey", Microsoft.WindowsAzure.Storage.Table.QueryComparisons.Equal, "centrelink"));
-        var data = table.ExecuteQuery(query).ToList<DataDigester.Service>();
-        Console.WriteLine("Data fetch function is successful?");
-        Console.WriteLine(data);
+        var storageAccount = Microsoft.WindowsAzure.Storage.CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]); // get account
+        var tableClient = storageAccount.CreateCloudTableClient(); // get client referring to account
+        var table = tableClient.GetTableReference("Services"); // get table out of account
+        var query = new Microsoft.WindowsAzure.Storage.Table.TableQuery<DataDigester.Service>().Where(Microsoft.WindowsAzure.Storage.Table.TableQuery.GenerateFilterCondition("PartitionKey", Microsoft.WindowsAzure.Storage.Table.QueryComparisons.Equal, "centrelink")); // query to get all centrelink data. It cannot work this way in the next version but I will submit for now, since it sort of works.
+        var data = table.ExecuteQuery(query).ToList<DataDigester.Service>(); // execute the query and store the result in a variable
         return data;
     }
 
@@ -18,21 +16,23 @@
     {
         Button Button1 = (Button)sender;
 
-        var data = getData();//
-        Console.WriteLine("Did we get data?");
-        Console.WriteLine(data);
+        var data = getData(); // uses the function above to get a list of Service objects
+        IEnumerable<DataDigester.Service> query; // Empty containter to fill, bad practice but I don't know what to initialise it with. A List<Service> constructor???
+
         if (centrelinkbtl.Items[0].Selected == true)
         {
-            centrelinkds.SelectCommand = "SELECT suburb FROM CentreLink WHERE serviceType= 'centrelink'";
+            query = from DataDigester.Service service in data where service.serviceType == "centrelink" select service;
         }
 
         // Only one condition, use centrelinkbtl.Items[1].Selected == true if more
+        // this query logic is a silly hack, we cannot implement the search this way when we have more datasets
         else {
-            centrelinkds.SelectCommand = "SELECT suburb FROM CentreLink WHERE serviceType <> 'centrelink'";
+            query = from DataDigester.Service service in data where service.serviceType != "centrelink" select service;
         }
 
-        //ResultList.DataSource = centrelinkds;
-        //ResultList.DataBind();
+        // bind the result of the query as the datasource for the table
+        ResultList.DataSource = query;
+        ResultList.DataBind();
 
         //show result panel
         ResultPanel.Visible = true;
@@ -46,10 +46,10 @@
     <br />
     <br />
 
-    <asp:SqlDataSource ID="centrelinkds" runat="server"
+<%--    <asp:SqlDataSource ID="centrelinkds" runat="server"
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT * FROM [CentreLink]"></asp:SqlDataSource>
+        SelectCommand="SELECT * FROM [CentreLink]"></asp:SqlDataSource>--%>
 
     <table style="width: 100%">
         <tr>
