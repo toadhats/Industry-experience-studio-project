@@ -1,10 +1,26 @@
 ﻿<%@ Page Title="Quiz" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Quiz.aspx.cs" Inherits="Where2Next.Quiz" %>
 
 <script language="c#" runat="server">
+
+    public List<DataDigester.Service> getData()
+    {
+        var storageAccount = Microsoft.WindowsAzure.Storage.CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
+        var tableClient = storageAccount.CreateCloudTableClient();
+        var table = tableClient.GetTableReference("Services");
+        var query = new Microsoft.WindowsAzure.Storage.Table.TableQuery<DataDigester.Service>().Where(Microsoft.WindowsAzure.Storage.Table.TableQuery.GenerateFilterCondition("PartitionKey", Microsoft.WindowsAzure.Storage.Table.QueryComparisons.Equal, "centrelink"));
+        var data = table.ExecuteQuery(query).ToList<DataDigester.Service>();
+        Console.WriteLine("Data fetch function is successful?");
+        Console.WriteLine(data);
+        return data;
+    }
+
     private void findsuburb(object sender, EventArgs e)
     {
         Button Button1 = (Button)sender;
 
+        var data = getData();//
+        Console.WriteLine("Did we get data?");
+        Console.WriteLine(data);
         if (centrelinkbtl.Items[0].Selected == true)
         {
             centrelinkds.SelectCommand = "SELECT suburb FROM CentreLink WHERE serviceType= 'centrelink'";
@@ -15,13 +31,14 @@
             centrelinkds.SelectCommand = "SELECT suburb FROM CentreLink WHERE serviceType <> 'centrelink'";
         }
 
-        ResultList.DataSource = centrelinkds;
-        ResultList.DataBind();
+        //ResultList.DataSource = centrelinkds;
+        //ResultList.DataBind();
 
         //show result panel
         ResultPanel.Visible = true;
     }
 </script>
+
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
