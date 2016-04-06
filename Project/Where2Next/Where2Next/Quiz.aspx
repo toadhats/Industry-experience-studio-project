@@ -28,6 +28,7 @@
         // this query logic is a silly hack, we cannot implement the search this way when we have more datasets
         else {
             query = from DataDigester.Service service in data where service.serviceType != "centrelink" select service;
+            feedbackLabel.Text = "Sorry, there is not a suggested suburb....";
         }
 
         // bind the result of the query as the datasource for the table
