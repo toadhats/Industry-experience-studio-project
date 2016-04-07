@@ -8,6 +8,7 @@ using System.Data;
 using System.Web.Configuration;
 using System.Web.UI.WebControls;
 using DataDigester;
+using System.Configuration;
 
 public partial class test : System.Web.UI.Page
 {
@@ -22,7 +23,6 @@ public partial class test : System.Web.UI.Page
     return data;
   }
 
-  private string conStr = WebConfigurationManager.ConnectionStrings["suburbConnectionString1"].ConnectionString;
   String Locations = "";
   protected void Page_Load(object sender, EventArgs e)
   {
@@ -39,8 +39,8 @@ public partial class test : System.Web.UI.Page
           if (service.latitude.ToString().Trim().Length == 0)
           continue;
 
-          string Latitude = service.latitude.toString();
-          string Longitude = service.Longitude.toString();
+          string Latitude = service.latitude.ToString();
+          string Longitude = service.longitude.ToString();
           string Suburb = service.suburb.ToString();
           string newMarker = Suburb + "Marker";
           // create a line of JavaScript for marker on map for this record
@@ -72,11 +72,11 @@ public partial class test : System.Web.UI.Page
         //adp.Fill(ds, "Suburb");
         foreach (Service service in data)
         {
-          if (r["LocLa"].ToString().Trim().Length == 0)
-          continue;
+                if (service.latitude.ToString().Trim().Length == 0)
+                        continue;
 
-          string Latitude = service.latitude.toString();
-          string Longitude = service.Longitude.toString();
+          string Latitude = service.latitude.ToString();
+          string Longitude = service.longitude.ToString();
           string Suburb = service.suburb.ToString();
           string newMarker = Suburb + "Marker";
           // create a line of JavaScript for marker on map for this record
@@ -93,7 +93,7 @@ public partial class test : System.Web.UI.Page
       }
       finally
       {
-        con.Close();
+
       }
     }
   }
