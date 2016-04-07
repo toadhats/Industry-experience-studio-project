@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="test.aspx.cs" Inherits="test" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Mapfunction.aspx.cs" Inherits="Where2Next.Mapfunction" %>
 
 <!DOCTYPE html>
     <script
@@ -14,16 +14,17 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 </head><body onload="initialize()" onunload="GUnload()">
   <form id="form1" runat="server">
        <asp:Panel ID="Panel1" runat="server">
-           <asp:Literal ID="js" runat="server"></asp:Literal>
+           <asp:Literal ID="jsa" runat="server"></asp:Literal>
            <%--Place for google to show your MAP--%>
-           <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+           <asp:Label ID="Label1" runat="server" Text="Map" Font-Size="Large"></asp:Label><br /><br />
            <div id="map_canvas" style="width: 100%; height: 728px; 
 		margin-bottom: 2px;">
            </div>
        </asp:Panel> 
-       <asp:Button ID="Button1" runat="server" Text="Button" />
+       
        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-       <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+       <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" />
+       
 </form>
 </body> 
 </html> 

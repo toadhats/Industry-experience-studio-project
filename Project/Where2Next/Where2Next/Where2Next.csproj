@@ -153,6 +153,7 @@
     <Content Include="Images\house-250px.png" />
     <Content Include="Images\house-white-50px.png" />
     <Content Include="Map.aspx" />
+    <Content Include="Mapfunction.aspx" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -228,7 +229,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
-    <Content Include="test.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -251,6 +251,13 @@
     </Compile>
     <Compile Include="Map.aspx.designer.cs">
       <DependentUpon>Map.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mapfunction.aspx.cs">
+      <DependentUpon>Mapfunction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mapfunction.aspx.designer.cs">
+      <DependentUpon>Mapfunction.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -323,10 +330,6 @@
     </Compile>
     <Compile Include="SuburbMaster.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

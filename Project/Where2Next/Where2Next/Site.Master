@@ -69,13 +69,13 @@
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Truss</p>
                 <p><asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Black"
-                    NavigateUrl="www.google.com"
+                    NavigateUrl="http://www.google.com"
                     Text="About US" /></p>
 
                 
 
                 <p><asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Black"
-                    NavigateUrl="www.google.com"
+                    NavigateUrl="http://www.google.com"
                     Text="Contact US" /></p>
                     
             </footer>
