@@ -30,7 +30,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
                     position: myLocation,
                     map: map
                 });
-                infowindow.open(map, marker);
+               // infowindow.open(map, marker);
             });
             successLocation.style.display = "";
         } else {
@@ -46,7 +46,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-</head><body onload="initialize()" onunload="GUnload()">
+</head><body onload="initialize()" >
   <form id="form1" runat="server">
           </br>
    <div id="success" class="alert alert-success" runat="server" style="display:none">
