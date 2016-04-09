@@ -1,13 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Where2Next.Profile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<script>function Likevote() {
-    alert('Thanks for the vote.');
-}
-</script>
+
     <br />
     <br />
     <br />
     <br />
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true" style="position:absolute;top:50%;height: 240px;margin-top: -120px;">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"  aria-hidden="true">
+            </button>
+         </div>
+         <div class="modal-body">
+            Thanks to vote for the suburb.
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">
+               Close
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
 <div class="row">
    <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
@@ -20,7 +37,7 @@
                <a href="https://en.wikipedia.org/wiki/Caulfield,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()" >
+               <a href="#" class="btn btn-default" role="button"  data-toggle="modal" data-target="#myModal" >
                  Like ♡
                </a>
             </p>
@@ -39,7 +56,7 @@
                <a href="https://en.wikipedia.org/wiki/Clayton,_Victoria" class="btn btn-primary" role="button">
                    More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
+               <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal">
                   Like ♡
                </a>
             </p>
@@ -57,7 +74,7 @@
                <a href="https://en.wikipedia.org/wiki/Carnegie,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
+               <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal">
                   Like ♡
                </a>
             </p>
@@ -75,7 +92,7 @@
                <a href="https://en.wikipedia.org/wiki/Malvern_East,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
+               <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal">
                   Like ♡
                </a>
             </p>
@@ -99,7 +116,7 @@
                <a href="https://en.wikipedia.org/wiki/Toorak,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
+               <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal">
                  Like ♡
                </a>
             </p>
@@ -117,7 +134,7 @@
                <a href="https://en.wikipedia.org/wiki/St_Kilda,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
+               <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal">
                  Like ♡
                </a>
             </p>
@@ -135,7 +152,7 @@
                <a href="https://en.wikipedia.org/wiki/Burwood,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
+               <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal">
                   Like ♡
                </a>
             </p>
@@ -153,7 +170,7 @@
                <a href="https://en.wikipedia.org/wiki/Camberwell,_Victoria" class="btn btn-primary" role="button">
                  More details
                </a> 
-               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
+               <a href="#" class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal">
                   Like ♡
                </a>
             </p>
