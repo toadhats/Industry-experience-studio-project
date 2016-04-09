@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Where2Next.Profile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+<script>function Likevote() {
+    alert('Thanks for the vote.');
+}
+</script>
     <br />
     <br />
     <br />
@@ -14,10 +17,10 @@
             <h3>Caulfield</h3>
             <p>Caulfield is a suburb of Melbourne, Victoria, Australia, 12 kilometres (7.5 mi) south-east of Melbourne's central business district. </p>
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/Caulfield,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()" >
                  Like ♡
                </a>
             </p>
@@ -33,10 +36,10 @@
             <p>Clayton is a suburb in Melbourne, Victoria, Australia, 19 km south-east of Melbourne's central business district.　　　　　　　　　　　　　　　　　<br /></p>
 
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/Clayton,_Victoria" class="btn btn-primary" role="button">
                    More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
                   Like ♡
                </a>
             </p>
@@ -51,10 +54,10 @@
             <h3>Carnegie</h3>
             <p>Carnegie is a suburb in Melbourne, Victoria, Australia, 12 km south-east from Melbourne's central business district.</p>
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/Carnegie,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
                   Like ♡
                </a>
             </p>
@@ -69,10 +72,10 @@
             <h3>Malvern East</h3>
             <p>Malvern East is a suburb of Melbourne, Victoria, Australia, 12 km south-east of Melbourne's Central Business District.</p>
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/Malvern_East,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
                   Like ♡
                </a>
             </p>
@@ -93,10 +96,10 @@
             <h3>Toorak</h3>
             <p>Toorak is a suburb of Melbourne, Victoria, Australia, 5 km south-east from Melbourne's Central Business District. </p>
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/Toorak,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
                  Like ♡
                </a>
             </p>
@@ -108,13 +111,13 @@
          <img src="/Images/skkilda.jpg" 
          alt="">
          <div class="caption">
-            <h3>Sk Kilda</h3>
+            <h3>St Kilda</h3>
             <p>St Kilda is a suburb (neighborhood) of the metropolitan area of Melbourne, Victoria, Australia, 6 km south-east of Melbourne's Central Business District. </p>
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/St_Kilda,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
                  Like ♡
                </a>
             </p>
@@ -129,10 +132,10 @@
             <h3>Burwood</h3>
             <p>Burwood is a suburb of Melbourne, Victoria, Australia, 14 km east of Melbourne's Central Business District.　　　　　　　　　　</p>
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/Burwood,_Victoria" class="btn btn-primary" role="button">
                   More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
                   Like ♡
                </a>
             </p>
@@ -147,10 +150,10 @@
             <h3>Camberwell</h3>
             <p>Camberwell is a suburb of Melbourne, Victoria, Australia, 10 km east of Melbourne's Central Business District.　　　　　　</p>
             <p>
-               <a href="#" class="btn btn-primary" role="button">
+               <a href="https://en.wikipedia.org/wiki/Camberwell,_Victoria" class="btn btn-primary" role="button">
                  More details
                </a> 
-               <a href="#" class="btn btn-default" role="button">
+               <a href="#" class="btn btn-default" role="button" onclick="Likevote()">
                   Like ♡
                </a>
             </p>
