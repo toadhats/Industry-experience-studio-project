@@ -109,7 +109,7 @@
          alt="">
          <div class="caption">
             <h3>Sk Kilda</h3>
-            <p>St Kilda is a suburb (neighborhood) of the metropolitan area of Melbourne, Victoria, Australia, 6 km south-east of Melbourne's Central Business District. 　　　　　　　　</p>
+            <p>St Kilda is a suburb (neighborhood) of the metropolitan area of Melbourne, Victoria, Australia, 6 km south-east of Melbourne's Central Business District. </p>
             <p>
                <a href="#" class="btn btn-primary" role="button">
                   More details
@@ -127,7 +127,7 @@
          alt="">
          <div class="caption">
             <h3>Burwood</h3>
-            <p>Burwood is a suburb of Melbourne, Victoria, Australia, 14 km east of Melbourne's Central Business District.</p>
+            <p>Burwood is a suburb of Melbourne, Victoria, Australia, 14 km east of Melbourne's Central Business District.　　　　　　　　　　</p>
             <p>
                <a href="#" class="btn btn-primary" role="button">
                   More details
