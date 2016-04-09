@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="suburbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SuburbMaster">
+    <Key>
+      <PropertyRef Name="PostCode" />
+    </Key>
+    <Property Name="PostCode" Type="Int32" Nullable="false" />
+    <Property Name="Suburb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LocLa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LocLong" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="suburbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SuburbMaster" EntityType="Self.SuburbMaster" />
+  </EntityContainer>
+</Schema>
