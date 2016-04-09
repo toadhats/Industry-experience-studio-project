@@ -84,5 +84,13 @@ namespace Where2Next
                 }
             }
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Location", " <script>currentPosition(); </script> ");
+            }
+        }
     }
 }
