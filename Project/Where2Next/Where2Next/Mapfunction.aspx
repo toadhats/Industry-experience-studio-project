@@ -46,9 +46,15 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 </head><body onload="initialize()" >
   <form id="form1" runat="server">
           </br>
+=======
+</head><body style="background-color:#F3F9FE">
+  <form id="form1" runat="server" >
+         <br />
+>>>>>>> origin/master
    <div id="success" class="alert alert-success" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
    <strong>Sucess！ </strong> The suburb can find in the map.
@@ -69,9 +75,14 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 		margin-bottom: 2px;">
            </div>
        </asp:Panel> 
-       <div style="text-align:center"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+       <div style="text-align:center"><h3>You can enter the suburb name or postcode to find your suburb&#39;s Location</h3><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
        <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
+<<<<<<< HEAD
        <input type="button" class="btn btn-default" onclick="currentPosition()" value="Where is me?"  /> </div>
+=======
+        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="Where am I now?" OnClick="Button2_Click" />
+          </div>
+>>>>>>> origin/master
      
 </form>
 </body> 
