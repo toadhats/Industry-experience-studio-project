@@ -58,6 +58,7 @@
                         <li><a runat="server" href="~/Search">　　　　　Search　　　</a></li>
                         <li><a runat="server" href="~/Profile">　　　　　Profile　　　</a></li>
                         <li><a runat="server" href="~/Map">　　　　　Map　　　</a></li>
+                        <li><a runat="server" href="~/Discover_C">　　　　　Discover_C　　　</a></li>
                     </ul>
                 </div>
             </div>
