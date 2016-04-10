@@ -158,9 +158,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Discover_C.aspx" />
+    <Content Include="Images\Burwood.jpg" />
+    <Content Include="Images\Camberwell.jpg" />
+    <Content Include="Images\Carnegie.jpg" />
+    <Content Include="Images\caulfield.jpg" />
+    <Content Include="Images\Clayton.jpg" />
     <Content Include="Images\logo-500px.png" />
     <Content Include="Images\house-250px.png" />
     <Content Include="Images\house-white-50px.png" />
+    <Content Include="Images\MalvernEast.jpg" />
+    <Content Include="Images\page1.jpg" />
+    <Content Include="Images\page2.jpg" />
+    <Content Include="Images\page3.jpg" />
+    <Content Include="Images\skkilda.jpg" />
+    <Content Include="Images\success.jpg" />
+    <Content Include="Images\toorak.jpg" />
     <Content Include="Map.aspx" />
     <Content Include="Mapfunction.aspx" />
     <Content Include="Model1.Context.tt">
