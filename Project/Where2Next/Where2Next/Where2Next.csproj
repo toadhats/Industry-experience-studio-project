@@ -170,6 +170,7 @@
     </Content>
     <Content Include="Profile.aspx" />
     <Content Include="Quiz.aspx" />
+    <Content Include="QuizFunction.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -298,6 +299,13 @@
       <DependentUpon>Quiz.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="QuizFunction.aspx.cs">
+      <DependentUpon>QuizFunction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuizFunction.aspx.designer.cs">
+      <DependentUpon>QuizFunction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
