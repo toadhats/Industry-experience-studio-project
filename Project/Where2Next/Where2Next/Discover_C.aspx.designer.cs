@@ -10,16 +10,16 @@
 namespace Where2Next {
     
     
-    public partial class quizTest {
+    public partial class Discover {
         
         /// <summary>
-        /// question control.
+        /// servicesds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl question;
+        protected global::System.Web.UI.WebControls.SqlDataSource servicesds;
         
         /// <summary>
         /// Label1 control.
@@ -31,13 +31,13 @@ namespace Where2Next {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// centrelinkList control.
+        /// centrelinkrbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList centrelinkList;
+        protected global::System.Web.UI.WebControls.RadioButtonList centrelinkrbl;
         
         /// <summary>
         /// Label2 control.
@@ -49,31 +49,13 @@ namespace Where2Next {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// audlteducationList control.
+        /// internetrbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList audlteducationList;
-        
-        /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// schoolList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList schoolList;
+        protected global::System.Web.UI.WebControls.RadioButtonList internetrbl;
         
         /// <summary>
         /// Button1 control.
@@ -85,12 +67,30 @@ namespace Where2Next {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// result control.
+        /// ResultPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal result;
+        protected global::System.Web.UI.WebControls.Panel ResultPanel;
+        
+        /// <summary>
+        /// feedbackLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label feedbackLabel;
+        
+        /// <summary>
+        /// ResultList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ResultList;
     }
 }

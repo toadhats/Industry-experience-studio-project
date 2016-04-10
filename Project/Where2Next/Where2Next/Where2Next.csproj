@@ -153,6 +153,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Discover_C.aspx" />
     <Content Include="Images\logo-500px.png" />
     <Content Include="Images\house-250px.png" />
     <Content Include="Images\house-white-50px.png" />
@@ -169,7 +170,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Profile.aspx" />
-    <Content Include="Quiz.aspx" />
+    <Content Include="quiz.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -249,6 +250,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Discover_C.aspx.cs">
+      <DependentUpon>Discover_C.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Discover_C.aspx.designer.cs">
+      <DependentUpon>Discover_C.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Map.aspx.cs">
       <DependentUpon>Map.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -290,14 +298,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Quiz.aspx.cs">
-      <DependentUpon>Quiz.aspx</DependentUpon>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="quiz.aspx.cs">
+      <DependentUpon>quiz.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Quiz.aspx.designer.cs">
-      <DependentUpon>Quiz.aspx</DependentUpon>
+    <Compile Include="quiz.aspx.designer.cs">
+      <DependentUpon>quiz.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
