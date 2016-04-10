@@ -21,21 +21,41 @@ namespace Where2Next
             {
 
                 String connectionStr = @"Data Source=au-cdbr-azure-southeast-a.cloudapp.net; Database=Where2Next; User ID=bcb3c5458db67d; password='2821061a'";
-                string s = "";
                 string suburb = "";
                 string postcode = "";
                 string total = "";
+                string s = "";
                 using (MySqlConnection cn = new MySqlConnection(connectionStr))
                 {
                     cn.Open();
-                    if (centrelinkList.Items[0].Selected == true)
+                    if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[0].Selected == true)
                     {
-                        s = "select suburb,postcode from socialservices WHERE type = 'centrelink'";
+                        s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices) limit 50";
                     }
-                    else
+
+                    if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[1].Selected == true)
                     {
-                        s = "select suburb,postcode from socialservices WHERE type = 'Medicare'";
+                        s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='VET' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices) limit 50";
                     }
+                    if(centrelinkList.Items[1].Selected == true && audlteducationList.Items[0].Selected == true)
+                    {
+                        s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE type ='TOFE' and a.suburb=b.suburb limit 50";
+                    }
+                    if (audlteducationList.Items[1].Selected == true)
+                    {
+                        s = "select distinct suburb,postcode from adulteducation WHERE type ='VET' limit 50";
+                    }
+                    if (centrelinkList.Items[1].Selected == true && audlteducationList.Items[2].Selected == true)
+                    {
+                        s = "select  distinct suburb,postcode from adulteducation WHERE type ='aaaaa'";
+                    }
+                    if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[2].Selected == true)
+                    {
+                        s = "select distinct suburb,postcode from socialservices limit 50";
+                    }
+    
+
+
                     MySqlCommand mcd = new MySqlCommand(s, cn);
                     MySqlDataReader mdr = mcd.ExecuteReader();
                     if (mdr.HasRows)
@@ -47,14 +67,17 @@ namespace Where2Next
                             total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
                         }
                         this.question.Style.Add("display", "none");
-                        result.Text = "<table class='table table-hover'><caption><h2>Wow, there are lots of suburb are suitable for you</h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
+                        result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'><caption><h2>Wow, there are lots of suburb are suitable for you</h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
+                        mdr.Close();
+                        cn.Close();
                     }
                     else
                     {
+                        result.Text = "<h2> OH~ all of the victoria suburb are suitable for you </h2>";
+                        mdr.Close();
+                        cn.Close();
 
                     }
-                    mdr.Close();
-                    cn.Close();
 
                 }
             }
