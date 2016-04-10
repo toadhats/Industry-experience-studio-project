@@ -67,13 +67,13 @@ namespace Where2Next
                             total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
                         }
                         this.question.Style.Add("display", "none");
-                        result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'><caption><h2>Wow, there are lots of suburb are suitable for you</h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
+                        result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2>Wow, there are lots of suburbs are suitable for you</h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
                         mdr.Close();
                         cn.Close();
                     }
                     else
                     {
-                        result.Text = "<h2> OH~ all of the victoria suburb are suitable for you </h2>";
+                        result.Text = "<h2> OH~ all of the victoria suburbs are suitable for you </h2>";
                         mdr.Close();
                         cn.Close();
 
