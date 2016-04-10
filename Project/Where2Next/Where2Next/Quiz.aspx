@@ -13,7 +13,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 
     <table style="width: 100%">
         <tr>
-            <asp:Label ID="Label1" runat="server" Text="Do you have seniors at home ?"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Do you have seniors in your family？ "></asp:Label>
         </tr>
         <tr>
             <asp:RadioButtonList ID="centrelinkList" runat="server" >
@@ -27,9 +27,9 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
         </tr>
         <tr>
             <asp:RadioButtonList ID="audlteducationList" runat="server" >
-                <asp:ListItem>TOFE</asp:ListItem>
-                <asp:ListItem>VEC</asp:ListItem>
-                <asp:ListItem>I not attend any class</asp:ListItem>
+                <asp:ListItem>Yes, TOFE</asp:ListItem>
+                <asp:ListItem>Yes, VEC</asp:ListItem>
+                <asp:ListItem>I do not attend any class</asp:ListItem>
             </asp:RadioButtonList>
         </tr>
         </table>
