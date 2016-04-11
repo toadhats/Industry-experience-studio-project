@@ -14,7 +14,7 @@
             </button>
          </div>
          <div class="modal-body">
-            Thanks to vote for the suburb.
+            Thanks for voting!
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-default" 

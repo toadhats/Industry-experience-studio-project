@@ -13,28 +13,29 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 
     <table style="width: 100%">
         <tr>
-            <asp:Label ID="Label1" runat="server" Text="Do you have seniors in your family？ "></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Do you want to live near a medical centre? "></asp:Label>
         </tr>
         <tr>
             <asp:RadioButtonList ID="centrelinkList" runat="server" >
-                <asp:ListItem>Yes</asp:ListItem>
-                <asp:ListItem>No</asp:ListItem>
+                <asp:ListItem>　Yes</asp:ListItem>
+                <asp:ListItem>　No</asp:ListItem>
+
             </asp:RadioButtonList>
         </tr>
 
                     <tr> <tr>
-            <asp:Label ID="Label2" runat="server" Text="Do you need to attend audlt education class?"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Do you plan to attend TAFE classes?"></asp:Label>
         </tr>
         <tr>
             <asp:RadioButtonList ID="audlteducationList" runat="server" >
-                <asp:ListItem>Yes, TOFE</asp:ListItem>
-                <asp:ListItem>Yes, VEC</asp:ListItem>
-                <asp:ListItem>I do not attend any class</asp:ListItem>
+                <asp:ListItem>　Yes</asp:ListItem>
+                <asp:ListItem>　Never mind</asp:ListItem>
+
             </asp:RadioButtonList>
         </tr>
         </table>
     <br />
-   <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Begin Now" OnClick="Button1_Click" />
+   <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
     <br />
     <br />
        </div>
