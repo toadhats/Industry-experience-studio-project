@@ -25,61 +25,66 @@ namespace Where2Next
                 string postcode = "";
                 string total = "";
                 string s = "";
-                using (MySqlConnection cn = new MySqlConnection(connectionStr))
+                if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[0].Selected == true ||
+                    centrelinkList.Items[0].Selected == true && audlteducationList.Items[1].Selected == true ||
+                    centrelinkList.Items[1].Selected == true && audlteducationList.Items[1].Selected == true ||
+                        centrelinkList.Items[1].Selected == true && audlteducationList.Items[0].Selected == true)
                 {
-                    cn.Open();
-                    if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[0].Selected == true)
+                    using (MySqlConnection cn = new MySqlConnection(connectionStr))
                     {
-                        s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices) limit 50";
-                    }
-
-                    if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[1].Selected == true)
-                    {
-                        s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='VET' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices) limit 50";
-                    }
-                    if(centrelinkList.Items[1].Selected == true && audlteducationList.Items[0].Selected == true)
-                    {
-                        s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE type ='TOFE' and a.suburb=b.suburb limit 50";
-                    }
-                    if (audlteducationList.Items[1].Selected == true)
-                    {
-                        s = "select distinct suburb,postcode from adulteducation WHERE type ='VET' limit 50";
-                    }
-                    if (centrelinkList.Items[1].Selected == true && audlteducationList.Items[2].Selected == true)
-                    {
-                        s = "select  distinct suburb,postcode from adulteducation WHERE type ='aaaaa'";
-                    }
-                    if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[2].Selected == true)
-                    {
-                        s = "select distinct suburb,postcode from socialservices limit 50";
-                    }
-    
-
-
-                    MySqlCommand mcd = new MySqlCommand(s, cn);
-                    MySqlDataReader mdr = mcd.ExecuteReader();
-                    if (mdr.HasRows)
-                    {
-                        while (mdr.Read())
+                        cn.Open();
+                        if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[0].Selected == true)
                         {
-                            suburb = mdr.GetString(0);
-                            postcode = mdr.GetString(1);
-                            total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
+                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices where type ='Medicare' ) limit 50";
                         }
-                        this.question.Style.Add("display", "none");
-                        result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2>Wow, there are lots of suburbs are suitable for you</h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
-                        mdr.Close();
-                        cn.Close();
-                    }
-                    else
-                    {
-                        result.Text = "<h2> OH~ all of the victoria suburbs are suitable for you </h2>";
-                        mdr.Close();
-                        cn.Close();
+
+                        if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[1].Selected == true)
+                        {
+                            s = "select distinct suburb,postcode from socialservices where type ='Medicare' limit 50";
+                        }
+                        if (centrelinkList.Items[1].Selected == true && audlteducationList.Items[1].Selected == true)
+                        {
+                            s = "select  distinct suburb,postcode from adulteducation WHERE type ='aaaaa'";
+                        }
+                        if (centrelinkList.Items[1].Selected == true && audlteducationList.Items[0].Selected == true)
+                        {
+                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb limit 50";
+                        }
+
+
+
+
+                        MySqlCommand mcd = new MySqlCommand(s, cn);
+                        MySqlDataReader mdr = mcd.ExecuteReader();
+                        if (mdr.HasRows)
+                        {
+                            while (mdr.Read())
+                            {
+                                suburb = mdr.GetString(0);
+                                postcode = mdr.GetString(1);
+                                total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
+                            }
+                            this.question.Style.Add("display", "none");
+                            result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2>Wow, there are lot of suburbs which are suitable for you. </h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
+                            mdr.Close();
+                            cn.Close();
+                        }
+                        else
+                        {
+                            result.Text = "<h2> OH~ all the victoria suburbs are suitable for you </h2>";
+                            mdr.Close();
+                            cn.Close();
+
+                        }
 
                     }
-
                 }
+                else
+                {
+                    result.Text = "<h2>Please answer all the questions.  </h2>";
+                }
+
+
             }
         }
     }
