@@ -50,14 +50,14 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
          <br />
    <div id="success" class="alert alert-success" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>Sucess！ </strong> The suburb can find in the map.
+   <strong>Success！ </strong> The suburb is found!
 </div>
       <div id="fail" class="alert alert-warning" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>fail! </strong>We cannot find your suburb in victoria.</div>
+   <strong>Sorry! </strong>We cannot find your suburb in victoria.</div>
          <div id="successLocation" class="alert alert-success" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>Sucess！ </strong> You are here!
+   <strong>Success！ </strong> You are here!
 </div>
       <div id="failLocation" class="alert alert-warning" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -70,7 +70,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
        </asp:Panel> 
        <div style="text-align:center"><h3>You can enter the suburb name or postcode to find your suburb&#39;s Location</h3><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
        <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
-        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="Where am I now?" OnClick="Button2_Click" />
+        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="Show my location" OnClick="Button2_Click" />
           </div>
      
 </form>
