@@ -51,7 +51,7 @@
                 Browse our data and get to know Melbourne.
             </p>
             <p>
-                <a class="btn btn-default" href="/Profile">Advanced Search &raquo;</a>
+                <a class="btn btn-default" href="/Profile">Profiles &raquo;</a>
             </p>
         </div>
     </div>
