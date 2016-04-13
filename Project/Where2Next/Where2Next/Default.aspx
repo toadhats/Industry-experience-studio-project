@@ -30,7 +30,7 @@
         <div class="col-md-4">
             <h2>Need a hand?</h2>
             <p>
-                If you don't know where to begin, our guided search will help you to decide what's important.
+                If you're not sure where to start, our guided search will help you to decide what's important.
             </p>
             <p>
                 <a class="btn btn-default" href="/Quiz">Discover &raquo;</a>
@@ -39,19 +39,19 @@
         <div class="col-md-4">
             <h2>See for yourself</h2>
             <p>
-                Take a look at our map and explore Melbourne on your own
+                Want to look at the bigger picture? Take a look at our map and explore Melbourne on your own.
             </p>
             <p>
                 <a class="btn btn-default" href="/Map">Map &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Advanced Search</h2>
+            <h2>Suburb Profiles</h2>
             <p>
-                Know exactly what you're looking for? Try the advanced search tool for full access to the data we have available.
+                Browse our data and get to know Melbourne.
             </p>
             <p>
-                <a class="btn btn-default" href="/Search">Advanced Search &raquo;</a>
+                <a class="btn btn-default" href="/Profile">Advanced Search &raquo;</a>
             </p>
         </div>
     </div>
