@@ -157,6 +157,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ContactUs.aspx" />
     <Content Include="Discover_C.aspx" />
     <Content Include="Images\Burwood.jpg" />
     <Content Include="Images\Camberwell.jpg" />
@@ -187,7 +188,7 @@
     </Content>
     <Content Include="Profile.aspx" />
     <Content Include="quiz.aspx" />
-    <Content Include="Search.aspx" />
+    <Content Include="AboutUs.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -265,6 +266,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Discover_C.aspx.cs">
       <DependentUpon>Discover_C.aspx</DependentUpon>
@@ -322,12 +330,12 @@
     <Compile Include="quiz.aspx.designer.cs">
       <DependentUpon>quiz.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Search.aspx.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Search.aspx.designer.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
