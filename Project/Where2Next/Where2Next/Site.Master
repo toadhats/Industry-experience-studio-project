@@ -53,11 +53,13 @@
                 </div>
                 <div class="navbar-collapse collapse" style="color:white">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">　　　Home　　　　　</a></li>
-                        <li><a runat="server" href="~/Quiz">　　　　　Discover　　　</a></li>
-                        <li><a runat="server" href="~/Search">　　　　　Search　　　</a></li>
-                        <li><a runat="server" href="~/Profile">　　　　　Profile　　　</a></li>
-                        <li><a runat="server" href="~/Map">　　　　　Map　　　</a></li>
+
+                        <li><a runat="server" href="~/">　　　Home　　　</a></li>
+                        <li><a runat="server" href="~/AboutUs">　　　About us　　　</a></li>
+                        <li><a runat="server" href="~/Quiz">　　　Discover　　　</a></li>
+                         <li><a runat="server" href="~/Map">　　　Map　　　</a></li>                        
+                        <li><a runat="server" href="~/Profile">　　　Profile　　　</a></li>
+                        <li><a runat="server" href="~/ContactUs">　　　Contact us　　　</a></li>
                     </ul>
                 </div>
             </div>
