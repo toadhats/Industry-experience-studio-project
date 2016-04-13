@@ -10,6 +10,6 @@
 namespace Where2Next {
     
     
-    public partial class AboutUs {
+    public partial class Search {
     }
 }

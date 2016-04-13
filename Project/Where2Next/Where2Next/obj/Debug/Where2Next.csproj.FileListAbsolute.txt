@@ -275,3 +275,5 @@ E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\
 E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\obj\Debug\Where2Next.pdb
 C:\Git\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.dll
 C:\Git\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.Entity.EF6.dll
+D:\ProgrammeData\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.dll
+D:\ProgrammeData\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.Entity.EF6.dll

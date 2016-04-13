@@ -54,12 +54,10 @@
                 <div class="navbar-collapse collapse" style="color:white">
                     <ul class="nav navbar-nav">
 
-                        <li><a runat="server" href="~/">　　　Home　　　</a></li>
-                        <li><a runat="server" href="~/AboutUs">　　　About us　　　</a></li>
-                        <li><a runat="server" href="~/Quiz">　　　Discover　　　</a></li>
+                        <li><a runat="server" href="~/">　　　Home　　　</a></li>                      
+                        <li><a runat="server" href="~/Quiz">　　　Quiz　　　</a></li>
                          <li><a runat="server" href="~/Map">　　　Map　　　</a></li>                        
                         <li><a runat="server" href="~/Profile">　　　Profile　　　</a></li>
-                        <li><a runat="server" href="~/ContactUs">　　　Contact us　　　</a></li>
                     </ul>
                 </div>
             </div>
@@ -71,13 +69,13 @@
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Truss</p>
                 <p><asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Black"
-                    NavigateUrl="http://www.google.com"
+                    NavigateUrl="AboutUs.aspx"
                     Text="About US" /></p>
 
                 
 
                 <p><asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Black"
-                    NavigateUrl="http://www.google.com"
+                    NavigateUrl="ContactUs.aspx"
                     Text="Contact US" /></p>
                     
             </footer>
