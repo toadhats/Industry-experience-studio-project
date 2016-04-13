@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Where2Next
 {
-    public partial class Discover : System.Web.UI.Page
+    public partial class AboutUs : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
