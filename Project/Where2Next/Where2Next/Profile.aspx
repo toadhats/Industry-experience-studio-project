@@ -14,11 +14,7 @@
             </button>
          </div>
          <div class="modal-body">
-<<<<<<< HEAD
-            Thanks for voting!
-=======
             Thanks for voting.
->>>>>>> origin/master
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-default" 
