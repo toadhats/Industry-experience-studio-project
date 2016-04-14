@@ -35,7 +35,7 @@ namespace Where2Next
                         cn.Open();
                         if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[0].Selected == true)
                         {
-                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TAFE' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices where type ='Medicare' ) limit 50";
+                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices where type ='Medicare' ) limit 50";
                         }
 
                         if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[1].Selected == true)
@@ -48,7 +48,7 @@ namespace Where2Next
                         }
                         if (centrelinkList.Items[1].Selected == true && audlteducationList.Items[0].Selected == true)
                         {
-                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TAFE' and a.suburb = b.suburb limit 50";
+                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb limit 50";
                         }
 
 
