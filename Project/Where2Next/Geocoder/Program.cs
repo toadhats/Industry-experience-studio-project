@@ -19,7 +19,7 @@ namespace Geocoder
             DBConnect connection = new DBConnect();
             foreach (string tableName in args)
             {
-                Console.Write("Checking table {0}", tableName);
+                Console.WriteLine("Checking table {0}", tableName);
                 connection.FixMissingCoords(tableName);
             }
 

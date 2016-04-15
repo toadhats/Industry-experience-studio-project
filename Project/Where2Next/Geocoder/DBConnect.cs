@@ -135,7 +135,8 @@ namespace Geocoder
 
             return ids;
         }
-
+        // This needs to be rate limited to comply with the restrictions on the google geocoding api
+        private readonly int REQUESTS_PER_SEC = 10; // It would hypothetically change to 50 if someone spent $10k on a premium account, plus it makes this number a little less magic
         public void FixMissingCoords(string table)
         {
             var idsToFix = GetRowsWithoutCoords(table);
@@ -143,7 +144,10 @@ namespace Geocoder
             {
                 Console.WriteLine("{0} rows in {1} need fixing.", idsToFix.Count, table);
                 GoogleConnect ApiConnection = new GoogleConnect();
+                int lastRequest = Environment.TickCount;
+                var bucket = new TokenBucket();
                 foreach (var entity in idsToFix) {
+                    int elapsedTime = Environment.TickCount - lastRequest;
 
                     var id = entity.Item1;
                     var address = entity.Item2;
