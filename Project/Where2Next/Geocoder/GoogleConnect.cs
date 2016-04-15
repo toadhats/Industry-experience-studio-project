@@ -24,7 +24,7 @@ namespace Geocoder
 
         // Returns a tuple containing a latitude and longitude pair
         // Get things out of tuples using tuple.item1, tuple.item2, et cetera.
-        private Tuple<double, double> GetLatLong(string address)
+        public Tuple<double, double> GetLatLong(string address)
         {
             // This library calls the result class "Address" but it also contains the coordinates
             // Not sure why it returns a collection of them but I guess we'll find out
@@ -42,6 +42,10 @@ namespace Geocoder
             {
                 Console.Error.WriteLine("Could not convert coordinates {0}, {1} to doubles", latitude, longitude);
                 // If something goes wrong, coordinates will be zeroes
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.Error.WriteLine(e.Message);
             }
 
             var coords = Tuple.Create(latitude, longitude);

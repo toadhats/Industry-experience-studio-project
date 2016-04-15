@@ -1,17 +1,18 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 
 namespace Geocoder
 {
     // This class wraps up all the database boilerplate, for readibility and separation of concerns.
     internal class DBConnect
     {
-        
         // We could just have one of these in the main class, but it's much better to keep it here
         private MySqlConnection connection;
-        
+
         // Connection variables. These should be in a seperate config file, not here.
         private string server;
+
         private string database;
         private string uid;
         private string password;
@@ -95,11 +96,67 @@ namespace Geocoder
                 //This uses method "ExecuteNonQuery" because it does not return any results
                 cmd.ExecuteNonQuery();
 
-                //close connection when we're done. 
+                //close connection when we're done.
                 // It might be better to keep the connection open if we can get a batch of updates to behave properly. Maybe a different method, later.
                 this.CloseConnection();
             }
         }
 
+        public List<Tuple<int, string>> GetRowsWithoutCoords(string table)
+        {
+            var ids = new List<Tuple<int, string>>();
+            string query = "SELECT * FROM " + table;
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                
+                // We need a data reader obejct to handle the results
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    var details = Tuple.Create(Convert.ToInt32(dataReader["ID"]), (string) dataReader["Address"]);
+                    ids.Add(details);
+                }
+                Console.WriteLine("There are {0} rows in table {1} missing coordinates", ids.Count, table);
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+            }
+            else
+            {
+                Console.Error.WriteLine("Could not get a database connection while trying to fetch row ids");
+            }
+
+            return ids;
+        }
+
+        public void FixMissingCoords(string table)
+        {
+            var idsToFix = GetRowsWithoutCoords(table);
+            if (idsToFix.Count > 0)
+            {
+                Console.WriteLine("{0} rows in {1} need fixing.", idsToFix.Count, table);
+                GoogleConnect ApiConnection = new GoogleConnect();
+                foreach (var entity in idsToFix) {
+
+                    var id = entity.Item1;
+                    var address = entity.Item2;
+                    var coords = ApiConnection.GetLatLong(address);
+                    Console.WriteLine("Got coordinates {0}, {1} for address {2}", coords.Item1, coords.Item2, address);
+
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("No services in this table are missing coordinates");
+            }
+        }
     }
 }
