@@ -62,16 +62,40 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
       <div id="failLocation" class="alert alert-warning" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
    <strong>fail! </strong>We cannot find your location.</div>
+
+      <div id="menu" style="height:700px;width:230px;float:left;">
+
+ <div style="text-align:center"><h3>Find your suburb</h3><br />
+     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br /><br />
+     <div id="demo" class="collapse"><br />
+
+         <div style="float:left;" ><asp:CheckBox ID="SchoolCheckBox" runat="server" type="checkbox"/></div><label>School</label><br />
+         <div style="float:left;"><asp:CheckBox ID="CenterLinkBox" runat="server" type="checkbox"/></div><label>CenterLink</label><br />
+         <div style="float:left;"><asp:CheckBox ID="LibraryBox" runat="server" type="checkbox"/></div><label>Library</label><br />
+         <div style="float:left;"><asp:CheckBox ID="IceskatingBox" runat="server" type="checkbox"/></div><label>Iceskating</label><br />
+         <div style="float:left;"><asp:CheckBox ID="DisabilityBox" runat="server" type="checkbox"/></div><label>Disability</label><br />
+         <div style="float:left;"><asp:CheckBox ID="ArtspaceBox" runat="server" type="checkbox"/></div><label>Artspace</label><br />
+         <div style="float:left;"><asp:CheckBox ID="CheckBox1" runat="server" type="checkbox"/></div><label>xxxxxx</label><br />
+         <div style="float:left;"><asp:CheckBox ID="CheckBox2" runat="server" type="checkbox"/></div><label>xxxxxx</label><br />
+         <div style="float:left;"><asp:CheckBox ID="CheckBox3" runat="server" type="checkbox"/></div><label>xxxxx</label><br />
+         <div style="float:left;"><asp:CheckBox ID="CheckBox4" runat="server" type="checkbox"/></div><label>xxxxxx</label><br />
+         <div style="float:left;"><asp:CheckBox ID="MedicareBox" runat="server" type="checkbox"/></div><label>Medicare</label><br /><br />
+</div>
+       <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
+        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br /><br />
+
+
+     <button type="button" class="btn btn-primary" data-toggle="collapse" 
+   data-target="#demo">
+ Advance search
+</button></div>
+          </div>
        <asp:Panel ID="Panel1" runat="server">
            <asp:Literal ID="js" runat="server"></asp:Literal>
-           <div id="map_canvas" style="width: 100%; height: 728px; 
-		margin-bottom: 2px;">
+           <div id="map_canvas" style="background-color:#EEEEEE;height:700px;width:900px;float:left;">
            </div>
        </asp:Panel> 
-       <div style="text-align:center"><h3>You can enter the suburb name or postcode to find your suburb&#39;s Location</h3><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-       <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
-        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="Show my location" OnClick="Button2_Click" />
-          </div>
+      
      
 </form>
 </body> 
