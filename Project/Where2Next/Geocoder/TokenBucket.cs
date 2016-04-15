@@ -9,9 +9,9 @@ namespace Geocoder
     class TokenBucket
     {
         // The rate limit we want to use
-        private readonly int REQUESTS_PER_SEC = 10;
+        private readonly short REQUESTS_PER_SEC = 10; // It would hypothetically change to 50 if someone spent $10k on a premium account, plus it makes this number a little less magic
         int tokens;
-        
+
         int lastRefill;
         public TokenBucket()
         {
@@ -26,7 +26,7 @@ namespace Geocoder
             if (timeElapsed > 1000)
             {
                 // Doing this the really simple way
-                tokens = 10; 
+                tokens = 10;
                 lastRefill = Environment.TickCount;
                 Console.WriteLine("Refreshed the token bucket. ({0} seconds elapsed since last refill)", timeElapsed / 1000);
             }
@@ -41,7 +41,7 @@ namespace Geocoder
                 Console.WriteLine("No tokens left soz, come back in {0}ms", 1000 - timeElapsed);
                 return false;
             }
-            
+
         }
 
         // Locks the thread until it gets a token. Easy way/worst way
@@ -52,7 +52,6 @@ namespace Geocoder
                 Console.WriteLine("No token for you");
                 System.Threading.Thread.Sleep(100);
             }
-            Console.WriteLine("A token became available.");
             return;
         }
 

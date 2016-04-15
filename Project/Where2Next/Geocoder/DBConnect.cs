@@ -80,25 +80,33 @@ namespace Geocoder
             }
         }
 
-        //Update latitude and longitude of a service
-        public void UpdateLatLong(string table, int id, string latitude, string longitude)
+        //Connection wrapper around the method to update latitude and longitude of a service
+        public void UpdateLatLongWithConnection(string table, int id, double latitude, double longitude)
         {
-            string query = "UPDATE " + table + "SET latitude=" + latitude + ", longitude= " + longitude + " WHERE id=" + id;
-
             //Open connection
             if (this.OpenConnection() == true)
             {
-                //create mysql command, set its query and connection properties from our variables
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandText = query;
-                cmd.Connection = connection;
+                updateLatLong(table, id, latitude, longitude);
+            }
+            this.CloseConnection();
+        }
 
-                //This uses method "ExecuteNonQuery" because it does not return any results
-                cmd.ExecuteNonQuery();
+        //Update latitude and longitude of a service. Does NOT control or check the connection status, use this to prevent mindless connecting and disconnecting in loops mainly, otherwise use the connection wrapper.
+        public void updateLatLong(string table, int id, double latitude, double longitude)
+        {
+            string query = "UPDATE " + table + " SET latitude = " + latitude + ", longitude = " + longitude + " WHERE id = " + id;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = query;
+            cmd.Connection = connection;
 
-                //close connection when we're done.
-                // It might be better to keep the connection open if we can get a batch of updates to behave properly. Maybe a different method, later.
-                this.CloseConnection();
+            //This uses method "ExecuteNonQuery" because it does not return any results
+            if (cmd.ExecuteNonQuery() == 0)
+            {
+                Console.WriteLine("Didn't update anything?");
+            }
+            else
+            {
+                Console.WriteLine("Updated row {0}", id);
             }
         }
 
@@ -110,14 +118,14 @@ namespace Geocoder
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                
+
                 // We need a data reader obejct to handle the results
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    var details = Tuple.Create(Convert.ToInt32(dataReader["ID"]), (string) dataReader["Address"]);
+                    var details = Tuple.Create(Convert.ToInt32(dataReader["ID"]), (string)dataReader["Address"]);
                     ids.Add(details);
                 }
                 Console.WriteLine("There are {0} rows in table {1} missing coordinates", ids.Count, table);
@@ -135,8 +143,9 @@ namespace Geocoder
 
             return ids;
         }
+
         // This needs to be rate limited to comply with the restrictions on the google geocoding api
-        private readonly int REQUESTS_PER_SEC = 10; // It would hypothetically change to 50 if someone spent $10k on a premium account, plus it makes this number a little less magic
+
         public void FixMissingCoords(string table)
         {
             var idsToFix = GetRowsWithoutCoords(table);
@@ -146,15 +155,15 @@ namespace Geocoder
                 GoogleConnect ApiConnection = new GoogleConnect();
                 int lastRequest = Environment.TickCount;
                 var bucket = new TokenBucket();
-                foreach (var entity in idsToFix) {
+                foreach (var entity in idsToFix)
+                {
+                    bucket.waitForToken(); // This will sleep the thread if it doesn't get a token. Not ideal but w/e
                     int elapsedTime = Environment.TickCount - lastRequest;
-
                     var id = entity.Item1;
                     var address = entity.Item2;
                     var coords = ApiConnection.GetLatLong(address);
                     Console.WriteLine("Got coordinates {0}, {1} for address {2}", coords.Item1, coords.Item2, address);
-
-
+                    UpdateLatLongWithConnection(table, id, coords.Item1, coords.Item2);
                 }
             }
             else
