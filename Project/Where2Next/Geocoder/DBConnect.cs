@@ -88,7 +88,7 @@ namespace Geocoder
             {
                 updateLatLong(table, id, latitude, longitude);
             }
-            this.CloseConnection();
+             this.CloseConnection();
         }
 
         //Update latitude and longitude of a service. Does NOT control or check the connection status, use this to prevent mindless connecting and disconnecting in loops mainly, otherwise use the connection wrapper.
@@ -110,10 +110,10 @@ namespace Geocoder
             }
         }
 
-        public List<Tuple<int, string>> GetRowsWithoutCoords(string table)
+        public List<Tuple<int, string, string>> GetRowsWithoutCoords(string table)
         {
-            var ids = new List<Tuple<int, string>>();
-            string query = "SELECT * FROM " + table;
+            var ids = new List<Tuple<int, string, string>>();
+            string query = "SELECT * FROM " + table + " WHERE latitude IS NULL OR longitude IS NULL";
 
             if (this.OpenConnection() == true)
             {
@@ -125,10 +125,9 @@ namespace Geocoder
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    var details = Tuple.Create(Convert.ToInt32(dataReader["ID"]), (string)dataReader["Address"]);
+                    var details = Tuple.Create(Convert.ToInt32(dataReader["ID"]), (string)dataReader["Address"], (string)dataReader["Suburb"]);
                     ids.Add(details);
                 }
-                Console.WriteLine("There are {0} rows in table {1} missing coordinates", ids.Count, table);
 
                 //close Data Reader
                 dataReader.Close();
@@ -160,7 +159,7 @@ namespace Geocoder
                     bucket.waitForToken(); // This will sleep the thread if it doesn't get a token. Not ideal but w/e
                     int elapsedTime = Environment.TickCount - lastRequest;
                     var id = entity.Item1;
-                    var address = entity.Item2;
+                    var address = entity.Item2 + ", " + entity.Item3;
                     var coords = ApiConnection.GetLatLong(address);
                     Console.WriteLine("Got coordinates {0}, {1} for address {2}", coords.Item1, coords.Item2, address);
                     UpdateLatLongWithConnection(table, id, coords.Item1, coords.Item2);
