@@ -86,13 +86,13 @@ namespace Geocoder
             //Open connection
             if (this.OpenConnection() == true)
             {
-                updateLatLong(table, id, latitude, longitude);
+                UpdateLatLong(table, id, latitude, longitude);
             }
              this.CloseConnection();
         }
 
         //Update latitude and longitude of a service. Does NOT control or check the connection status, use this to prevent mindless connecting and disconnecting in loops mainly, otherwise use the connection wrapper.
-        public void updateLatLong(string table, int id, double latitude, double longitude)
+        public void UpdateLatLong(string table, int id, double latitude, double longitude)
         {
             string query = "UPDATE " + table + " SET latitude = " + latitude + ", longitude = " + longitude + " WHERE id = " + id;
             MySqlCommand cmd = new MySqlCommand();
@@ -152,18 +152,19 @@ namespace Geocoder
             {
                 Console.WriteLine("{0} rows in {1} need fixing.", idsToFix.Count, table);
                 GoogleConnect ApiConnection = new GoogleConnect();
-                int lastRequest = Environment.TickCount;
+                this.OpenConnection();
                 var bucket = new TokenBucket();
                 foreach (var entity in idsToFix)
                 {
                     bucket.waitForToken(); // This will sleep the thread if it doesn't get a token. Not ideal but w/e
-                    int elapsedTime = Environment.TickCount - lastRequest;
+                    
                     var id = entity.Item1;
                     var address = entity.Item2 + ", " + entity.Item3;
                     var coords = ApiConnection.GetLatLong(address);
                     Console.WriteLine("Got coordinates {0}, {1} for address {2}", coords.Item1, coords.Item2, address);
-                    UpdateLatLongWithConnection(table, id, coords.Item1, coords.Item2);
+                    UpdateLatLong(table, id, coords.Item1, coords.Item2);
                 }
+                this.CloseConnection();
             }
             else
             {

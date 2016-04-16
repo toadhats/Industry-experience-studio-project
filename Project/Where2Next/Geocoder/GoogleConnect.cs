@@ -1,4 +1,4 @@
-﻿using Geocoding;
+﻿using Geocoding; // https://github.com/chadly/Geocoding.net
 using Geocoding.Google;
 using System;
 using System.Collections.Generic;
@@ -53,5 +53,7 @@ namespace Geocoder
    
             return coords;
         }
+
+        
     }
 }
