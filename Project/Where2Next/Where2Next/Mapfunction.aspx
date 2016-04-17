@@ -62,13 +62,6 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
       <div id="failLocation" class="alert alert-warning" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
    <strong>fail! </strong>We cannot find your location.</div>
-               <div id="successservice" class="alert alert-success" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>Success！ </strong> There are some services in your suburb!
-</div>
-      <div id="failservice" class="alert alert-warning" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>fail! </strong>We cannot find any service in your suburb.</div>
 
       <div id="menu" style="height:700px;width:230px;float:left;">
 

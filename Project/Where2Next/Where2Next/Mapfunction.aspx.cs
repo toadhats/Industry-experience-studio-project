@@ -37,8 +37,6 @@ namespace Where2Next
                 fail.Attributes["style"] = "display:none";
                 successLocation.Attributes["style"] = "display:none";
                 failLocation.Attributes["style"] = "display:none";
-                successservice.Attributes["style"] = "display:none";
-                failservice.Attributes["style"] = "display:none";
                 String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
 
                 using (MySqlConnection cn = new MySqlConnection(connectionStr))
@@ -103,8 +101,6 @@ namespace Where2Next
                 fail.Attributes["style"] = "display:none";
                 successLocation.Attributes["style"] = "display:none";
                 failLocation.Attributes["style"] = "display:none";
-                successservice.Attributes["style"] = "display:none";
-                failservice.Attributes["style"] = "display:none";
                 string query = "";
                 String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
                 foreach (Control c in form1.Controls)
@@ -135,7 +131,6 @@ namespace Where2Next
                     {
                         while (mdr.Read())
                         {
-                            successservice.Attributes["style"] = "display";
                             Latitude = mdr.GetString(1);
                             Longitude = mdr.GetString(2);
                             TYPE = mdr.GetString(0);
@@ -151,7 +146,6 @@ namespace Where2Next
                     }
                     else
                     {
-                        failservice.Attributes["style"] = "display";
                         js.Text = @"<script type='text/javascript'>
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
