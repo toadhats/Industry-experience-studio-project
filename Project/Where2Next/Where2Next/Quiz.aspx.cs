@@ -10,17 +10,85 @@ namespace Where2Next
 {
     public partial class quizTest : System.Web.UI.Page
     {
+        // Variables for this page instance
+        public List<string> selectedServices;
+        public string queryToSend;
+        // we should NOT keep this connection string in the source but I don't want to confuse everyone by using the config files again
+        private string connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            selectedServices = new List<String>(); // not sure if there's any point allocating the array here like this?
+            queryToSend = "";
 
         }
 
+        protected void SelectService(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string selection = button.CommandArgument.ToString();
+
+            switch (selection)
+            {
+                case "artspaces":
+                case "centrelink":
+                case "disabilityactivity":
+                case "gpsuper":
+                case "iceskating":
+                case "library":
+                case "medicare":
+                case "publicinternet":
+                case "recreation":
+                case "rollerskating":
+                case "school":
+                case "skateparks":
+                case "sportingclubs":
+                case "swimmingpools":
+                case "tafe":
+                        selectedServices.Add(selection);
+                        break;
+                default: // If we get to here, you passed in a bad parameter.
+                    Console.Error.WriteLine("Invalid argument passed to SelectService button handler. Argument must be a valid table name.");
+                    return;
+            }
+            
+
+        }
+
+        protected void SubmitButton(object sender, EventArgs e)
+        {
+            if (selectedServices.Count == 0)
+            {
+                Console.Error.WriteLine("Attempting to create a query, but user has not selected antyhing"); // An error should be displayed to the user in this case
+                ClientError("Please select at least one service.");
+                return;
+            }
+
+            // construct query and send to DB
+            
+        }
+
+        // Should allow me to create an error box for the client from in here.
+        private void ClientError(string message)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<script type = 'text/javascript'>");
+            sb.Append("window.onload=function(){");
+            sb.Append("alert('");
+            sb.Append(message);
+            sb.Append("')};");
+            sb.Append("</script>");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+        }
+
+
+        // Trash code delete later
         protected void Button1_Click(object sender, EventArgs e)
         {
             if (IsPostBack)
             {
 
-                String connectionStr = @"Data Source=au-cdbr-azure-southeast-a.cloudapp.net; Database=Where2Next; User ID=bcb3c5458db67d; password='2821061a'";
+                String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
                 string suburb = "";
                 string postcode = "";
                 string total = "";
