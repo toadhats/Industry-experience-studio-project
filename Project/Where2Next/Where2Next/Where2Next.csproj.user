@@ -8,6 +8,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <NameOfLastUsedPublishProfile>where2next - Web Deploy</NameOfLastUsedPublishProfile>
+    <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
