@@ -14,12 +14,13 @@ namespace Where2Next
         public List<string> selectedServices;
         public string queryToSend;
         // we should NOT keep this connection string in the source but I don't want to confuse everyone by using the config files again
-        private string connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
+        private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             selectedServices = new List<String>(); // not sure if there's any point allocating the array here like this?
             queryToSend = "";
+            
 
         }
 
@@ -65,8 +66,40 @@ namespace Where2Next
             }
 
             // construct query and send to DB
-            
-        }
+            queryToSend = "SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE FROM SUBURB ";
+
+            foreach (var service in selectedServices)
+            {
+                queryToSend += "INNER JOIN " + service + " ON SUBURB.SUBURB = " + service + ".SUBURB ";
+            }
+
+            ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete once confirmed working
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(queryToSend, connection);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                string total = ""; // Copying old method for now until we know how we are going to present results
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        string suburb = dataReader.GetString(0);
+                        string postcode = dataReader.GetString(1);
+                        total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
+                    }
+                    this.question.Style.Add("display", "none");
+                    result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2> The following suburbs meet your requirements: </h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
+                    dataReader.Close();
+                    connection.Close();
+                }
+
+            }
+
+
+                // display results to user somehow
+
+            }
 
         // Should allow me to create an error box for the client from in here.
         private void ClientError(string message)
@@ -79,81 +112,6 @@ namespace Where2Next
             sb.Append("')};");
             sb.Append("</script>");
             ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
-        }
-
-
-        // Trash code delete later
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            if (IsPostBack)
-            {
-
-                String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
-                string suburb = "";
-                string postcode = "";
-                string total = "";
-                string s = "";
-                if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[0].Selected == true ||
-                    centrelinkList.Items[0].Selected == true && audlteducationList.Items[1].Selected == true ||
-                    centrelinkList.Items[1].Selected == true && audlteducationList.Items[1].Selected == true ||
-                        centrelinkList.Items[1].Selected == true && audlteducationList.Items[0].Selected == true)
-                {
-                    using (MySqlConnection cn = new MySqlConnection(connectionStr))
-                    {
-                        cn.Open();
-                        if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[0].Selected == true)
-                        {
-                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb and  a.suburb in (select suburb from socialservices where type ='Medicare' ) limit 50";
-                        }
-
-                        if (centrelinkList.Items[0].Selected == true && audlteducationList.Items[1].Selected == true)
-                        {
-                            s = "select distinct suburb,postcode from socialservices where type ='Medicare' limit 50";
-                        }
-                        if (centrelinkList.Items[1].Selected == true && audlteducationList.Items[1].Selected == true)
-                        {
-                            s = "select  distinct suburb,postcode from adulteducation WHERE type ='aaaaa'";
-                        }
-                        if (centrelinkList.Items[1].Selected == true && audlteducationList.Items[0].Selected == true)
-                        {
-                            s = "select distinct a.suburb,b.postcode from adulteducation a,suburb b WHERE a.type ='TOFE' and a.suburb = b.suburb limit 50";
-                        }
-
-
-
-
-                        MySqlCommand mcd = new MySqlCommand(s, cn);
-                        MySqlDataReader mdr = mcd.ExecuteReader();
-                        if (mdr.HasRows)
-                        {
-                            while (mdr.Read())
-                            {
-                                suburb = mdr.GetString(0);
-                                postcode = mdr.GetString(1);
-                                total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
-                            }
-                            this.question.Style.Add("display", "none");
-                            result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2>Wow, there are lot of suburbs which are suitable for you. </h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
-                            mdr.Close();
-                            cn.Close();
-                        }
-                        else
-                        {
-                            result.Text = "<h2> OH~ all the victoria suburbs are suitable for you </h2>";
-                            mdr.Close();
-                            cn.Close();
-
-                        }
-
-                    }
-                }
-                else
-                {
-                    result.Text = "<h2>Please answer all the questions.  </h2>";
-                }
-
-
-            }
         }
     }
 }
