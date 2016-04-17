@@ -4,11 +4,11 @@
     <div id="banner-wrapper">
         <div id="banner" class="container">
             <div class="title">
-                <h2>Consectetuer adipiscing elit</h2>
-                <span class="byline">Donec pulvinar ullamcorper metus</span>
+                <h2></h2>
+                <span class="byline"></span>
             </div>
             <ul class="actions">
-                <li><a runat="server" href="~/Quiz" class="button">Start Here!</a></li>
+                <li><a runat="server" href="~/quizhome" class="button">Start Here!</a></li>
             </ul>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <div class="boxA">
                 <h2>Need a hand?</h2>
                 <p>If you're not sure where to start, our guided search will help you to decide what's important.</p>
-                <a href="/Quiz" class="button button-alt">Discover &raquo;</a>
+                <a href="/quizhome" class="button button-alt">Discover &raquo;</a>
             </div>
             <div class="boxB">
                 <h2>See for yourself</h2>
