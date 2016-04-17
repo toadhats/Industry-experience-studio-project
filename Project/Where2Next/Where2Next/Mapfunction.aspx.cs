@@ -112,9 +112,18 @@ namespace Where2Next
                     if (c.GetType().ToString().Equals("System.Web.UI.WebControls.CheckBox"))
                     {
                         CheckBox box = c as CheckBox;
+
                         if (box.Checked)
                         {
-                            query = query + "select TYPE,LATITUDE,LONGITUDE,address from " + box.ID + " where suburb='" + TextBox1.Text + "' union ";
+                            if (System.Text.RegularExpressions.Regex.IsMatch(TextBox1.Text.Trim(), "^\\d+$"))
+                            {
+                                query = query + "select TYPE,LATITUDE,LONGITUDE,address from " + box.ID + " where postcode='" + TextBox1.Text + "' union ";
+
+                            }
+                            else
+                            {
+                                query = query + "select TYPE,LATITUDE,LONGITUDE,address from " + box.ID + " where suburb='" + TextBox1.Text + "' union ";
+                            }
 
                         }
                     }
