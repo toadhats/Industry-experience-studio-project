@@ -62,33 +62,44 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
       <div id="failLocation" class="alert alert-warning" runat="server" style="display:none">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
    <strong>fail! </strong>We cannot find your location.</div>
+               <div id="successservice" class="alert alert-success" runat="server" style="display:none">
+   <a href="#" class="close" data-dismiss="alert">&times;</a>
+   <strong>Success！ </strong> There are some services in your suburb!
+</div>
+      <div id="failservice" class="alert alert-warning" runat="server" style="display:none">
+   <a href="#" class="close" data-dismiss="alert">&times;</a>
+   <strong>fail! </strong>We cannot find any service in your suburb.</div>
 
       <div id="menu" style="height:700px;width:230px;float:left;">
 
  <div style="text-align:center"><h3>Find your suburb</h3><br />
      <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br /><br />
+            <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
+        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br /><br />
      <div id="demo" class="collapse"><br />
 
-         <div style="float:left;" ><asp:CheckBox ID="SchoolCheckBox" runat="server" type="checkbox"/></div><label>School</label><br />
-         <div style="float:left;"><asp:CheckBox ID="CenterLinkBox" runat="server" type="checkbox"/></div><label>CenterLink</label><br />
-         <div style="float:left;"><asp:CheckBox ID="LibraryBox" runat="server" type="checkbox"/></div><label>Library</label><br />
-         <div style="float:left;"><asp:CheckBox ID="IceskatingBox" runat="server" type="checkbox"/></div><label>Iceskating</label><br />
-         <div style="float:left;"><asp:CheckBox ID="DisabilityBox" runat="server" type="checkbox"/></div><label>Disability</label><br />
-         <div style="float:left;"><asp:CheckBox ID="ArtspaceBox" runat="server" type="checkbox"/></div><label>Artspace</label><br />
-         <div style="float:left;"><asp:CheckBox ID="CheckBox1" runat="server" type="checkbox"/></div><label>xxxxxx</label><br />
-         <div style="float:left;"><asp:CheckBox ID="CheckBox2" runat="server" type="checkbox"/></div><label>xxxxxx</label><br />
-         <div style="float:left;"><asp:CheckBox ID="CheckBox3" runat="server" type="checkbox"/></div><label>xxxxx</label><br />
-         <div style="float:left;"><asp:CheckBox ID="CheckBox4" runat="server" type="checkbox"/></div><label>xxxxxx</label><br />
-         <div style="float:left;"><asp:CheckBox ID="MedicareBox" runat="server" type="checkbox"/></div><label>Medicare</label><br /><br />
+         <div style="float:left;" ><asp:CheckBox ID="schooltest"  runat="server" type="checkbox"/></div><label>School</label><br />
+         <div style="float:left;"><asp:CheckBox ID="centrelink"  runat="server" type="checkbox"/></div><label>CenterLink</label><br />
+         <div style="float:left;"><asp:CheckBox ID="library"  enabled="false" runat="server" type="checkbox"/></div><label>Library</label><br />
+         <div style="float:left;"><asp:CheckBox ID="iceskating"  runat="server" type="checkbox"/></div><label>Ice skating</label><br />
+         <div style="float:left;"><asp:CheckBox ID="disabilityactivity" enabled="false" runat="server" type="checkbox"/></div><label>Disability</label><br />
+         <div style="float:left;"><asp:CheckBox ID="artsspaces" enabled="false"  runat="server" type="checkbox"/></div><label>Artspace</label><br />
+         <div style="float:left;"><asp:CheckBox ID="gpsuper" runat="server" type="checkbox"/></div><label>GP Super Clinic</label><br />
+         <div style="float:left;"><asp:CheckBox ID="medicare" runat="server" type="checkbox"/></div><label>medicare</label><br />
+         <div style="float:left;"><asp:CheckBox ID="publicinternet" enabled="false" runat="server" type="checkbox"/></div><label>Public Internet</label><br />
+         <div style="float:left;"><asp:CheckBox ID="recreation" enabled="false"  runat="server" type="checkbox"/></div><label>recreation</label><br />
+         <div style="float:left;"><asp:CheckBox ID="rollerskating" runat="server" type="checkbox"/></div><label>Rollerskating</label><br />
+         <div style="float:left;"><asp:CheckBox ID="skateparks" enabled="false"  runat="server" type="checkbox"/></div><label>Skate parks</label><br />
+         <div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" enabled="false"  runat="server" type="checkbox"/></div><label>Sport Club</label><br />
+         <div style="float:left;"><asp:CheckBox ID="swimmingpools" enabled="false"  runat="server" type="checkbox"/></div><label>Swimming Pools</label><br /><br />
+          <asp:Button class="btn btn-default" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search by your favor" />
 </div>
-       <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
-        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br /><br />
 
-
-     <button type="button" class="btn btn-primary" data-toggle="collapse" 
+     <br /><br /><button type="button" class="btn btn-primary" data-toggle="collapse" 
    data-target="#demo">
  Advance search
-</button></div>
+</button><br />
+          </div>
           </div>
        <asp:Panel ID="Panel1" runat="server">
            <asp:Literal ID="js" runat="server"></asp:Literal>
