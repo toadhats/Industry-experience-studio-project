@@ -88,7 +88,7 @@ namespace Where2Next
                         string postcode = dataReader.GetString(1);
                         total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
                     }
-                    this.question.Style.Add("display", "none");
+                    
                     result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2> The following suburbs meet your requirements: </h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
                     dataReader.Close();
                     connection.Close();
