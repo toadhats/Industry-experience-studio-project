@@ -31,6 +31,8 @@ namespace Where2Next
         {
             Button button = (Button)sender;
             string selection = button.CommandArgument.ToString();
+            var buttonCssClass = sender.GetType().GetProperty("CssClass");
+            selectedServices = (List<string>)ViewState["selectedServices"]; // Read list out of view state
 
             switch (selection)
             {
@@ -51,16 +53,18 @@ namespace Where2Next
                 case "tafe":
                     if (selectedServices.Any(s => s == selection)) // checks if item is in list, read https://msdn.microsoft.com/en-AU/library/bb397687.aspx for more info about lambda expressions
                     {
-                        selectedServices = (List<string>)ViewState["selectedServices"]; // Take list out of view state
+                        
                         selectedServices.Remove(selection); // If it's already in the list we want to remove it, this creates toggle behavior and prevents duplicates.
                         ViewState["selectedServices"] = selectedServices; // Put updated list back into view state
                         // Toggling needs to be represented to the user as well
+                        buttonCssClass.SetValue(sender, "buttonDeselected");
                     }
                     else
                     {
                         selectedServices = (List<string>)ViewState["selectedServices"]; // Take list out of view state
                         selectedServices.Add(selection); // As long as the value is valid we can just pass it straight in, because it doesn't come from the user.
                         ViewState["selectedServices"] = selectedServices; // Put updated list back into view state
+                        buttonCssClass.SetValue(sender, "buttonSelected");
                     }
                     break;
                 default: // If we get to here, you passed in a bad parameter.
@@ -76,7 +80,7 @@ namespace Where2Next
             selectedServices = (List<string>)ViewState["selectedServices"]; // Get the persistant list out of the view state
             if (selectedServices.Count == 0)
             {
-                Console.Error.WriteLine("Attempting to create a query, but user has not selected antyhing"); // An error should be displayed to the user in this case
+                Console.Error.WriteLine("Attempting to create a query, but user has not selected anything"); // An error should be displayed to the user in this case
                 ClientError("Please select at least one service.");
                 return;
             }

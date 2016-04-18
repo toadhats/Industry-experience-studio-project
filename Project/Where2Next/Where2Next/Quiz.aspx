@@ -5,6 +5,19 @@
     <script
 src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 </script>
+    <style type="text/css" media="screen">
+
+        .buttonDeselected 
+        {
+            border: 1px solid gray;
+        }
+
+        .buttonSelected 
+        {
+            border: 5px solid green;
+        }
+
+    </style>
    <div id="question" runat="server">
     <h3>Please choose the option you prefer the best:</h3>
     <br />
@@ -13,7 +26,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 
        <table style="width: 100%">
            <tr>
-              <td> <asp:Button Text="School" runat="server" CommandArgument="school" OnClick="SelectService" /></td>
+              <td> <asp:Button Text="School" id="schoolButton" runat="server" CssClass="buttonDeselected" CommandArgument="school" OnClick="SelectService" /></td>
            </tr>
        </table>
     <br />
