@@ -38,4 +38,6 @@
         </table>
         </div>
    
+    <asp:Literal ID="result" runat="server"></asp:Literal>
+
 </asp:Content>
