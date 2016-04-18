@@ -7,8 +7,10 @@
                 <h2></h2>
                 <span class="byline"></span>
             </div>
+            <br /><br /><br /><br />
+            
             <ul class="actions">
-                <li><a runat="server" href="~/quizhome" class="button">Start Here!</a></li>
+                <li><a runat="server" href="~/quiz" class="button">Start Here!</a></li>
             </ul>
         </div>
     </div>
@@ -23,7 +25,7 @@
             <div class="boxA">
                 <h2>Need a hand?</h2>
                 <p>If you're not sure where to start, our guided search will help you to decide what's important.</p>
-                <a href="/quizhome" class="button button-alt">Discover &raquo;</a>
+                <a href="/quiz" class="button button-alt">Discover &raquo;</a>
             </div>
             <div class="boxB">
                 <h2>See for yourself</h2>

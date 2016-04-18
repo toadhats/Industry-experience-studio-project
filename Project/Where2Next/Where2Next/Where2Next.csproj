@@ -215,11 +215,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="quizhome.aspx" />
-    <Content Include="quizlibrary.aspx" />
     <Content Include="QuizNew.aspx" />
-    <Content Include="quizschool.aspx" />
-    <Content Include="QuizTest.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -328,40 +324,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="quizhome.aspx.cs">
-      <DependentUpon>quizhome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="quizhome.aspx.designer.cs">
-      <DependentUpon>quizhome.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="quizlibrary.aspx.cs">
-      <DependentUpon>quizlibrary.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="quizlibrary.aspx.designer.cs">
-      <DependentUpon>quizlibrary.aspx</DependentUpon>
-    </Compile>
     <Compile Include="QuizNew.aspx.cs">
       <DependentUpon>QuizNew.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="QuizNew.aspx.designer.cs">
       <DependentUpon>QuizNew.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="quizschool.aspx.cs">
-      <DependentUpon>quizschool.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="quizschool.aspx.designer.cs">
-      <DependentUpon>quizschool.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="QuizTest.aspx.cs">
-      <DependentUpon>QuizTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QuizTest.aspx.designer.cs">
-      <DependentUpon>QuizTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
     <Compile Include="Settings.cs" />
