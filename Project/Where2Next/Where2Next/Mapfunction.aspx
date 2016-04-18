@@ -45,7 +45,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
    <title>Where2Next Map Page </title>
-   <link href="Content/bootstrap.min.css" rel="stylesheet">
+        <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
    <script src="Content/jquery.min.js"></script>
    <script src="Content/bootstrap.min.js"></script>
 </head><body style="background-color:#F3F9FE">
@@ -77,8 +77,8 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 
  <div style="text-align:center"><h3>Find your suburb</h3><br />
      <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br /><br />
-            <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
-        <asp:Button class="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br /><br />
+            <asp:Button CssClass="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
+        <asp:Button CssClass="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br /><br />
      <div id="demo" class="collapse"><br />
          
 <table class="table table-hover">
@@ -90,63 +90,63 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
    </thead>
    <tbody>
       <tr>
-         <td> <div style="float:left;" ><asp:CheckBox ID="schooltest"  text="　　　　　School" runat="server" type="checkbox"/></div><br /></td>
+         <td> <div style="float:left;" ><asp:CheckBox ID="schooltest"  text="　　　　　School" runat="server"/></div><br /></td>
  
       </tr>
       <tr>
-         <td><div style="float:left;"><asp:CheckBox ID="centrelink" text="　　　　　CenterLink" runat="server" type="checkbox"/></div><br /></td>
+         <td><div style="float:left;"><asp:CheckBox ID="centrelink" text="　　　　　CenterLink" runat="server"/></div><br /></td>
       </tr>
 
        <tr>
-        <td> <div style="float:left;"><asp:CheckBox ID="library"  text="　　　　　Library" runat="server" type="checkbox"/></div><br /></td>
+        <td> <div style="float:left;"><asp:CheckBox ID="library"  text="　　　　　Library" runat="server"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="iceskating"  text="　　　　　Ice skating" runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="iceskating"  text="　　　　　Ice skating" runat="server" /></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="disabilityactivity" text="　　　　　Disability" enabled="false" runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="disabilityactivity" text="　　　　　Disability" enabled="false" runat="server"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="artsspaces"  text="　　　　　Artspace" runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="artsspaces"  text="　　　　　Artspace" runat="server"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="gpsuper" text="　　　　　GP Super Clinic"  runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="gpsuper" text="　　　　　GP Super Clinic"  runat="server"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="medicare" text="　　　　　Medicare"  runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="medicare" text="　　　　　Medicare"  runat="server"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="publicinternet" text="　　　　　Public Internet" enabled="false" runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="publicinternet" text="　　　　　Public Internet" enabled="false" runat="server"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="recreation" text="　　　　　recreation"  runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="recreation" text="　　　　　recreation"  runat="server"/></div><br /></td>
        </tr>
 
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="rollerskating"  text="　　　　　Rollerskating" runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="rollerskating"  text="　　　　　Rollerskating" runat="server"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="skateparks" text="　　　　　Skate parks"   runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="skateparks" text="　　　　　Skate parks"   runat="server"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" text="　　　　　Sport Club" enabled="false"  runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" text="　　　　　Sport Club" enabled="false"  runat="server"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="swimmingpools" text="　　　　　Swimming Pools"  runat="server" type="checkbox"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="swimmingpools" text="　　　　　Swimming Pools"  runat="server"/></div><br /></td>
        </tr>
 
  
    </tbody>
 </table>
         
-          <asp:Button class="btn btn-default" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search by your favor" />
+          <asp:Button CssClass="btn btn-default" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search by your favor" />
 </div>
 
      <br /><button type="button" class="btn btn-primary" data-toggle="collapse" 
