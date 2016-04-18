@@ -13,7 +13,7 @@
         <table id="table1" runat="server" >
             <tr>
                 <td>
-                    <asp:ImageButton ID="HealthIB" runat="server" ImageUrl="~/Images/Healthcare1.jpg" Height="300px" Width="400px" OnClick="imageClick" />
+                    <asp:ImageButton ID="HealthIB" runat="server" ImageUrl="~/Images/Healthcare1.jpg" Height="300px" Width="400px" CommandArgument="" OnClick="imageClick" />
                 </td>
                 <td>
                     <asp:ImageButton ID="HigherEducationIB" runat="server" ImageUrl="~/Images/Higheducation.jpg" Height="300px" Width="400px" OnClick="imageClick" />

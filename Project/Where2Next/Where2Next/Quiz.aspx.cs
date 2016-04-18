@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using System.Collections;
 
 namespace Where2Next
 {
@@ -12,16 +13,18 @@ namespace Where2Next
     {
         // Variables for this page instance
         public List<string> selectedServices;
-        public string queryToSend;
+        public string queryToSend = "";
         // we should NOT keep this connection string in the source but I don't want to confuse everyone by using the config files again
         private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            selectedServices = new List<String>(); // not sure if there's any point allocating the array here like this?
-            queryToSend = "";
+            if (ViewState["selectedServices"] == null)
+            {
+                ViewState["selectedServices"] = new List<String>();
+            }
             
-
+            selectedServices = new List<String>(); //  Not sure if I should even make this a class level variable anymore
         }
 
         protected void SelectService(object sender, EventArgs e)
@@ -46,18 +49,31 @@ namespace Where2Next
                 case "sportingclubs":
                 case "swimmingpools":
                 case "tafe":
-                        selectedServices.Add(selection);
-                        break;
+                    if (selectedServices.Any(s => s == selection)) // checks if item is in list, read https://msdn.microsoft.com/en-AU/library/bb397687.aspx for more info about lambda expressions
+                    {
+                        selectedServices = (List<string>)ViewState["selectedServices"]; // Take list out of view state
+                        selectedServices.Remove(selection); // If it's already in the list we want to remove it, this creates toggle behavior and prevents duplicates.
+                        ViewState["selectedServices"] = selectedServices; // Put updated list back into view state
+                        // Toggling needs to be represented to the user as well
+                    }
+                    else
+                    {
+                        selectedServices = (List<string>)ViewState["selectedServices"]; // Take list out of view state
+                        selectedServices.Add(selection); // As long as the value is valid we can just pass it straight in, because it doesn't come from the user.
+                        ViewState["selectedServices"] = selectedServices; // Put updated list back into view state
+                    }
+                    break;
                 default: // If we get to here, you passed in a bad parameter.
-                    Console.Error.WriteLine("Invalid argument passed to SelectService button handler. Argument must be a valid table name.");
+                    Console.Error.WriteLine("Invalid argument {0} passed to SelectService button handler. Argument must be a valid table name.", selection);
                     return;
             }
-            
+
 
         }
 
         protected void SubmitButton(object sender, EventArgs e)
         {
+            selectedServices = (List<string>)ViewState["selectedServices"]; // Get the persistant list out of the view state
             if (selectedServices.Count == 0)
             {
                 Console.Error.WriteLine("Attempting to create a query, but user has not selected antyhing"); // An error should be displayed to the user in this case
@@ -88,7 +104,7 @@ namespace Where2Next
                         string postcode = dataReader.GetString(1);
                         total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
                     }
-                    this.question.Style.Add("display", "none");
+
                     result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2> The following suburbs meet your requirements: </h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
                     dataReader.Close();
                     connection.Close();
@@ -96,10 +112,7 @@ namespace Where2Next
 
             }
 
-
-                // display results to user somehow
-
-            }
+        }
 
         // Should allow me to create an error box for the client from in here.
         private void ClientError(string message)

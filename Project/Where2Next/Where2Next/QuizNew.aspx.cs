@@ -18,10 +18,8 @@ namespace Where2Next
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            selectedServices = new List<String>(); // not sure if there's any point allocating the array here like this?
+            selectedServices = new List<String>(); 
             queryToSend = "";
-
-
         }
 
         protected void SelectService(object sender, EventArgs e)
@@ -46,10 +44,18 @@ namespace Where2Next
                 case "sportingclubs":
                 case "swimmingpools":
                 case "tafe":
-                    selectedServices.Add(selection);
+                    if (selectedServices.Any(s => s == selection)) // read https://msdn.microsoft.com/en-AU/library/bb397687.aspx for more info about lambda expressions
+                    {
+                        selectedServices.Remove(selection); // If it's already in the list we want to remove it, this creates toggle behavior and prevents duplicates.
+                        // Toggling needs to be represented to the user as well
+                    }
+                    else
+                    {
+                        selectedServices.Add(selection); // As long as the value is valid we can just pass it straight in, it doesn't come from the user.
+                    }                   
                     break;
                 default: // If we get to here, you passed in a bad parameter.
-                    Console.Error.WriteLine("Invalid argument passed to SelectService button handler. Argument must be a valid table name.");
+                    Console.Error.WriteLine("Invalid argument {0} passed to SelectService button handler. Argument must be a valid table name.", selection);
                     return;
             }
 
@@ -95,9 +101,6 @@ namespace Where2Next
                 }
 
             }
-
-
-            // display results to user somehow
 
         }
 
