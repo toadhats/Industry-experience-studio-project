@@ -50,10 +50,8 @@ namespace Geocoder
 
             var coords = Tuple.Create(latitude, longitude);
             Console.WriteLine("Parsed coordinates {0}, {1}", coords.Item1, coords.Item2);
-   
+
             return coords;
         }
-
-        
     }
 }

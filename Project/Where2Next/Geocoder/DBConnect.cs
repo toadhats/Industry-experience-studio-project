@@ -88,7 +88,7 @@ namespace Geocoder
             {
                 UpdateLatLong(table, id, latitude, longitude);
             }
-             this.CloseConnection();
+            this.CloseConnection();
         }
 
         //Update latitude and longitude of a service. Does NOT control or check the connection status, use this to prevent mindless connecting and disconnecting in loops mainly, otherwise use the connection wrapper.
@@ -157,7 +157,7 @@ namespace Geocoder
                 foreach (var entity in idsToFix)
                 {
                     bucket.waitForToken(); // This will sleep the thread if it doesn't get a token. Not ideal but w/e
-                    
+
                     var id = entity.Item1;
                     var address = entity.Item2 + ", " + entity.Item3;
                     var coords = ApiConnection.GetLatLong(address);
