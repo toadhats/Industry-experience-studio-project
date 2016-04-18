@@ -5,9 +5,9 @@
     <br />
     <br />
     <br />
-       <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+       <link href="Content/bootstrap.min.css" rel="stylesheet">
+   <script src="Content/jquery.min.js"></script>
+   <script src="Content/bootstrap.min.js"></script>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true" style="position:absolute;top:50%;height: 240px;margin-top: -120px;">
    <div class="modal-dialog">

@@ -45,9 +45,9 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
    <title>Where2Next Map Page </title>
-   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+   <link href="Content/bootstrap.min.css" rel="stylesheet">
+   <script src="Content/jquery.min.js"></script>
+   <script src="Content/bootstrap.min.js"></script>
 </head><body style="background-color:#F3F9FE">
   <form id="form1" runat="server" >
          <br />
