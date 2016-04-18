@@ -117,19 +117,19 @@ namespace Where2Next
                         {
                             if (System.Text.RegularExpressions.Regex.IsMatch(TextBox1.Text.Trim(), "^\\d+$"))
                             {
-                                query = query + "select NAME,LATITUDE,LONGITUDE,address from " + box.ID + " where postcode='" + TextBox1.Text + "' union ";
+                                query = query + "select NAME,LATITUDE,LONGITUDE,address from " + box.ID + " where postcode='" + TextBox1.Text + "' and (LATITUDE is not null) and LATITUDE !=0 union ";
 
                             }
                             else
                             {
-                                query = query + "select NAME,LATITUDE,LONGITUDE,address from " + box.ID + " where suburb='" + TextBox1.Text + "' union ";
+                                query = query + "select NAME,LATITUDE,LONGITUDE,address from " + box.ID + " where suburb='" + TextBox1.Text + "' and (LATITUDE is not null) and LATITUDE !=0 union ";
                             }
 
                         }
                     }
                 }
                 query = query.Remove(query.Length - 7, 7);
-                Response.Write("");//just for test.
+                //Response.Write(query);//just for test.
                 using (MySqlConnection cn = new MySqlConnection(connectionStr))
                 {
                     string Latitude = "";

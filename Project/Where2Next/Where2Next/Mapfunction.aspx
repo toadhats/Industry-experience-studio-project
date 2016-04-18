@@ -146,13 +146,10 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
    </tbody>
 </table>
         
-          <asp:Button CssClass="btn btn-default" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search by your favor" />
+          <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" />
 </div>
 
-     <br /><button type="button" class="btn btn-primary" data-toggle="collapse" 
-   data-target="#demo">
- Advance search
-</button><br />
+     <br /><button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">　Filter　</button><br />
           </div>
           </div>
        <asp:Panel ID="Panel1" runat="server">
