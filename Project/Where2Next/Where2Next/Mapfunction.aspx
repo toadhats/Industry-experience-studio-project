@@ -90,56 +90,56 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
    </thead>
    <tbody>
       <tr>
-         <td> <div style="float:left;" ><asp:CheckBox ID="schooltest"  runat="server" type="checkbox"/></div><label>School</label><br /></td>
+         <td> <div style="float:left;" ><asp:CheckBox ID="schooltest"  text="　　　　　School" runat="server" type="checkbox"/></div><br /></td>
  
       </tr>
       <tr>
-         <td><div style="float:left;"><asp:CheckBox ID="centrelink"  runat="server" type="checkbox"/></div><label>CenterLink</label><br /></td>
+         <td><div style="float:left;"><asp:CheckBox ID="centrelink" text="　　　　　CenterLink" runat="server" type="checkbox"/></div><br /></td>
       </tr>
 
        <tr>
-        <td> <div style="float:left;"><asp:CheckBox ID="library"   runat="server" type="checkbox"/></div><label>Library</label><br /></td>
+        <td> <div style="float:left;"><asp:CheckBox ID="library"  text="　　　　　Library" runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="iceskating"  runat="server" type="checkbox"/></div><label>Ice skating</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="iceskating"  text="　　　　　Ice skating" runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="disabilityactivity" enabled="false" runat="server" type="checkbox"/></div><label>Disability</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="disabilityactivity" text="　　　　　Disability" enabled="false" runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="artsspaces"   runat="server" type="checkbox"/></div><label>Artspace</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="artsspaces"  text="　　　　　Artspace" runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="gpsuper" runat="server" type="checkbox"/></div><label>GP Super Clinic</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="gpsuper" text="　　　　　GP Super Clinic"  runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="medicare" runat="server" type="checkbox"/></div><label>medicare</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="medicare" text="　　　　　Medicare"  runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="publicinternet" enabled="false" runat="server" type="checkbox"/></div><label>Public Internet</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="publicinternet" text="　　　　　Public Internet" enabled="false" runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="recreation"   runat="server" type="checkbox"/></div><label>recreation</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="recreation" text="　　　　　recreation"  runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="rollerskating" runat="server" type="checkbox"/></div><label>Rollerskating</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="rollerskating"  text="　　　　　Rollerskating" runat="server" type="checkbox"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="skateparks"  runat="server" type="checkbox"/></div><label>Skate parks</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="skateparks" text="　　　　　Skate parks"   runat="server" type="checkbox"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" enabled="false"  runat="server" type="checkbox"/></div><label>Sport Club</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" text="　　　　　Sport Club" enabled="false"  runat="server" type="checkbox"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="swimmingpools"  runat="server" type="checkbox"/></div><label>Swimming Pools</label><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="swimmingpools" text="　　　　　Swimming Pools"  runat="server" type="checkbox"/></div><br /></td>
        </tr>
 
  
