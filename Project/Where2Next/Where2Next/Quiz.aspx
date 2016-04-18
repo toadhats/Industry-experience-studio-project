@@ -15,6 +15,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
         .buttonSelected 
         {
             border: 5px solid green;
+            
         }
 
     </style>
@@ -26,7 +27,12 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 
        <table style="width: 100%">
            <tr>
-              <td> <asp:Button Text="School" id="schoolButton" runat="server" CssClass="buttonDeselected" CommandArgument="school" OnClick="SelectService" /></td>
+              <td> <asp:Button Text="School" id="schoolButton" runat="server" 
+                  CssClass="buttonDeselected" 
+                  CommandArgument="school" OnClick="SelectService" 
+                  Style="background-image:url(Images/quizbuttonimage/school.jpg); background-size:contain"  
+                  Width="300px" Height="200px" ForeColor="Yellow" Font-Size="XX-Large" Font-Bold="true"/>
+              </td>
            </tr>
        </table>
     <br />
