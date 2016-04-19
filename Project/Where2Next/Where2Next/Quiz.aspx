@@ -87,7 +87,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
               </td>
                <td> <asp:Button Text="Sporting Clubs" id="sportingclubsbutton" runat="server" 
                   CssClass="buttonDeselected" 
-                  CommandArgument="sportingclubs" OnClick="SelectService" 
+                  CommandArgument="sportingclubsorgs" OnClick="SelectService" 
                   Style="background-image:url(Images/quizbuttonimage/sportingclubs.jpg); background-size:contain"  
                   Width="300px" Height="200px" ForeColor="Yellow" Font-Size="XX-Large" Font-Bold="true"/>
               </td>

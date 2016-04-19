@@ -48,7 +48,7 @@ namespace Where2Next
                 case "rollerskating":
                 case "school":
                 case "skateparks":
-                case "sportingclubs":
+                case "sportingclubsorgs":
                 case "swimmingpools":
                 case "tafe":
                     if (selectedServices.Any(s => s == selection)) // checks if item is in list, read https://msdn.microsoft.com/en-AU/library/bb397687.aspx for more info about lambda expressions
