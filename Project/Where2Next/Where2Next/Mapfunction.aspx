@@ -106,7 +106,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="disabilityactivity" text="　　　　　Disability" enabled="false" runat="server"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="disabilityactivity" text="　　　　　Disability"  runat="server"/></div><br /></td>
        </tr>
 
               <tr>
@@ -122,7 +122,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="publicinternet" text="　　　　　Public Internet" enabled="false" runat="server"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="publicinternet" text="　　　　　Public Internet"  runat="server"/></div><br /></td>
        </tr>
 
               <tr>
@@ -136,7 +136,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
         <td><div style="float:left;"><asp:CheckBox ID="skateparks" text="　　　　　Skate parks"   runat="server"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" text="　　　　　Sport Club" enabled="false"  runat="server"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" text="　　　　　Sport Club"  runat="server"/></div><br /></td>
        </tr>
                      <tr>
         <td><div style="float:left;"><asp:CheckBox ID="swimmingpools" text="　　　　　Swimming Pools"  runat="server"/></div><br /></td>
@@ -148,8 +148,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
         
           <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" />
 </div>
-
-     <br /><button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">　Filter　</button><br />
+     <br /><div style="text-align:center"><h3>Click to find services</h3></div><button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">　Filter　</button><br />
           </div>
           </div>
        <asp:Panel ID="Panel1" runat="server">
