@@ -69,11 +69,11 @@
             
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Truss</p>
-                <%-- <p><asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Black"
+                <%-- <p><asp:HyperLink ID="AboutUsLink" runat="server" ForeColor="Black"
                     NavigateUrl="AboutUs.aspx"
                     Text="About US" /></p>
 
-                <p><asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Black"
+                <p><asp:HyperLink ID="ContactUsLink" runat="server" ForeColor="Black"
                     NavigateUrl="ContactUs.aspx"
                     Text="Contact US" /></p>--%>
 
