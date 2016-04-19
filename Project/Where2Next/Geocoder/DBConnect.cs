@@ -100,7 +100,7 @@ namespace Geocoder
             cmd.Connection = connection;
 
             //This uses method "ExecuteNonQuery" because it does not return any results
-            if (cmd.ExecuteNonQuery() == 0)
+             if (cmd.ExecuteNonQuery() == 0)
             {
                 Console.WriteLine("Didn't update anything?");
             }
@@ -113,7 +113,7 @@ namespace Geocoder
         public List<Tuple<int, string, string>> GetRowsWithoutCoords(string table)
         {
             var ids = new List<Tuple<int, string, string>>();
-            string query = "SELECT * FROM " + table + " WHERE (address IS NOT NULL) AND (id IS NOT NULL) AND ((latitude IS NULL) OR (longitude IS NULL))";
+            string query = "SELECT * FROM " + table + " WHERE (address IS NOT NULL) AND (id IS NOT NULL) AND (suburb IS NOT NULL) AND ((latitude IS NULL) OR (longitude IS NULL))";
 
             if (this.OpenConnection() == true)
             {
