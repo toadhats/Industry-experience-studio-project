@@ -12,9 +12,9 @@ namespace Where2Next
     public partial class quizTest : System.Web.UI.Page
     {
         // Variables for this page instance
-        public List<string> selectedServices;
+        public List<string> selectedServices;  //  Not sure if I should even make this a class level variable anymore
         public string queryToSend = "";
-        // we should NOT keep this connection string in the source but I don't want to confuse everyone by using the config files again
+        // we should NOT keep this connection string in the source but I don't want to confuse ourselves by using the config files at the moment, should change later
         private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -22,9 +22,10 @@ namespace Where2Next
             if (ViewState["selectedServices"] == null)
             {
                 ViewState["selectedServices"] = new List<String>();
+                selectedServices = new List<String>();
             }
             
-            selectedServices = new List<String>(); //  Not sure if I should even make this a class level variable anymore
+            
         }
 
         protected void SelectService(object sender, EventArgs e)
