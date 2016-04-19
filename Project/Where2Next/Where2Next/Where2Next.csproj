@@ -166,26 +166,29 @@
     <Content Include="Images\caulfield.jpg" />
     <Content Include="Images\Clayton.jpg" />
     <Content Include="Images\ContactUsImageTemp.png" />
-    <Content Include="Images\health.jpg" />
-    <Content Include="Images\Healthcare1.jpg" />
-    <Content Include="Images\healthcaregeneric.jpg" />
-    <Content Include="Images\Higheducation.jpg" />
     <Content Include="Images\house250px.png" />
     <Content Include="Images\housewhite50px.png" />
     <Content Include="Images\letsmoveto.png" />
-    <Content Include="Images\library.jpg" />
-    <Content Include="Images\Library2.jpg" />
+    <Content Include="Images\quizbuttonimage\centrelink.png" />
+    <Content Include="Images\quizbuttonimage\disabilityactivity.jpg" />
+    <Content Include="Images\quizbuttonimage\gpsuper.jpg" />
+    <Content Include="Images\quizbuttonimage\iceskating.jpg" />
+    <Content Include="Images\quizbuttonimage\library.jpg" />
     <Content Include="Images\logo-500px.png" />
     <Content Include="Images\MalvernEast.jpg" />
-    <Content Include="Images\medicare.jpg" />
+    <Content Include="Images\quizbuttonimage\medicare.jpg" />
     <Content Include="Images\page1.jpg" />
     <Content Include="Images\page2.jpg" />
     <Content Include="Images\page3.jpg" />
-    <Content Include="Images\pARK2.jpg" />
-    <Content Include="Images\school.jpg" />
-    <Content Include="Images\schoolbus.jpg" />
+    <Content Include="Images\quizbuttonimage\publicinternet.jpg" />
+    <Content Include="Images\quizbuttonimage\recreation.jpg" />
+    <Content Include="Images\quizbuttonimage\rollerskating.jpg" />
+    <Content Include="Images\quizbuttonimage\school.jpg" />
+    <Content Include="Images\quizbuttonimage\skateparks.jpg" />
+    <Content Include="Images\quizbuttonimage\sportingclubs.jpg" />
+    <Content Include="Images\quizbuttonimage\swimmingpools.jpg" />
+    <Content Include="Images\quizbuttonimage\tafe.jpg" />
     <Content Include="Images\skkilda.jpg" />
-    <Content Include="Images\sport.jpg" />
     <Content Include="Images\success.jpg" />
     <Content Include="Images\toorak.jpg" />
     <Content Include="Map.aspx" />
@@ -215,11 +218,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="quizhome.aspx" />
-    <Content Include="quizlibrary.aspx" />
-    <Content Include="QuizNew.aspx" />
-    <Content Include="quizschool.aspx" />
-    <Content Include="QuizTest.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -328,41 +326,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="quizhome.aspx.cs">
-      <DependentUpon>quizhome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="quizhome.aspx.designer.cs">
-      <DependentUpon>quizhome.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="quizlibrary.aspx.cs">
-      <DependentUpon>quizlibrary.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="quizlibrary.aspx.designer.cs">
-      <DependentUpon>quizlibrary.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="QuizNew.aspx.cs">
-      <DependentUpon>QuizNew.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QuizNew.aspx.designer.cs">
-      <DependentUpon>QuizNew.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="quizschool.aspx.cs">
-      <DependentUpon>quizschool.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="quizschool.aspx.designer.cs">
-      <DependentUpon>quizschool.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="QuizTest.aspx.cs">
-      <DependentUpon>QuizTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QuizTest.aspx.designer.cs">
-      <DependentUpon>QuizTest.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Service.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Site.Master.cs">

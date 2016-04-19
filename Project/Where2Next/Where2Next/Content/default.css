@@ -277,7 +277,7 @@ ul.contact {
 #header-wrapper {
     position: relative;
     padding: 0em 0em 0em 0em;
-    background: #2f9fef url(images/pic01.jpg) no-repeat center;
+    background: #198fed url(images/pic01.jpg) no-repeat center;
     background-size: cover;
 }
 
@@ -354,8 +354,10 @@ ul.contact {
 
 #banner-wrapper {
     padding: 5em 0em;
-    background: #198fed;
-    background: #2f9fef url('../Images/letsmoveto.png') no-repeat center;
+    /*background: #198fed;*/
+    /*background: #2f9fef url('../Images/letsmoveto.png') no-repeat center;*/
+    background-image:url('../Images/letsmoveto.png');
+    background-size:cover;
 }
 
 #banner {
