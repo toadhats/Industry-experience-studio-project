@@ -84,7 +84,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 <table class="table table-hover">
    <thead>
       <tr>
-         <th>service name</th>
+         <th>Service Name</th>
   
       </tr>
    </thead>
@@ -102,7 +102,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="iceskating"  text="　　　　　Ice skating" runat="server" /></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="iceskating"  text="　　　　　Ice Skating" runat="server" /></div><br /></td>
        </tr>
 
               <tr>
@@ -110,7 +110,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="artsspaces"  text="　　　　　Artspace" runat="server"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="artsspaces"  text="　　　　　Art Space" runat="server"/></div><br /></td>
        </tr>
 
               <tr>
@@ -126,14 +126,14 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
        </tr>
 
               <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="recreation" text="　　　　　recreation"  runat="server"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="recreation" text="　　　　　Recreation"  runat="server"/></div><br /></td>
        </tr>
 
                      <tr>
         <td><div style="float:left;"><asp:CheckBox ID="rollerskating"  text="　　　　　Rollerskating" runat="server"/></div><br /></td>
        </tr>
                      <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="skateparks" text="　　　　　Skate parks"   runat="server"/></div><br /></td>
+        <td><div style="float:left;"><asp:CheckBox ID="skateparks" text="　　　　　Skate Parks"   runat="server"/></div><br /></td>
        </tr>
                      <tr>
         <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" text="　　　　　Sport Club"  runat="server"/></div><br /></td>
