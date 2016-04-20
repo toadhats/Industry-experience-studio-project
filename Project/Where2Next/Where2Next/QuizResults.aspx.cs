@@ -41,7 +41,21 @@ namespace Where2Next
                         {                            
                             string suburb = dataReader.GetString(0); // These are basically magic numbers ew
                             string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
-                            resultsTableHTML += String.Format("<div class=\"resultCard\"> <h3>{0}</h3> \n{1} </div>", suburb, postcode);
+                            List<string> serviceNames = new List<string>();
+                            System.Diagnostics.Debug.WriteLine("Services in {0}:", suburb);
+                            for (int i = 2;i < dataReader.FieldCount - 1; i++) // Need to stop before the state column that I inserted as a bad hack
+                            {
+                                var col = dataReader.GetString(i);
+                                System.Diagnostics.Debug.WriteLine(col);
+                                serviceNames.Add(col);
+                            }
+
+                            resultsTableHTML += String.Format("<div class=\"resultCard\"> <h3>{0}</h3> \n{1} <ul> <hr>", suburb, postcode);
+                            foreach (string serviceName in serviceNames)
+                            {
+                                resultsTableHTML += String.Format("<li class=\"requestedService\">{0}</li> ", serviceName);
+                            }
+                            resultsTableHTML += "</ul></div>"; // end of result card
                         }
                         resultsTableHTML += "</div>" // Card container ends
                             + "</div>"; // Whole container ends

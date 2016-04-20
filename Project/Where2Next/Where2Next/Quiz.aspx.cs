@@ -88,11 +88,17 @@ namespace Where2Next
             }
 
             // construct query and send to DB
-            queryToSend = "SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE FROM SUBURB ";
-
+            queryToSend = "SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE, ";
             foreach (var service in selectedServices)
             {
-                queryToSend += "INNER JOIN " + service + " ON SUBURB.SUBURB = " + service + ".SUBURB ";
+                queryToSend += service + ".name, ";
+            }
+
+
+            queryToSend += "SUBURB.STATE FROM SUBURB"; // Adding state as the worlds ugliest hack to deal with the unwanted comma.
+            foreach (var service in selectedServices)
+            {
+                queryToSend += " INNER JOIN " + service + " ON SUBURB.SUBURB = " + service + ".SUBURB";
             }
 
             ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete once confirmed working
