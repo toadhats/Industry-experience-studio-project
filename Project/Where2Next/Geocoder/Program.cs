@@ -17,7 +17,7 @@ namespace Geocoder
                 Console.WriteLine("Checking table {0}", tableName);
                 connection.FixMissingCoords(tableName);
             }
-
+            // TODO: Add address fixing feature as well
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
             return 0;

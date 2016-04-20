@@ -14,14 +14,17 @@ namespace Where2Next
         private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
         protected void Page_Load(object sender, EventArgs e)
         {
-            var query = Base64ForUrlDecode(Request["query"]);
-            if (query == null)
+            
+            if (Request["query"] == null)
             {
                 // We probably got here from somewhere other than a completed quiz page, e.g the user typed the url themselves
                 Console.Error.WriteLine("Reached quiz result page without a valid query parameter");
             }
             else
             {
+                Console.WriteLine("Arrived at page with encoded query {0}", Request["query"]);
+                var query = Base64ForUrlDecode(Request["query"]);
+                Console.WriteLine("Decoded query: {0}", query);
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();

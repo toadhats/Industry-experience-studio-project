@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Collections;
+using System.Text;
 
 namespace Where2Next
 {
@@ -14,7 +15,7 @@ namespace Where2Next
         // Variables for this page instance
         public List<string> selectedServices;  //  Not sure if I should even make this a class level variable anymore
         public string queryToSend = "";
-        // we should NOT keep this connection string in the source but I don't want to confuse ourselves by using the config files at the moment, should change later
+        // delete this once results page is working
         private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -95,27 +96,9 @@ namespace Where2Next
             }
 
             ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete once confirmed working
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                connection.Open();
-                MySqlCommand command = new MySqlCommand(queryToSend, connection);
-                MySqlDataReader dataReader = command.ExecuteReader();
-                string total = ""; // Copying old method for now until we know how we are going to present results
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        string suburb = dataReader.GetString(0);
-                        string postcode = dataReader.GetString(1);
-                        total += Environment.NewLine + "<tr><td>" + suburb + "</t><td>" + postcode + "</td></tr>";
-                    }
-
-                    result.Text = "  <div class='item'><img src='/images/success.jpg' style='height: auto; width: 100%'></div><table class='table table-hover'  style='width: 750px;margin:0px auto' ><caption><h2> The following suburbs meet your requirements: </h2></caption><thead><tr><th>Suburb Name</th><th>Postcode</th></tr></thead><tbody>" + total + "<thead></tbody></table>";
-                    dataReader.Close();
-                    connection.Close();
-                }
-
-            }
+            var encodedQuery = Base64ForUrlEncode(queryToSend);
+            Response.Redirect("quizResults.aspx?query=" + encodedQuery);
+        
 
         }
 
@@ -130,6 +113,13 @@ namespace Where2Next
             sb.Append("')};");
             sb.Append("</script>");
             ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+        }
+
+        // For encoding the completed query to pass to the results page in the URL
+        public static string Base64ForUrlEncode(string query)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(query);
+            return HttpServerUtility.UrlTokenEncode(buffer);
         }
     }
 }
