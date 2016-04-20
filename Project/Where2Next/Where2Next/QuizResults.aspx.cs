@@ -1,24 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Where2Next
 {
     public partial class QuizResults : System.Web.UI.Page
     {
         private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             if (Request["query"] == null)
             {
                 // We probably got here from somewhere other than a completed quiz page, e.g the user typed the url themselves
-                Console.Error.WriteLine("Reached quiz result page without a valid query parameter");
+                System.Diagnostics.Debug.WriteLine("Reached quiz result page without a valid query parameter");
             }
             else
             {
@@ -38,12 +35,12 @@ namespace Where2Next
                             + "<div class=\"cardContainer\">"; // Inner container to fill with result cards
 
                         while (dataReader.Read())
-                        {                            
+                        {
                             string suburb = dataReader.GetString(0); // These are basically magic numbers ew
                             string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
                             List<string> serviceNames = new List<string>();
                             System.Diagnostics.Debug.WriteLine("Services in {0}:", suburb);
-                            for (int i = 2;i < dataReader.FieldCount - 1; i++) // Need to stop before the state column that I inserted as a bad hack
+                            for (int i = 2; i < dataReader.FieldCount - 1; i++) // Need to stop before the state column that I inserted as a bad hack
                             {
                                 var col = dataReader.GetString(i);
                                 System.Diagnostics.Debug.WriteLine(col);
@@ -63,7 +60,6 @@ namespace Where2Next
                         dataReader.Close();
                         connection.Close();
                     }
-
                 }
             }
         }

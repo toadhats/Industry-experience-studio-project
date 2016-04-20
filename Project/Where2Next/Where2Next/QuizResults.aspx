@@ -29,8 +29,8 @@
             margin: 15px;
             float: left;
             position:relative;
-            width: 200px;
-            height: 200px;
+            width: 188px;
+            height: 188px;
             font-family: 'montserrat light', montserrat, 'Helvetica Neue LT Pro', sans-serif;
             line-height: 2;
         }

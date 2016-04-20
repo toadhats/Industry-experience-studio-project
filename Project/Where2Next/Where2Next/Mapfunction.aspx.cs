@@ -120,9 +120,12 @@ namespace Where2Next
                                 query = query + "select NAME,LATITUDE,LONGITUDE,address from " + box.ID + " where postcode='" + TextBox1.Text + "' and (LATITUDE is not null) and LATITUDE !=0 union ";
 
                             }
-                            else
+                            else if (System.Text.RegularExpressions.Regex.IsMatch(TextBox1.Text.Trim(), "^\\w+$"))
                             {
                                 query = query + "select NAME,LATITUDE,LONGITUDE,address from " + box.ID + " where suburb='" + TextBox1.Text + "' and (LATITUDE is not null) and LATITUDE !=0 union ";
+                            } else
+                            {
+                                query = query + "select NAME,LATITUDE,LONGITUDE,address from " + box.ID + " where (LATITUDE is not null) and LATITUDE !=0 union ";
                             }
 
                         }
