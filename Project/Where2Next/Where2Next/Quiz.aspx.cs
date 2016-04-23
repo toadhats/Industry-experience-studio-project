@@ -70,7 +70,7 @@ namespace Where2Next
                     }
                     break;
                 default: // If we get to here, you passed in a bad parameter.
-                    Console.Error.WriteLine("Invalid argument {0} passed to SelectService button handler. Argument must be a valid table name.", selection);
+                    // Console.Error.WriteLine("Invalid argument {0} passed to SelectService button handler. Argument must be a valid table name.", selection);
                     return;
             }
 
@@ -82,7 +82,7 @@ namespace Where2Next
             selectedServices = (List<string>)ViewState["selectedServices"]; // Get the persistant list out of the view state
             if (selectedServices.Count == 0)
             {
-                Console.Error.WriteLine("Attempting to create a query, but user has not selected anything"); // An error should be displayed to the user in this case
+                // Console.Error.WriteLine("Attempting to create a query, but user has not selected anything"); // An error should be displayed to the user in this case
                 ClientError("Please select at least one service.");
                 return;
             }

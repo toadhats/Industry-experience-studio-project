@@ -28,12 +28,12 @@ namespace Geocoder
                 // Doing this the really simple way
                 tokens = 10;
                 lastRefill = Environment.TickCount;
-                Console.WriteLine("Refreshed the token bucket. ({0} seconds elapsed since last refill)", timeElapsed / 1000);
+                // Console.WriteLine("Refreshed the token bucket. ({0} seconds elapsed since last refill)", timeElapsed / 1000);
             }
             if (tokens > 0)
             {
                 tokens -= 1;
-                Console.WriteLine("Giving a token, {0} are left.", tokens);
+                // Console.WriteLine("Giving a token, {0} are left.", tokens);
                 return true;
             }
             else
@@ -49,7 +49,7 @@ namespace Geocoder
         {
             while (!getToken())
             {
-                Console.WriteLine("No token for you");
+                // Console.WriteLine("No token for you");
                 System.Threading.Thread.Sleep(100);
             }
             return;

@@ -19,7 +19,7 @@ namespace Where2Next
             }
             else
             {
-                Console.WriteLine("Arrived at page with encoded query {0}", Request["query"]);
+                // Console.WriteLine("Arrived at page with encoded query {0}", Request["query"]);
                 var query = Base64ForUrlDecode(Request["query"]);
                 Console.WriteLine("Decoded query: {0}", query);
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -39,11 +39,11 @@ namespace Where2Next
                             string suburb = dataReader.GetString(0); // These are basically magic numbers ew
                             string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
                             List<string> serviceNames = new List<string>();
-                            System.Diagnostics.Debug.WriteLine("Services in {0}:", suburb);
+                            // System.Diagnostics.Debug.WriteLine("Services in {0}:", suburb);
                             for (int i = 2; i < dataReader.FieldCount - 1; i++) // Need to stop before the state column that I inserted as a bad hack
                             {
                                 var col = dataReader.GetString(i);
-                                System.Diagnostics.Debug.WriteLine(col);
+                                // System.Diagnostics.Debug.WriteLine(col);
                                 serviceNames.Add(col);
                             }
 

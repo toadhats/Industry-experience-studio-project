@@ -161,7 +161,7 @@ namespace Geocoder
                     var id = entity.Item1;
                     var address = entity.Item2 + ", " + entity.Item3;
                     var coords = ApiConnection.GetLatLong(address);
-                    Console.WriteLine("Got coordinates {0}, {1} for address {2}", coords.Item1, coords.Item2, address);
+                    //Console.WriteLine("Got coordinates {0}, {1} for address {2}", coords.Item1, coords.Item2, address);
                     UpdateLatLong(table, id, coords.Item1, coords.Item2);
                 }
                 this.CloseConnection();
