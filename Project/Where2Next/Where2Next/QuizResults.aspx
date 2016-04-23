@@ -61,9 +61,18 @@
             border-bottom: 1px solid #ffffff;
         }
 
-    </style>
+        .sorryCard {
+            background: #fafafa;
+            width: 400px;
+            height: 185px;
+            padding: 20px;
+        }
 
-        <h1>Results</h1> <%--This should probably say something more "on brand"--%>
+        .sorryCard * {
+            margin: 15px;
+        }
+
+    </style>
 
         <asp:Literal ID="resultsTable" runat="server"></asp:Literal>
 

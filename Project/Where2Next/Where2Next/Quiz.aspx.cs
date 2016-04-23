@@ -13,8 +13,7 @@ namespace Where2Next
     public partial class quizTest : System.Web.UI.Page
     {
         // Variables for this page instance
-        public List<string> selectedServices;  //  Not sure if I should even make this a class level variable anymore
-        public string queryToSend = "";
+        public List<string> selectedServices;
         // delete this once results page is working
         private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
 
@@ -87,22 +86,25 @@ namespace Where2Next
                 return;
             }
 
+            StringBuilder queryBuilder = new StringBuilder();
+
             // construct query and send to DB
-            queryToSend = "SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE, ";
+            queryBuilder.Append("SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE, ");
             foreach (var service in selectedServices)
             {
-                queryToSend += service + ".name, ";
+                queryBuilder.Append(service + ".name, ");
             }
 
 
-            queryToSend += "SUBURB.STATE FROM SUBURB"; // Adding state as the worlds ugliest hack to deal with the unwanted comma.
+            queryBuilder.Append("SUBURB.STATE FROM SUBURB"); // Adding state as the worlds ugliest hack to deal with the unwanted comma.
             foreach (var service in selectedServices)
             {
-                queryToSend += " INNER JOIN " + service + " ON SUBURB.SUBURB = " + service + ".SUBURB";
+                
+                queryBuilder.Append(" INNER JOIN " + service + " ON SUBURB.SUBURB = " + service + ".SUBURB");
             }
 
-            ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete once confirmed working
-            var encodedQuery = Base64ForUrlEncode(queryToSend);
+            // ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete once confirmed working
+            var encodedQuery = Base64ForUrlEncode(queryBuilder.ToString());
             Response.Redirect("quizResults.aspx?query=" + encodedQuery);
         
 

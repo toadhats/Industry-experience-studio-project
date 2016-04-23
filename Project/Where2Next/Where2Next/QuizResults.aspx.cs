@@ -14,7 +14,7 @@ namespace Where2Next
         {
             if (Request["query"] == null)
             {
-                // We probably got here from somewhere other than a completed quiz page, e.g the user typed the url themselves
+                // We probably got here from somewhere other than a completed quiz page, e.g a user/crawler tried entering a URL manually
                 System.Diagnostics.Debug.WriteLine("Reached quiz result page without a valid query parameter");
             }
             else
@@ -27,36 +27,40 @@ namespace Where2Next
                     connection.Open();
                     MySqlCommand command = new MySqlCommand(query, connection);
                     MySqlDataReader dataReader = command.ExecuteReader();
-                    string resultsTableHTML = "";
                     if (dataReader.HasRows)
                     {
-                        resultsTableHTML += "<div class=\"table\">" // Start of whole container
+                        StringBuilder resultsTableBuilder = new StringBuilder();
+                        resultsTableBuilder.Append("<h1>Results</h1> <div class=\"table\">" // Start of whole container
                             + "<div class=\"tableHeading\"><h2> The following suburbs meet your requirements: </h2></div>" // Heading cell
-                            + "<div class=\"cardContainer\">"; // Inner container to fill with result cards
+                            + "<div class=\"cardContainer\">"); // Inner container to fill with result cards
 
                         while (dataReader.Read())
                         {
                             string suburb = dataReader.GetString(0); // These are basically magic numbers ew
                             string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
                             List<string> serviceNames = new List<string>();
-                            // System.Diagnostics.Debug.WriteLine("Services in {0}:", suburb);
                             for (int i = 2; i < dataReader.FieldCount - 1; i++) // Need to stop before the state column that I inserted as a bad hack
                             {
                                 var col = dataReader.GetString(i);
-                                // System.Diagnostics.Debug.WriteLine(col);
                                 serviceNames.Add(col);
                             }
 
-                            resultsTableHTML += String.Format("<div class=\"resultCard\"> <h3>{0}</h3> \n{1} <ul> <hr>", suburb, postcode);
+                            
+                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> \n{1} <ul> <hr>", suburb, postcode);
                             foreach (string serviceName in serviceNames)
                             {
-                                resultsTableHTML += String.Format("<li class=\"requestedService\">{0}</li> ", serviceName);
+                                resultsTableBuilder.AppendFormat("<li class=\"requestedService\">{0}</li> ", serviceName);
                             }
-                            resultsTableHTML += "</ul></div>"; // end of result card
+                            
+                            resultsTableBuilder.Append("</ul></div>");
                         }
-                        resultsTableHTML += "</div>" // Card container ends
-                            + "</div>"; // Whole container ends
-                        resultsTable.Text = resultsTableHTML;
+                        resultsTableBuilder.Append("</div> </div>"); // close our containers
+                        resultsTable.Text = resultsTableBuilder.ToString();
+                        dataReader.Close();
+                        connection.Close();
+                    } else
+                    {
+                        resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
                         dataReader.Close();
                         connection.Close();
                     }
