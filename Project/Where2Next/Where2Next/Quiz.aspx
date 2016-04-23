@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="quiz.aspx.cs" Inherits="Where2Next.quizTest" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
@@ -18,10 +17,9 @@
             background-size: 100% auto;
         }
 
-        .buttonDeselected:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        }
-
+            .buttonDeselected:hover {
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            }
 
         .buttonSelected {
             position: relative;
@@ -38,7 +36,6 @@
         <h3>Please choose the option you prefer the best:</h3>
         <br />
         <br />
-
 
         <table style="width: 100%">
             <tr>

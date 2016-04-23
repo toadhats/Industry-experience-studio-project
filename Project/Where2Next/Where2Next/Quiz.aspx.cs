@@ -1,12 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using MySql.Data.MySqlClient;
-using System.Collections;
-using System.Text;
 
 namespace Where2Next
 {
@@ -14,6 +14,7 @@ namespace Where2Next
     {
         // Variables for this page instance
         public List<string> selectedServices;
+
         // delete this once results page is working
         private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
 
@@ -24,8 +25,6 @@ namespace Where2Next
                 ViewState["selectedServices"] = new List<String>();
                 selectedServices = new List<String>();
             }
-            
-            
         }
 
         protected void SelectService(object sender, EventArgs e)
@@ -54,7 +53,6 @@ namespace Where2Next
                 case "tafe":
                     if (selectedServices.Any(s => s == selection)) // checks if item is in list, read https://msdn.microsoft.com/en-AU/library/bb397687.aspx for more info about lambda expressions
                     {
-                        
                         selectedServices.Remove(selection); // If it's already in the list we want to remove it, this creates toggle behavior and prevents duplicates.
                         ViewState["selectedServices"] = selectedServices; // Put updated list back into view state
                         // Toggling needs to be represented to the user as well
@@ -68,12 +66,11 @@ namespace Where2Next
                         buttonCssClass.SetValue(sender, "buttonSelected");
                     }
                     break;
+
                 default: // If we get to here, you passed in a bad parameter.
                     // Console.Error.WriteLine("Invalid argument {0} passed to SelectService button handler. Argument must be a valid table name.", selection);
                     return;
             }
-
-
         }
 
         protected void SubmitButton(object sender, EventArgs e)
@@ -89,25 +86,15 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
 
             // construct query and send to DB
-            queryBuilder.Append("SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE, ");
+            queryBuilder.Append("SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE FROM SUBURB");
             foreach (var service in selectedServices)
             {
-                queryBuilder.Append(service + ".name, ");
-            }
-
-
-            queryBuilder.Append("SUBURB.STATE FROM SUBURB"); // Adding state as the worlds ugliest hack to deal with the unwanted comma.
-            foreach (var service in selectedServices)
-            {
-                
                 queryBuilder.Append(" INNER JOIN " + service + " ON SUBURB.SUBURB = " + service + ".SUBURB");
             }
 
             // ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete once confirmed working
             var encodedQuery = Base64ForUrlEncode(queryBuilder.ToString());
             Response.Redirect("quizResults.aspx?query=" + encodedQuery);
-        
-
         }
 
         // Should allow me to create an error box for the client from in here.

@@ -100,7 +100,7 @@ namespace Geocoder
             cmd.Connection = connection;
 
             //This uses method "ExecuteNonQuery" because it does not return any results
-             if (cmd.ExecuteNonQuery() == 0)
+            if (cmd.ExecuteNonQuery() == 0)
             {
                 Console.WriteLine("Didn't update anything?");
             }

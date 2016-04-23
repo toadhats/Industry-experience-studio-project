@@ -45,20 +45,16 @@ namespace Where2Next
                                 serviceNames.Add(col);
                             }
 
-                            
-                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> \n{1} <ul> <hr>", suburb, postcode);
-                            foreach (string serviceName in serviceNames)
-                            {
-                                resultsTableBuilder.AppendFormat("<li class=\"requestedService\">{0}</li> ", serviceName);
-                            }
-                            
-                            resultsTableBuilder.Append("</ul></div>");
+                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> <p>{1}</p> <hr> </div> ", suburb, postcode);
+
+                            // resultsTableBuilder.Append("</div>"); // End of card
                         }
                         resultsTableBuilder.Append("</div> </div>"); // close our containers
                         resultsTable.Text = resultsTableBuilder.ToString();
                         dataReader.Close();
                         connection.Close();
-                    } else
+                    }
+                    else
                     {
                         resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
                         dataReader.Close();
