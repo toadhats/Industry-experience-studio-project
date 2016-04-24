@@ -187,3 +187,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/suburbs backup.json
+/suburbs data.json
+/assets/branding/tetrahedron frame.mtl
+/assets/branding/perspective.png

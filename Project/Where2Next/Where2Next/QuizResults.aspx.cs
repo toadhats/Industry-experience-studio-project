@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Web;
 
@@ -14,7 +13,8 @@ namespace Where2Next
         {
             if (Request["query"] == null)
             {
-                // We probably got here from somewhere other than a completed quiz page, e.g a user/crawler tried entering a URL manually
+                // We probably got here from somewhere other than a completed quiz page, e.g a
+                // user/crawler tried entering a URL manually
                 System.Diagnostics.Debug.WriteLine("Reached quiz result page without a valid query parameter");
             }
             else
@@ -38,12 +38,6 @@ namespace Where2Next
                         {
                             string suburb = dataReader.GetString(0); // These are basically magic numbers ew
                             string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
-                            List<string> serviceNames = new List<string>();
-                            for (int i = 2; i < dataReader.FieldCount - 1; i++) // Need to stop before the state column that I inserted as a bad hack
-                            {
-                                var col = dataReader.GetString(i);
-                                serviceNames.Add(col);
-                            }
 
                             resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> <p>{1}</p> <hr> </div> ", suburb, postcode);
 

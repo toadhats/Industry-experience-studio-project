@@ -68,7 +68,8 @@ namespace Where2Next
                     break;
 
                 default: // If we get to here, you passed in a bad parameter.
-                    // Console.Error.WriteLine("Invalid argument {0} passed to SelectService button handler. Argument must be a valid table name.", selection);
+                    // Console.Error.WriteLine("Invalid argument {0} passed to SelectService button
+                    // handler. Argument must be a valid table name.", selection);
                     return;
             }
         }
@@ -78,7 +79,8 @@ namespace Where2Next
             selectedServices = (List<string>)ViewState["selectedServices"]; // Get the persistant list out of the view state
             if (selectedServices.Count == 0)
             {
-                // Console.Error.WriteLine("Attempting to create a query, but user has not selected anything"); // An error should be displayed to the user in this case
+                // Console.Error.WriteLine("Attempting to create a query, but user has not selected
+                // anything"); // An error should be displayed to the user in this case
                 ClientError("Please select at least one service.");
                 return;
             }
@@ -86,13 +88,14 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
 
             // construct query and send to DB
-            queryBuilder.Append("SELECT DISTINCT SUBURB.SUBURB, SUBURB.POSTCODE FROM SUBURB");
+            queryBuilder.Append("SELECT DISTINCT SUBURB_GNAF.SUBURB, SUBURB_GNAF.POSTCODE FROM SUBURB_GNAF");
             foreach (var service in selectedServices)
             {
-                queryBuilder.Append(" INNER JOIN " + service + " ON SUBURB.SUBURB = " + service + ".SUBURB");
+                queryBuilder.Append(" INNER JOIN " + service + " ON SUBURB_GNAF.SUBURB = " + service + ".SUBURB");
             }
 
-            // ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete once confirmed working
+            // ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete
+            // once confirmed working
             var encodedQuery = Base64ForUrlEncode(queryBuilder.ToString());
             Response.Redirect("quizResults.aspx?query=" + encodedQuery);
         }
