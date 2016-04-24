@@ -1,0 +1,16 @@
+update artsspaces set Icon='Images/Icon/artsspaces.png';
+update centrelink set Icon='Images/Icon/centrelink.png';
+update disabilityactivity set Icon='Images/Icon/disabilityactivity.png';
+update iceskating set Icon='Images/Icon/iceskating.png';
+update library set Icon='Images/Icon/library.png';
+update medicare set Icon='Images/Icon/medicare.png';
+update publicinternet set Icon='Images/Icon/publicinternet.png';
+update recreation set Icon='Images/Icon/recreation.png';
+update rollerskating set Icon='Images/Icon/rollerskating.png';
+update schooltest set Icon='Images/Icon/school.png';
+update skateparks set Icon='Images/Icon/skateparks.png';
+update sportingclubsorgs set Icon='Images/Icon/sportingclubsorgs.png';
+update swimmingpools set Icon='Images/Icon/swimmingpools.png';
+update tafe set Icon='Images/Icon/tafe.png';
+
+

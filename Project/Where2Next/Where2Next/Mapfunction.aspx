@@ -31,6 +31,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
                     );
                 var marker = new google.maps.Marker({
                     position: myLocation,
+                    icon: 'Images/location.png',
                     map: map
                 });
             });
