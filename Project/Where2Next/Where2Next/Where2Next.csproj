@@ -168,6 +168,21 @@
     <Content Include="Images\ContactUsImageTemp.png" />
     <Content Include="Images\house250px.png" />
     <Content Include="Images\housewhite50px.png" />
+    <Content Include="Images\ICon\artsspaces.png" />
+    <Content Include="Images\ICon\centrelink.png" />
+    <Content Include="Images\ICon\disabilityactivity.png" />
+    <Content Include="Images\ICon\iceskating.png" />
+    <Content Include="Images\ICon\icon.txt" />
+    <Content Include="Images\ICon\library.png" />
+    <Content Include="Images\ICon\medicare.png" />
+    <Content Include="Images\ICon\publicinternet.png" />
+    <Content Include="Images\ICon\recreation.png" />
+    <Content Include="Images\ICon\rollerskating.png" />
+    <Content Include="Images\ICon\school.png" />
+    <Content Include="Images\ICon\skateparks.png" />
+    <Content Include="Images\ICon\sportingclubsorgs.png" />
+    <Content Include="Images\ICon\swimmingpools.png" />
+    <Content Include="Images\ICon\tafe.png" />
     <Content Include="Images\letsmoveto.png" />
     <Content Include="Images\quizbuttonimage\centrelink.png" />
     <Content Include="Images\quizbuttonimage\disabilityactivity.jpg" />
@@ -212,6 +227,7 @@
     <Content Include="fonts\Montserrat-SemiBold.otf" />
     <Content Include="fonts\Montserrat-UltraLight.otf" />
     <Content Include="Properties\webjobs-list.json" />
+    <Content Include="Images\ICon\Thumbs.db" />
     <None Include="Properties\PublishProfiles\where2next - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
