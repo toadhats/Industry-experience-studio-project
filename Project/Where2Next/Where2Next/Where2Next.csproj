@@ -175,6 +175,21 @@
     <Content Include="Images\ContactUsImageTemp.png" />
     <Content Include="Images\house250px.png" />
     <Content Include="Images\housewhite50px.png" />
+    <Content Include="Images\ICon\artsspaces.png" />
+    <Content Include="Images\ICon\centrelink.png" />
+    <Content Include="Images\ICon\disabilityactivity.png" />
+    <Content Include="Images\ICon\iceskating.png" />
+    <Content Include="Images\ICon\icon.txt" />
+    <Content Include="Images\ICon\library.png" />
+    <Content Include="Images\ICon\medicare.png" />
+    <Content Include="Images\ICon\publicinternet.png" />
+    <Content Include="Images\ICon\recreation.png" />
+    <Content Include="Images\ICon\rollerskating.png" />
+    <Content Include="Images\ICon\school.png" />
+    <Content Include="Images\ICon\skateparks.png" />
+    <Content Include="Images\ICon\sportingclubsorgs.png" />
+    <Content Include="Images\ICon\swimmingpools.png" />
+    <Content Include="Images\ICon\tafe.png" />
     <Content Include="Images\img\bg-map.png" />
     <Content Include="Images\img\c-liogo1.png" />
     <Content Include="Images\img\c-liogo2.png" />
@@ -258,6 +273,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Images\ICon\Thumbs.db" />
     <None Include="Properties\PublishProfiles\where2next - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -423,7 +439,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\ICon\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
