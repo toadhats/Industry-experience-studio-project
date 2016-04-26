@@ -154,8 +154,9 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
           </div>
        <asp:Panel ID="Panel1" runat="server">
            <asp:Literal ID="js" runat="server"></asp:Literal>
-           <div id="map_canvas" style="background-color:#EEEEEE;height:900px;width:900px;float:left;">
+           <div id="map_canvas" style="background-color:#EEEEEE;height:1000px;width:900px;float:left;">
            </div>
+  
        </asp:Panel> 
       
      
