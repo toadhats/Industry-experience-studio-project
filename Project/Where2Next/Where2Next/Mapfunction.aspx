@@ -147,7 +147,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
    </tbody>
 </table>
         
-          <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" />
+          <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" Width="200" Height="60" />
 </div>
      <br /><div style="text-align:center"><h3>Click to find services</h3></div><button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">　Filter　</button><br />
           </div>
