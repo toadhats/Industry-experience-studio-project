@@ -266,6 +266,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="SuburbPic.aspx" />
     <None Include="Properties\PublishProfiles\where2next - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -406,6 +407,14 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebBrowser.cs" />
+    <Compile Include="SuburbPic.aspx.cs">
+      <DependentUpon>SuburbPic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuburbPic.aspx.designer.cs">
+      <DependentUpon>SuburbPic.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
