@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
     <link href="http://allfont.net/allfont.css?fonts=montserrat-light" rel="stylesheet" type="text/css" />
-
+    <link href="Content/css/style.css" rel="stylesheet" type="text/css" media="all"  />
     <link href="Content/default.css" rel="stylesheet" type="text/css" media="all" />
     <link href="Content/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -45,9 +45,22 @@
             </Scripts>
         </asp:ScriptManager>
 
+        <nav class="main-nav-outer" id="test"><!--main-nav-start-->
+	<div class="container">
+        <ul class="main-nav">
+        	<li><a href="#header">Home</a></li>
+            <li><a href="#service">Discover</a></li>
+            <li><a href="#Portfolio">Profile</a></li>
+            <li class="small-logo"><a href="#header"><img src="Images/img/small-logo.png" alt=""></a></li>
+            <li><a href="#client">Map</a></li>
+            <li><a href="#team">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
+    </div>
+</nav><!--main-nav-end-->
 
-
-        <div id="header-wrapper">
+    <%--    <div id="header-wrapper">
             <div id="header" class="container">
                 <div id="logo">
                     <h1><a runat="server" href="~/">Where2Next</a></h1>
@@ -61,7 +74,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>--%>
 
 
         <div class="container body-content">
