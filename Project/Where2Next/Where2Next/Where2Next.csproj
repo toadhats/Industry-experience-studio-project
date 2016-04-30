@@ -163,8 +163,6 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
-    <Content Include="Content\default.css" />
-    <Content Include="Content\fonts.css" />
     <Content Include="favicon.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Images\Burwood.jpg" />

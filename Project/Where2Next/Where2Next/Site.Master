@@ -11,8 +11,8 @@
     <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
     <link href="http://allfont.net/allfont.css?fonts=montserrat-light" rel="stylesheet" type="text/css" />
     <link href="Content/css/style.css" rel="stylesheet" type="text/css" media="all"  />
-    <link href="Content/default.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="Content/fonts.css" rel="stylesheet" type="text/css" media="all" />
+       <%--  <link href="Content/default.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="Content/fonts.css" rel="stylesheet" type="text/css" media="all" />--%>
 
     <title><%: Page.Title %> - Where2Next</title>
 
@@ -45,52 +45,32 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="main-nav-outer" id="test"><!--main-nav-start-->
-	<div class="container">
-        <ul class="main-nav">
-        	<li><a href="#header">Home</a></li>
-            <li><a href="#service">Discover</a></li>
-            <li><a href="#Portfolio">Profile</a></li>
-            <li class="small-logo"><a href="#header"><img src="Images/img/small-logo.png" alt=""></a></li>
-            <li><a href="#client">Map</a></li>
-            <li><a href="#team">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
-    </div>
-</nav><!--main-nav-end-->
 
-    <%--    <div id="header-wrapper">
+
+        <div id="header-wrapper">
             <div id="header" class="container">
                 <div id="logo">
                     <h1><a runat="server" href="~/">Where2Next</a></h1>
                 </div>
                 <div id="menu">
                     <ul>
-                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/index">Home</a></li>
                         <li><a runat="server" href="~/quiz">Discover</a></li>
                         <li><a runat="server" href="~/Map">Map</a></li>
                         <li><a runat="server" href="~/Profile">Profile</a></li>
                     </ul>
                 </div>
             </div>
-        </div>--%>
+        </div>
 
 
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            
-            
+
+
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Truss</p>
-                <%-- <p><asp:HyperLink ID="AboutUsLink" runat="server" ForeColor="Black"
-                    NavigateUrl="AboutUs.aspx"
-                    Text="About US" /></p>
-
-                <p><asp:HyperLink ID="ContactUsLink" runat="server" ForeColor="Black"
-                    NavigateUrl="ContactUs.aspx"
-                    Text="Contact US" /></p>--%>
 
                 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
                     <img alt="Creative Commons Licence" style="border-width: 0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
