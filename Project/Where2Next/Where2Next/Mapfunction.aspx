@@ -2,8 +2,8 @@
 
 
 <!DOCTYPE html>
-    <script
-src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+<script
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 </script>
 <script type="text/javascript">
 
@@ -45,121 +45,191 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-   <title>Where2Next Map Page </title>
-        <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-</head><body style="background-color:#F3F9FE">
-  <form id="form1" runat="server" >
-         <br />
-   <div id="success" class="alert alert-success" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>Success！ </strong> The suburb is found!
-</div>
-      <div id="fail" class="alert alert-warning" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>Sorry! </strong>We cannot find your suburb in victoria.</div>
-         <div id="successLocation" class="alert alert-success" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>Success！ </strong> You are here!
-</div>
-      <div id="failLocation" class="alert alert-warning" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>fail! </strong>We cannot find your location.</div>
-               <div id="successservice" class="alert alert-success" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>Success！ </strong> There are some services in your suburb!
-</div>
-      <div id="failservice" class="alert alert-warning" runat="server" style="display:none">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <strong>fail! </strong>We cannot find any service in your suburb.</div>
+    <title>Where2Next Map Page </title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #F3F9FE">
+    <form id="form1" runat="server">
+        <br />
+        <div id="success" class="alert alert-success" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Success！ </strong>The suburb is found!
+        </div>
+        <div id="fail" class="alert alert-warning" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Sorry! </strong>We cannot find your suburb in victoria.
+        </div>
+        <div id="successLocation" class="alert alert-success" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Success！ </strong>You are here!
+        </div>
+        <div id="failLocation" class="alert alert-warning" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>fail! </strong>We cannot find your location.
+        </div>
+        <div id="successservice" class="alert alert-success" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Success！ </strong>There are some services in your suburb!
+        </div>
+        <div id="failservice" class="alert alert-warning" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>fail! </strong>We cannot find any service in your suburb.
+        </div>
 
-      <div id="menu" style="height:700px;width:230px;float:left;">
+        <div id="menu" style="height: 700px; width: 230px; float: left;">
 
- <div style="text-align:center"><h3>Find your suburb</h3><br />
-     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br /><br />
-            <asp:Button CssClass="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
-        <asp:Button CssClass="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br /><br />
-     <div id="demo" class="collapse"><br />
-         
-<table class="table table-hover">
-   <thead>
-      <tr>
-         <th>Service Name</th>
-  
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td> <div style="float:left;" ><asp:CheckBox ID="schooltest"  text="　　　　　School" runat="server"/></div><br /></td>
- 
-      </tr>
-      <tr>
-         <td><div style="float:left;"><asp:CheckBox ID="centrelink" text="　　　　　CenterLink" runat="server"/></div><br /></td>
-      </tr>
+            <div style="text-align: center">
+                <h3>Find your suburb</h3>
+                <br />
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+                <br />
+                <asp:Button CssClass="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
+                <asp:Button CssClass="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br />
+                <br />
+                <div id="demo" class="collapse">
+                    <br />
 
-       <tr>
-        <td> <div style="float:left;"><asp:CheckBox ID="library"  text="　　　　　Library" runat="server"/></div><br /></td>
-       </tr>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
 
-              <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="iceskating"  text="　　　　　Ice Skating" runat="server" /></div><br /></td>
-       </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="schooltest" Text="　　　　　School" runat="server" /></div>
+                                    <br />
+                                </td>
 
-              <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="disabilityactivity" text="　　　　　Disability"  runat="server"/></div><br /></td>
-       </tr>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="centrelink" Text="　　　　　CenterLink" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
 
-              <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="artsspaces"  text="　　　　　Art Space" runat="server"/></div><br /></td>
-       </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="library" Text="　　　　　Library" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
 
-              <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="gpsuper" text="　　　　　GP Super Clinic"  runat="server"/></div><br /></td>
-       </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="iceskating" Text="　　　　　Ice Skating" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
 
-              <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="medicare" text="　　　　　Medicare"  runat="server"/></div><br /></td>
-       </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="disabilityactivity" Text="　　　　　Disability" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
 
-              <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="publicinternet" text="　　　　　Public Internet"  runat="server"/></div><br /></td>
-       </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="artsspaces" Text="　　　　　Art Space" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
 
-              <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="recreation" text="　　　　　Recreation"  runat="server"/></div><br /></td>
-       </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="gpsuper" Text="　　　　　GP Super Clinic" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
 
-                     <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="rollerskating"  text="　　　　　Rollerskating" runat="server"/></div><br /></td>
-       </tr>
-                     <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="skateparks" text="　　　　　Skate Parks"   runat="server"/></div><br /></td>
-       </tr>
-                     <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="sportingclubsorgs" text="　　　　　Sport Club"  runat="server"/></div><br /></td>
-       </tr>
-                     <tr>
-        <td><div style="float:left;"><asp:CheckBox ID="swimmingpools" text="　　　　　Swimming Pools"  runat="server"/></div><br /></td>
-       </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="medicare" Text="　　　　　Medicare" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
 
- 
-   </tbody>
-</table>
-        
-          <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" Width="200" Height="60" />
-</div>
-     <br /><div style="text-align:center"><h3>Click to find services</h3></div><button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">　Filter　</button><br />
-          </div>
-          </div>
-       <asp:Panel ID="Panel1" runat="server">
-           <asp:Literal ID="js" runat="server"></asp:Literal>
-           <div id="map_canvas" style="background-color:#EEEEEE;height:1000px;width:900px;float:left;">
-           </div>
-  
-       </asp:Panel> 
-      
-     
-</form>
-</body> 
-</html> 
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="publicinternet" Text="　　　　　Public Internet" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="recreation" Text="　　　　　Recreation" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="rollerskating" Text="　　　　　Rollerskating" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="skateparks" Text="　　　　　Skate Parks" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="sportingclubsorgs" Text="　　　　　Sport Club" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="float: left;">
+                                        <asp:CheckBox ID="swimmingpools" Text="　　　　　Swimming Pools" runat="server" /></div>
+                                    <br />
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+                    <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" Width="200" Height="60" />
+                </div>
+                <br />
+                <div style="text-align: center">
+                    <h3>Click to find services</h3>
+                </div>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Filter　</button>
+                <br />
+            </div>
+        </div>
+        <asp:Panel ID="Panel1" runat="server">
+            <asp:Literal ID="js" runat="server"></asp:Literal>
+            <div id="map_canvas" style="background-color: #EEEEEE; height: 1000px; width: 900px; float: left;">
+            </div>
+
+        </asp:Panel>
+
+
+    </form>
+</body>
+</html>
