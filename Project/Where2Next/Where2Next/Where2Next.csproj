@@ -242,7 +242,6 @@
     <Content Include="Images\skkilda.jpg" />
     <Content Include="Images\success.jpg" />
     <Content Include="Images\toorak.jpg" />
-    <Content Include="Index.aspx" />
     <Content Include="Map.aspx" />
     <Content Include="Mapfunction.aspx" />
     <Content Include="Profile.aspx" />
@@ -333,13 +332,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Map.aspx.cs">
       <DependentUpon>Map.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

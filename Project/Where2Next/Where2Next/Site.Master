@@ -1,5 +1,13 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Where2Next.SiteMaster" %>
 
+<div id="google_translate_element"></div>
+    <script type="text/javascript">
+           function googleTranslateElementInit() {
+               new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+           } 
+    </script>
+   <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <!DOCTYPE html>
 
 <html lang="en">

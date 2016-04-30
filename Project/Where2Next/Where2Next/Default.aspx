@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Where2Next._Default" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">    
     <!doctype html>
 <html>
 <head>
@@ -29,6 +29,8 @@
 <script type="text/javascript" src="Scripts/js/jquery.isotope.js"></script>
 <script type="text/javascript" src="Scripts/js/wow.js"></script>
 <script type="text/javascript" src="Scripts/js/classie.js"></script>
+
+
 
 
 <!--[if lt IE 9]>
@@ -441,6 +443,8 @@ $(window).load(function(){
 });
 
 </script>
+
+    
 </body>
 </html>
 

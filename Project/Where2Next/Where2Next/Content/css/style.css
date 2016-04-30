@@ -8,6 +8,83 @@
  
 /* CSS Document */
 
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+#header-wrapper {
+    position: relative;
+    padding: 0em 0em 0em 0em;
+    background: #eeeeee;
+    background-size: cover;
+}
+
+#header {
+    position: relative;
+    padding: 0em 0em 10em 0em;
+}
+
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+
+#logo {
+    position: absolute;
+    top: 3.6em;
+    left: 0;
+}
+
+    #logo h1 {
+        font-size: 2.6em;
+        color: #79C255;
+    }
+
+    #logo a {
+        text-decoration: none;
+        color: rgba(255,255,255,1);
+    }
+
+/*********************************************************************************/
+/* Menu                                                                          */
+/*********************************************************************************/
+
+#menu {
+    position: absolute;
+    top: 4.5em;
+    right: 0;
+}
+
+    #menu ul {
+        display: inline-block;
+    }
+
+    #menu li {
+        display: block;
+        float: left;
+        text-align: center;
+    }
+
+        #menu li a, #menu li span {
+            padding: 1em 1.5em;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1.5em;
+            color: rgba(255,255,255,0.80);
+        }
+
+        #menu li:hover a, #menu li.active a, #menu li.active span {
+        }
+
+    #menu .active a {
+        background: #f3cc2f;
+        border-radius: 6px;
+        color: rgba(255,255,255,1);
+        color: #3f0900;
+    }
+
+
+
 /* Float Elements 
 ---------------------------------*/
 .fl-lt {float:left;}
