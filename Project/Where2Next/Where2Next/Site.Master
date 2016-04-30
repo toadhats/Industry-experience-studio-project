@@ -54,8 +54,8 @@
                 </div>
                 <div id="menu">
                     <ul>
-                        <li><a runat="server" href="~/index">Home</a></li>
-                        <li><a runat="server" href="~/quiz">Discover</a></li>
+                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/Quiz">Discover</a></li>
                         <li><a runat="server" href="~/Map">Map</a></li>
                         <li><a runat="server" href="~/Profile">Profile</a></li>
                     </ul>

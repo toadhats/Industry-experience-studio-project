@@ -1,6 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="quiz.aspx.cs" Inherits="Where2Next.quizTest" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Quiz.aspx.cs" Inherits="Where2Next.quizTest" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <script src="Content/jquery.min.js"></script>
+    <script src="Content/bootstrap.min.js"></script>
+
     <script
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
     </script>
@@ -128,11 +132,17 @@
                         Width="282px" Height="188px" ForeColor="Yellow" Font-Size="XX-Large" Font-Bold="true" />
                 </td>
             </tr>
+
+
+
         </table>
         <br />
-        <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="SubmitButton" />
         <br />
         <br />
+        <br />
+        <asp:Panel runat="server" HorizontalAlign="Center">
+            <asp:Button class="btn btn-default" ID="Button1" runat="server" Text="Search Now" Width="300" Height="100" Font-Size="XX-Large" Font-Bold="true" OnClick="SubmitButton" />
+        </asp:Panel>
     </div>
     <asp:Literal ID="result" runat="server"></asp:Literal>
 </asp:Content>
