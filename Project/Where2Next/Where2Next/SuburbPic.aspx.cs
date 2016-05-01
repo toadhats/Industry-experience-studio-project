@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 
 
+
 namespace Where2Next
 {
     public partial class WebForm1 : System.Web.UI.Page
@@ -53,13 +54,20 @@ namespace Where2Next
                     string imgsrc = Regex.Match(img, pattern1, RegexOptions.IgnoreCase).Result("${url}");
                     imgsrc = Regex.Replace(imgsrc, "\"|\'|\\>", "", RegexOptions.IgnoreCase);
                     imgsrc = "http:" + imgsrc;
+                    if (Path.GetExtension(imgsrc).ToLower().Equals(".jpg"))
+                    {
+                        js.Text = "<img src = '" + imgsrc + "'/>";
+                    }
+                    else
+                    {
+                        js.Text ="cannot found a suburb picture in wikipedia,we can use picture to instead of that";
 
-                    js.Text = "<img src = '" + imgsrc + "'/>";
+                    }
                 }
             }
             catch (Exception ex)
                 { 
-                    js.Text = "Cannot found the suburb";
+                    js.Text = "Cannot found the suburb in victoria";
                 }
             }
 
