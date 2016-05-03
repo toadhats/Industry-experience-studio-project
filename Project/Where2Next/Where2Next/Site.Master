@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Where2Next.SiteMaster" %>
 
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -22,8 +20,6 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
-
 </head>
 <body>
     <form runat="server">
@@ -48,16 +44,14 @@
             </Scripts>
         </asp:ScriptManager>
 
-
-
         <div id="header-wrapper">
             <div id="google_translate_element"></div>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-    }
-</script>
-<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                }
+            </script>
+            <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             <div id="header" class="container">
                 <div id="logo">
                     <h1><a runat="server" href="~/">Where2Next</a></h1>
@@ -73,14 +67,13 @@
             </div>
         </div>
 
-
         <div class="container body-content">
 
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <br />
 
-            <footer>
+            <footer style="clear: both">
                 <p>&copy; <%: DateTime.Now.Year %> - Truss</p>
 
                 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">

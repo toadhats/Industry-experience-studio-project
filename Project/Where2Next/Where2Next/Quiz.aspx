@@ -7,6 +7,7 @@
 
     <script
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+        <%--Why is this here?--%>
     </script>
     <style type="text/css" media="screen">
         .buttonDeselected {
@@ -132,9 +133,6 @@
                         Width="282px" Height="188px" ForeColor="Yellow" Font-Size="XX-Large" Font-Bold="true" />
                 </td>
             </tr>
-
-
-
         </table>
         <br />
         <br />
