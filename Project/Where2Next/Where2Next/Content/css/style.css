@@ -15,7 +15,7 @@
 #header-wrapper {
     position: relative;
     padding: 0em 0em 0em 0em;
-    background: /*#eeeeee*/  url('../../Images/img/pw_maze_black_2X.png') left top repeat;;
+    background: #eeeeee;
     background-size: cover;
 }
 
@@ -71,7 +71,7 @@
             text-transform: uppercase;
             font-size: 1.5em;
             /*color: rgba(255,255,255,0.80);*/
-            color: white;
+            color: black;
         }
 
         #menu li:hover a, #menu li.active a, #menu li.active span {
@@ -201,14 +201,13 @@ p {
 
 .header {
     text-align: center;
-    /*background: url(../Images/img/pw_maze_black_2X.png) left top repeat;*/
-    /*background-image: url('../../Images/img/pw_maze_black_2X.png');*/
+    background: url(../Images/img/pw_maze_black_2X.png) left top repeat;
     padding: 280px 0;
 }
 
 .logo {
     width: 130px;
-    margin: 15px auto 35px;
+    margin: 0 auto 35px;
 }
 
 .header h1 {
@@ -929,7 +928,7 @@ img {
 /* Footer
 ---------------------------------*/
 
-/*.footer {
+.footer {
     background: url(../Images/img/pw_maze_black_2X.png) left top repeat;
     padding: 35px 0 35px;
 }
@@ -957,7 +956,7 @@ img {
 
         .copyright a:hover {
             color: #fff;
-        }*/
+        }
 
 .res-nav_click {
     line-height: 38px;

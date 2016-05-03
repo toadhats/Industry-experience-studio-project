@@ -3,10 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <link href="http://allfont.net/allfont.css?fonts=montserrat-light" rel="stylesheet" type="text/css" />
-    <link href="Content/css/style.css" rel="stylesheet" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/Site.css" rel="stylesheet" />
 
     <style type="text/css" media="screen">
         .tableHeading {
