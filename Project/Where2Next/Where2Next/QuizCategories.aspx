@@ -7,6 +7,22 @@
 
     <%--We should move this to a real CSS file--%>
     <style type="text/css" media="screen">
+        hr {
+            display: block;
+            position: relative;
+            padding: 0;
+            margin: 8px auto;
+            height: 0;
+            width: 100%;
+            max-height: 0;
+            font-size: 1px;
+            line-height: 0;
+            clear: both;
+            border: none;
+            border-top: 1px solid #aaaaaa;
+            border-bottom: 1px solid #ffffff;
+        }
+
         .buttonDeselected {
             position: relative;
             float: left;
@@ -56,21 +72,37 @@
             border-collapse: collapse;
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
             display: inline-block;
-            padding: 10px;
-            margin: 15px;
-            float: left;
             position: relative;
+            padding: 16px;
+            margin: 16px;
+            float: left;
             width: 188px;
-            height: 116px;
-            font-family: 'montserrat light', montserrat, 'Helvetica Neue LT Pro', sans-serif;
-            line-height: 2;
+            height: 188px;
         }
+
+            .categoryCard:hover {
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            }
+
+            .categoryCard h4 {
+                font-family: 'montserrat light', montserrat, 'Helvetica Neue LT Pro', sans-serif;
+                text-align: left;
+            }
+
+            .categoryCard img {
+                width: 95%;
+                height: auto;
+                display: inline-block;
+                object-fit: contain;
+            }
     </style>
 
     <h1 class="tableHeading">Select the categories you're interested in:</h1>
     <div id="categories" runat="server" class="cardContainer">
         <div id="cat_education" runat="server" class="categoryCard">
-            <h3>test</h3>
+            <h4>Education</h4>
+            <hr />
+            <img src="Images/quizbuttonimage/school.jpg" alt="Alternate Text" />
         </div>
     </div>
 </asp:Content>
