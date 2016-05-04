@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1">
 
         <title>Homepage</title>
-        <link rel="icon" href="favicon.png" type="image/png">
-        <link rel="shortcut icon" href="favicon.ico" type="img/x-icon">
+        <%--<link rel="icon" href="favicon.png" type="image/png">
+        <link rel="shortcut icon" href="favicon.ico" type="img/x-icon">--%>
 
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
@@ -42,13 +42,13 @@
 
     </head>
     <body>
-        <div style="overflow: hidden;">
+        <div style="overflow: hidden;">          
             <header class="header" id="header">
                 <!--header-start-->
                 <div class="container">
                     <figure class="logo animated fadeInDown delay-07s">
                         <a href="#">
-                            <img src="Images/img/logo.png" alt=""></a>
+                            <img src="Images/house250px.png" alt=""></a>
                     </figure>
                     <h1 class="animated fadeInDown delay-07s">Welcome To Where2Next</h1>
                     <ul class="we-create animated fadeInUp delay-1s">
@@ -69,7 +69,8 @@
                     <li><a href="#service">Discover</a></li>
                     <li><a href="#Portfolio">Profile</a></li>
                     <li class="small-logo"><a href="#header">
-                        <img src="Images/img/small-logo.png" alt=""></a></li>
+                        <img src="Images/Logos/w2n%20logo%20house%20only%20[100px].png" alt=""></a></li>
+                    
                     <li><a href="#client">Map</a></li>
                     <li><a href="#team">About Us</a></li>
                     <li><a href="#contact">Contact Us</a></li>
@@ -84,7 +85,7 @@
         <section class="main-section" id="service">
             <!--main-section-start-->
             <div class="container">
-                <h2>Quiz</h2>
+                <h2>Discover</h2>
                 <h6>The Discover function helps you to discover your interest suburbs.</h6>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
@@ -198,15 +199,17 @@
         <section class="main-section client-part" id="client">
             <!--main-section client-part-start-->
             <div class="container">
-                <b class="quote-right wow fadeInDown delay-03"><i class="fa-quote-right"></i></b>
+                <%--<b class="quote-right wow fadeInDown delay-03"><i class="fa-quote-right"></i></b>
                 <div class="row">
                     <div class="col-lg-12">
                         <p class="client-part-haead wow fadeInDown delay-05">Search on Our Maps!</p>
                     </div>
-                </div>
+                </div>--%>
+                <h2>Map</h2>
+                <h6>Search on Our Map!</h6>
                 <ul class="client wow fadeIn delay-05s">
-                    <li><a href="#">
-                        <img src="Images/img/client-pic1.jpg" alt="">
+                    <li><a href="Map.aspx">
+                        <img src="Images/letsmoveto.png" alt="">
                         <%--  <h3>James Bond</h3>
                 <span>License To Drink Inc.</span>--%>
                     </a></li>
@@ -345,11 +348,11 @@
                 	<span><strong>Monday - Thursday:</strong> 10am - 6pm<br><strong>Friday:</strong> People work on Fridays now?<br><strong>Saturday - Sunday:</strong> Best not to ask.</span>
                 </div>--%>
                         <ul class="social-link">
-                            <li class="twitter"><a href="#"><i class="fa-twitter"></i></a></li>
+                            <li class="twitter"><a href="https://twitter.com/Where2nextTruss"><i class="fa-twitter"></i></a></li>
                             <li class="facebook"><a href="#"><i class="fa-facebook"></i></a></li>
-                            <li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>
+                            <%--<li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>--%>
                             <li class="gplus"><a href="#"><i class="fa-google-plus"></i></a></li>
-                            <li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>
+                            <%--<li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>--%>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-sm-5 wow fadeInUp delay-05s">
