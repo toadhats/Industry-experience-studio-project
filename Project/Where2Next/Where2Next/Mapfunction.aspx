@@ -50,7 +50,7 @@
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
-<body style="background-color: #F3F9FE">
+<body style="background-color: white">
     <form id="form1" runat="server">
         <br />
         <div id="success" class="alert alert-success" runat="server" style="display: none">

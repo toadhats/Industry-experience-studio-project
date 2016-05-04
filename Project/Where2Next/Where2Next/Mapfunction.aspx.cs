@@ -141,47 +141,59 @@ namespace Where2Next
                             }
                         }
                     }
-                    query = query.Remove(query.Length - 7, 7);
-                    //Response.Write(query);//just for test.
-                    using (MySqlConnection cn = new MySqlConnection(connectionStr))
+                    try
                     {
-                        string Latitude = "";
-                        string Longitude = "";
-                        string NAME = "";
-                        string Locations = "";
-                        string address = "";
-                        string icon = "";
-                        string marker = "";
-                        cn.Open();
-                        MySqlCommand mcd = new MySqlCommand(query, cn);
-                        MySqlDataReader mdr = mcd.ExecuteReader();
-                        if (mdr.HasRows)
+                        query = query.Remove(query.Length - 7, 7);
+                       // Response.Write(query);//just for test.
+                        using (MySqlConnection cn = new MySqlConnection(connectionStr))
                         {
-                            while (mdr.Read())
+                            string Latitude = "";
+                            string Longitude = "";
+                            string NAME = "";
+                            string Locations = "";
+                            string address = "";
+                            string icon = "";
+                            string marker = "";
+                            cn.Open();
+                            MySqlCommand mcd = new MySqlCommand(query, cn);
+                            MySqlDataReader mdr = mcd.ExecuteReader();
+                            if (mdr.HasRows)
                             {
-                                successservice.Attributes["style"] = "display";
-                                Latitude = mdr.GetString(1);
-                                Longitude = mdr.GetString(2);
-                                NAME = mdr.GetString(0);
-                                address = mdr.GetString(3);
-                                icon = mdr.GetString(4);
-                                marker = mdr.GetString(5);
-                                Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(16);map.setCenter(" + marker + ".getPosition());});";
-                                js.Text = "<script type='text/javascript'>" +
-                     "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:13,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
+                                while (mdr.Read())
+                                {
+                                    successservice.Attributes["style"] = "display";
+                                    Latitude = mdr.GetString(1);
+                                    Longitude = mdr.GetString(2);
+                                    NAME = mdr.GetString(0);
+                                    address = mdr.GetString(3);
+                                    icon = mdr.GetString(4);
+                                    marker = mdr.GetString(5);
+                                    Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(16);map.setCenter(" + marker + ".getPosition());});";
+                                    js.Text = "<script type='text/javascript'>" +
+                         "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:13,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
 
+                                }
+                                mdr.Close();
+                                cn.Close();
                             }
-                            mdr.Close();
-                            cn.Close();
-                        }
-                        else
-                        {
-                            failservice.Attributes["style"] = "display";
-                            js.Text = @"<script type='text/javascript'>
+                            else
+                            {
+                                failservice.Attributes["style"] = "display";
+                                js.Text = @"<script type='text/javascript'>
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
+                            }
                         }
+                    }
+                    catch (Exception ERROR)
+                    {
+
+                        failservice.Attributes["style"] = "display";
+                        js.Text = @"<script type='text/javascript'>
+                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
+         </script> ";
+
                     }
                 }
             }
