@@ -368,8 +368,7 @@
         </div>
         <footer class="footer">
             <div class="container">
-                <div class="footer-logo"><a href="#">
-                    <img src="Images/img/footer-logo.png" alt=""></a></div>
+                
                 <span class="copyright">Copyright © 2015 | <a href="http://bootstraptaste.com/">Bootstrap Themes</a> by BootstrapTaste</span>
             </div>
             <!-- 
