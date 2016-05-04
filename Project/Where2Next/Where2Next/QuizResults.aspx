@@ -3,6 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <link href="http://allfont.net/allfont.css?fonts=montserrat-light" rel="stylesheet" type="text/css" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/css/style.css" rel="stylesheet" />
 
     <style type="text/css" media="screen">
         .tableHeading {
@@ -68,6 +71,12 @@
     </style>
 
     <asp:Literal ID="resultsTable" runat="server"></asp:Literal>
+    <br />
+    <%--<asp:HyperLink ID="hyperlink1" NavigateUrl="/quiz.aspx" Text="Search again?" runat="server" />--%>
+    <asp:Button ID="Button1" runat="server" Text="Search Again?" 
+        BackColor="#7cc576" BorderWidth="2px" Font-Bold="true" ForeColor="Black" 
+        Height="100" Width="150" 
+        PostBackUrl="~/Quiz.aspx"  />
+    
 
-    <asp:HyperLink ID="hyperlink1" NavigateUrl="/quiz.aspx" Text="Search again?" runat="server" />
 </asp:Content>
