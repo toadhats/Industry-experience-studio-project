@@ -218,7 +218,7 @@
                 <div style="text-align: center">
                     <h3>Click to find services</h3>
                 </div>
-                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Filter　</button>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Filter</button>
                 <br />
             </div>
         </div>
