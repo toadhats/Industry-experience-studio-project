@@ -15,9 +15,6 @@ namespace Where2Next
         // Variables for this page instance
         public List<string> selectedServices;
 
-        // delete this once results page is working
-        private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (ViewState["selectedServices"] == null)

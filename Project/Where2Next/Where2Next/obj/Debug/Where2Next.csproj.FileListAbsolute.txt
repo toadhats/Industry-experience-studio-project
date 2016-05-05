@@ -370,3 +370,5 @@ C:\Users\Anran\Documents\GitHub\Industry-experience-studio-project\Project\Where
 C:\Users\Anran\Documents\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\obj\Debug\Where2Next.csprojResolveAssemblyReference.cache
 C:\Users\Anran\Documents\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\obj\Debug\Where2Next.dll
 C:\Users\Anran\Documents\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\obj\Debug\Where2Next.pdb
+E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\Where2Next.dll.CodeAnalysisLog.xml
+E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\Where2Next.dll.lastcodeanalysissucceeded

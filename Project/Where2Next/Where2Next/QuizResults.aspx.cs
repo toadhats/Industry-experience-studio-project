@@ -15,18 +15,18 @@ namespace Where2Next
             {
                 // We probably got here from somewhere other than a completed quiz page, e.g a
                 // user/crawler tried entering a URL manually
-                System.Diagnostics.Debug.WriteLine("Reached quiz result page without a valid query parameter");
+                Trace.Write("Reached quiz result page without a valid query parameter");
             }
             else
             {
                 // Console.WriteLine("Arrived at page with encoded query {0}", Request["query"]);
                 var query = Base64ForUrlDecode(Request["query"]);
                 Console.WriteLine("Decoded query: {0}", query);
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                Trace.Write("Attempting connection to SQL db");
+
+                try
                 {
-                    connection.Open();
-                    MySqlCommand command = new MySqlCommand(query, connection);
-                    MySqlDataReader dataReader = command.ExecuteReader();
+                    MySqlDataReader dataReader = sendQuery(query);
                     if (dataReader.HasRows)
                     {
                         StringBuilder resultsTableBuilder = new StringBuilder();
@@ -46,15 +46,44 @@ namespace Where2Next
                         resultsTableBuilder.Append("</div> </div>"); // close our containers
                         resultsTable.Text = resultsTableBuilder.ToString();
                         dataReader.Close();
-                        connection.Close();
                     }
                     else
                     {
                         resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
                         dataReader.Close();
-                        connection.Close();
                     }
                 }
+                catch (MySqlException)
+                {
+                    resultsTable.Text = "<div class=\"sorryCard\" > <h2> Whoops, something went wrong. </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
+                }
+            }
+        }
+
+        public MySqlDataReader sendQuery(string query)
+        {
+            MySqlConnection connection = new MySqlConnection();
+
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                return dataReader;
+            }
+            catch (MySqlException e)
+            {
+                Trace.Warn(e.Message);
+                Trace.Warn(e.Source);
+                Trace.Warn(e.StackTrace);
+                Trace.Warn(e.InnerException.Message);
+                Trace.Warn(e.HelpLink);
+                throw e;
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
