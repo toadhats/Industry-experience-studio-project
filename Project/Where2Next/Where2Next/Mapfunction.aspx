@@ -31,7 +31,7 @@
                     );
                 var marker = new google.maps.Marker({
                     position: myLocation,
-                    icon: 'Images/location.png',
+                    icon: 'Images/Icon/here.png',
                     map: map
                 });
             });
