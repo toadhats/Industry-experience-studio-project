@@ -67,7 +67,7 @@ namespace Where2Next
                             Latitude = mdr.GetString(3);   //Laititude
                             Longitude = mdr.GetString(4);//Longitude
                             Suburb = mdr.GetString(1); //Suburb name
-                            Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var marker = new google.maps.Marker({position: suburb,icon: 'Images/pin.png'});marker.setMap(map);var infowindow = new google.maps.InfoWindow({content:' Welcome to " + Suburb + "'});infowindow.open(map,marker);google.maps.event.addListener(marker, 'click', function () {map.setZoom(16);map.setCenter(marker.getPosition());infowindow.open(map, marker);});";
+                            Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var marker = new google.maps.Marker({position: suburb,icon: 'Images/ICon/pins.png'});marker.setMap(map);var infowindow = new google.maps.InfoWindow({content:' Welcome to " + Suburb + "'});infowindow.open(map,marker);google.maps.event.addListener(marker, 'click', function () {map.setZoom(16);map.setCenter(marker.getPosition());infowindow.open(map, marker);});";
                             js.Text = "<script type='text/javascript'>" +
                  "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:13,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
