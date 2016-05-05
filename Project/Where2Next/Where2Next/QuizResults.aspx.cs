@@ -27,6 +27,7 @@ namespace Where2Next
                 try
                 {
                     MySqlDataReader dataReader = sendQuery(query);
+
                     if (dataReader.HasRows)
                     {
                         StringBuilder resultsTableBuilder = new StringBuilder();
@@ -45,13 +46,12 @@ namespace Where2Next
                         }
                         resultsTableBuilder.Append("</div> </div>"); // close our containers
                         resultsTable.Text = resultsTableBuilder.ToString();
-                        dataReader.Close();
                     }
                     else
                     {
                         resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
-                        dataReader.Close();
                     }
+                    dataReader.Close();
                 }
                 catch (MySqlException)
                 {
@@ -69,10 +69,11 @@ namespace Where2Next
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader(System.Data.CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
+
                 return dataReader;
             }
-            catch (MySqlException e)
+            catch (Exception e)
             {
                 Trace.Warn(e.Message);
                 Trace.Warn(e.Source);
@@ -80,10 +81,6 @@ namespace Where2Next
                 Trace.Warn(e.InnerException.Message);
                 Trace.Warn(e.HelpLink);
                 throw e;
-            }
-            finally
-            {
-                connection.Dispose();
             }
         }
 
