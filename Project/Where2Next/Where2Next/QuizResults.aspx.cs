@@ -21,7 +21,6 @@ namespace Where2Next
             {
                 // Console.WriteLine("Arrived at page with encoded query {0}", Request["query"]);
                 var query = Base64ForUrlDecode(Request["query"]);
-                Console.WriteLine("Decoded query: {0}", query);
                 Trace.Write("Attempting connection to SQL db");
 
                 try
@@ -31,18 +30,21 @@ namespace Where2Next
                     if (dataReader.HasRows)
                     {
                         StringBuilder resultsTableBuilder = new StringBuilder();
-                        resultsTableBuilder.Append("<h1>Results</h1> <div class=\"table\">" // Start of whole container
-                            + "<div class=\"tableHeading\"><h2> The following suburbs meet your requirements: </h2></div>" // Heading cell
-                            + "<div class=\"cardContainer\">"); // Inner container to fill with result cards
+                        resultsTableBuilder.Append("<div class=\"table\">" // Start of whole container
+                                                 + "<div class=\"tableHeading\"><h2> The following suburbs meet your requirements: </h2></div>" // Heading cell
+                                                 + "<div class=\"cardContainer\">"); // Inner container to fill with result cards
 
                         while (dataReader.Read())
                         {
                             string suburb = dataReader.GetString(0); // These are basically magic numbers ew
                             string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
-
-                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> <p>{1}</p> <hr> </div> ", suburb, postcode);
-
-                            // resultsTableBuilder.Append("</div>"); // End of card
+                            string img = dataReader.GetString(2);
+                            string imgCode = "";
+                            if (img.Length > 0)
+                            {
+                                imgCode += String.Format("<img src={0} alt={1}>", img, suburb);
+                            }
+                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> <p>{1}</p> <hr> {2} </div> ", suburb, postcode, imgCode);
                         }
                         resultsTableBuilder.Append("</div> </div>"); // close our containers
                         resultsTable.Text = resultsTableBuilder.ToString();
@@ -78,7 +80,6 @@ namespace Where2Next
                 Trace.Warn(e.Message);
                 Trace.Warn(e.Source);
                 Trace.Warn(e.StackTrace);
-                Trace.Warn(e.InnerException.Message);
                 Trace.Warn(e.HelpLink);
                 throw e;
             }

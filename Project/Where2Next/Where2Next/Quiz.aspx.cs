@@ -85,10 +85,10 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
 
             // construct query and send to DB
-            queryBuilder.Append("SELECT DISTINCT SUBURB_GNAF.SUBURB, SUBURB_GNAF.POSTCODE FROM SUBURB_GNAF");
+            queryBuilder.Append("SELECT DISTINCT s.SUBURB, GROUP_CONCAT(s.POSTCODE SEPARATOR ', '), s.picURL FROM SUBURB_GNAF s");
             foreach (var service in selectedServices)
             {
-                queryBuilder.Append(" INNER JOIN " + service + " ON SUBURB_GNAF.SUBURB = " + service + ".SUBURB");
+                queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB GROUP BY s.SUBURB;");
             }
 
             // ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete
