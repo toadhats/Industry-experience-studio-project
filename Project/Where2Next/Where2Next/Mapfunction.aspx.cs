@@ -126,16 +126,16 @@ namespace Where2Next
                             {
                                 if (System.Text.RegularExpressions.Regex.IsMatch(TextBox1.Text.Trim(), "^\\d+$"))//to check whether textbox is number.
                                 {
-                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,CONCAT(suburb,id) as marker from " + box.ID + " where postcode='" + TextBox1.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
+                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " where postcode='" + TextBox1.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
 
                                 }
                                 else if (System.Text.RegularExpressions.Regex.IsMatch(TextBox1.Text.Trim(), "^\\w+$"))//to check whether textbox is not number.
                                 {
-                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,CONCAT(suburb,id) as marker from " + box.ID + " where suburb='" + TextBox1.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
+                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " where suburb='" + TextBox1.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
                                 }
                                 else
                                 {
-                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,CONCAT(suburb,id) as marker from " + box.ID + " and LATITUDE !=0 and LATITUDE is not null union ";
+                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " and LATITUDE !=0 and LATITUDE is not null union ";
                                 }
 
                             }
@@ -151,7 +151,6 @@ namespace Where2Next
                             string Longitude = "";
                             string NAME = "";
                             string Locations = "";
-                            string address = "";
                             string icon = "";
                             string marker = "";
 
@@ -168,7 +167,6 @@ namespace Where2Next
                                     Latitude = mdr.GetString(1);
                                     Longitude = mdr.GetString(2);
                                     NAME = mdr.GetString(0);
-                                    address = mdr.GetString(3);
                                     icon = mdr.GetString(4);
                                     marker = mdr.GetString(5);
                                     Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(18);map.setCenter(" + marker + ".getPosition());});";
