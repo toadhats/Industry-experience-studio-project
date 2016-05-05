@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Net;
 using System.Text;
+using MySql.Data.MySqlClient;
 
 
 
@@ -71,5 +72,39 @@ namespace Where2Next
                 }
             }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
+            using (MySqlConnection cn = new MySqlConnection(connectionStr))
+            {
+                cn.Open();
+                Response.Write("can link to mysql");
+                cn.Close();
+            }
+
+
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            String connectionStr = @"Data Source=au-cdbr-azure-southeast-a.cloudapp.net; Database=Where2Next; User ID=bcb3c5458db67d; password='2821061a'";
+            using (MySqlConnection cn = new MySqlConnection(connectionStr))
+            {
+                cn.Open();
+                Response.Write("can link to mysql");
+                cn.Close();
+            }
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            String connectionStr = @"Data Source=13.73.117.189; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
+            using (MySqlConnection cn = new MySqlConnection(connectionStr))
+            {
+                cn.Open();
+                Response.Write("can link to mysql");
+                cn.Close();
+            }
+        }
+    }
     }

@@ -47,6 +47,16 @@
         <br />
         <asp:Literal ID="js" runat="server"></asp:Literal>
     
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="VM" />
+&nbsp;&nbsp;
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="cleanDB" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="VM WITH IP" />
+        <br />
+    
     </div>
 
     </form>
