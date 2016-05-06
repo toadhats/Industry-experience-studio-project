@@ -22,10 +22,11 @@ namespace Where2Next
                 // Console.WriteLine("Arrived at page with encoded query {0}", Request["query"]);
                 var query = Base64ForUrlDecode(Request["query"]);
                 Trace.Write("Attempting connection to SQL db");
+                MySqlDataReader dataReader = null;
 
                 try
                 {
-                    MySqlDataReader dataReader = sendQuery(query);
+                    dataReader = sendQuery(query);
 
                     if (dataReader.HasRows)
                     {
@@ -38,13 +39,13 @@ namespace Where2Next
                         {
                             string suburb = dataReader.GetString(0); // These are basically magic numbers ew
                             string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
-                            string img = dataReader.GetString(2);
-                            string imgCode = "";
-                            if (img.Length > 0)
-                            {
-                                imgCode += String.Format("<img src={0} alt={1}>", img, suburb);
-                            }
-                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> <p>{1}</p> <hr> {2} </div> ", suburb, postcode, imgCode);
+                            //string img = dataReader.GetString(2);
+                            //string imgCode = "";
+                            //if (img.Length > 0)
+                            //{
+                            //    imgCode += String.Format("<img src={0} alt={1}>", img, suburb);
+                            //}
+                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> <p>{1}</p> <hr> </div> ", suburb, postcode);
                         }
                         resultsTableBuilder.Append("</div> </div>"); // close our containers
                         resultsTable.Text = resultsTableBuilder.ToString();
@@ -53,22 +54,26 @@ namespace Where2Next
                     {
                         resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
                     }
-                    dataReader.Close();
                 }
                 catch (MySqlException)
                 {
                     resultsTable.Text = "<div class=\"sorryCard\" > <h2> Whoops, something went wrong. </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
+                }
+                finally
+                {
+                    if (dataReader != null)
+                        dataReader.Close();
+                    else Trace.Write("DataReader was never initialised.");
                 }
             }
         }
 
         public MySqlDataReader sendQuery(string query)
         {
-            MySqlConnection connection = new MySqlConnection();
-
+            
             try
             {
-                connection = new MySqlConnection(connectionString);
+                MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = command.ExecuteReader(System.Data.CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
