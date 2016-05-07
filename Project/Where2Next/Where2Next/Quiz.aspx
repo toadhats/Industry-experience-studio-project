@@ -38,7 +38,7 @@
         }
     </style>
     <div id="question" runat="server">
-        <h3>Please choose the option you prefer the best:</h3>
+        <h3>Select the services you're interested in:</h3>
         <br />
         <br />
 

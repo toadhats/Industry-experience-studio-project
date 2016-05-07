@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="QuizCategories.aspx.cs" Inherits="Where2Next.QuizCategories" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ContentPlaceHolderID="extraHeadContent" runat="server">
+
     <link href="Content/bootstrap.min.css" rel="stylesheet">
     <script src="Content/jquery.min.js"></script>
     <script src="Content/bootstrap.min.js"></script>
@@ -96,6 +97,9 @@
                 object-fit: contain;
             }
     </style>
+</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1 class="tableHeading">Select the categories you're interested in:</h1>
     <div id="categories" runat="server" class="cardContainer">

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="QuizResults.aspx.cs" Inherits="Where2Next.QuizResults" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ContentPlaceHolderID="extraHeadContent" runat="server">
 
     <link href="http://allfont.net/allfont.css?fonts=montserrat-light" rel="stylesheet" type="text/css" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
@@ -69,6 +69,9 @@
                 margin: 15px;
             }
     </style>
+</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <asp:Literal ID="resultsTable" runat="server"></asp:Literal>
     <br />

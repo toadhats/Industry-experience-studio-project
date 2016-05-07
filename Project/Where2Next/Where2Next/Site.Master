@@ -20,6 +20,8 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
+
+    <asp:ContentPlaceHolder ID="extraHeadContent" runat="server" />
 </head>
 <body>
     <form runat="server">

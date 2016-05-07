@@ -74,12 +74,13 @@ namespace Where2Next
 
         public MySqlDataReader sendQuery(string query)
         {
+            MySqlConnection connection = null;
             try
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(query, connection);
-                command.CommandTimeout = 0; // Ugly hack be careful with this
+                command.CommandTimeout = 60; // Ugly hack to check if timeouts are causing the problem, be careful with this
                 MySqlDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
 
                 return dataReader;
@@ -90,6 +91,7 @@ namespace Where2Next
                 Trace.Warn(e.Source);
                 Trace.Warn(e.StackTrace);
                 Trace.Warn(e.HelpLink);
+                if (connection != null) connection.Close();
                 throw e;
             }
         }
