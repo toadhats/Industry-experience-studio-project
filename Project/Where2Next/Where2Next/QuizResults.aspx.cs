@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Text;
 using System.Web;
 
@@ -70,13 +71,13 @@ namespace Where2Next
 
         public MySqlDataReader sendQuery(string query)
         {
-            
             try
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = command.ExecuteReader(System.Data.CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
+                command.CommandTimeout = 0; // Ugly hack be careful with this
+                MySqlDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
 
                 return dataReader;
             }

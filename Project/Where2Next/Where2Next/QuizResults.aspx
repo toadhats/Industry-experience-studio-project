@@ -10,7 +10,7 @@
     <style type="text/css" media="screen">
         .tableHeading {
             font-family: 'montserrat light', montserrat, 'Helvetica Neue LT Pro', sans-serif;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .cardContainer {
@@ -29,7 +29,7 @@
             float: left;
             position: relative;
             width: 188px;
-            height: 188px;
+            height: 116px;
             font-family: 'montserrat light', montserrat, 'Helvetica Neue LT Pro', sans-serif;
             line-height: 2;
         }
@@ -40,13 +40,6 @@
 
         .requestedService {
             font-size: small;
-        }
-
-        .resultCard img {
-            object-fit: contain;
-            width: 95%;
-            height: auto;
-            display: inline-block;
         }
 
         hr {
@@ -80,8 +73,10 @@
     <asp:Literal ID="resultsTable" runat="server"></asp:Literal>
     <br />
     <%--<asp:HyperLink ID="hyperlink1" NavigateUrl="/quiz.aspx" Text="Search again?" runat="server" />--%>
-    <asp:Button ID="Button1" runat="server" Text="Search Again?"
-        BackColor="#7cc576" BorderWidth="2px" Font-Bold="true" ForeColor="Black"
-        Height="100" Width="150"
-        PostBackUrl="~/Quiz.aspx" />
+    <asp:Button ID="Button1" runat="server" Text="Search Again?" 
+        BackColor="#7cc576" BorderWidth="2px" Font-Bold="true" ForeColor="Black" 
+        Height="100" Width="150" 
+        PostBackUrl="~/Quiz.aspx"  />
+    
+
 </asp:Content>

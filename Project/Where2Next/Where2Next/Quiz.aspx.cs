@@ -85,14 +85,13 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
 
             // construct query and send to DB
-            queryBuilder.Append("SELECT DISTINCT s.SUBURB, GROUP_CONCAT(s.POSTCODE SEPARATOR ', '), FROM SUBURB_GNAF s");
+            queryBuilder.Append("SELECT DISTINCT s.SUBURB, GROUP_CONCAT(s.POSTCODE SEPARATOR ', ') FROM SUBURB_GNAF s");
             foreach (var service in selectedServices)
             {
-                queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB GROUP BY s.SUBURB DESC");
+                queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB");
             }
+            queryBuilder.Append(" GROUP BY s.SUBURB DESC;"); // Grouping by suburb name to concatenate the postcodes
 
-            // ClientError("Query that will be sent: " + queryToSend); // For debug purposes delete
-            // once confirmed working
             var encodedQuery = Base64ForUrlEncode(queryBuilder.ToString());
             var tempDecodedQuery = Encoding.UTF8.GetString(HttpServerUtility.UrlTokenDecode(encodedQuery));
             Response.Redirect("quizResults.aspx?query=" + encodedQuery);
