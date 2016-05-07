@@ -85,7 +85,7 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
 
             // construct query and send to DB
-            queryBuilder.Append("SELECT DISTINCT s.SUBURB, GROUP_CONCAT(s.POSTCODE SEPARATOR ', ') FROM SUBURB_GNAF s");
+            queryBuilder.Append("SELECT DISTINCT s.SUBURB, GROUP_CONCAT(DISTINCT s.POSTCODE ORDER BY s.POSTCODE SEPARATOR ', ') FROM SUBURB_GNAF s");
             foreach (var service in selectedServices)
             {
                 queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB");

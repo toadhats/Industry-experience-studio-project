@@ -73,10 +73,9 @@
     <asp:Literal ID="resultsTable" runat="server"></asp:Literal>
     <br />
     <%--<asp:HyperLink ID="hyperlink1" NavigateUrl="/quiz.aspx" Text="Search again?" runat="server" />--%>
-    <asp:Button ID="Button1" runat="server" Text="Search Again?" 
-        BackColor="#7cc576" BorderWidth="2px" Font-Bold="true" ForeColor="Black" 
-        Height="100" Width="150" 
-        PostBackUrl="~/Quiz.aspx"  />
-    
-
+    <%-- <asp:Button ID="Button1" runat="server" Text="Search Again?"
+        BackColor="#7cc576" BorderWidth="2px" Font-Bold="true" ForeColor="Black"
+        Height="100" Width="150"
+        PostBackUrl="~/Quiz.aspx" />--%>
+    <button type="button" class="btn btn-primary">Search again?</button>
 </asp:Content>
