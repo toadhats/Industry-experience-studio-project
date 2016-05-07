@@ -58,7 +58,7 @@ namespace Where2Next
                 }
                 catch (MySqlException)
                 {
-                    resultsTable.Text = "<div class=\"sorryCard\" > <h2> Whoops, something went wrong. </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
+                    resultsTable.Text = "<div class=\"sorryCard\" > <h2> Whoops, something went wrong. </h2>";
                 }
                 finally
                 {

@@ -77,5 +77,5 @@
         BackColor="#7cc576" BorderWidth="2px" Font-Bold="true" ForeColor="Black"
         Height="100" Width="150"
         PostBackUrl="~/Quiz.aspx" />--%>
-    <button type="button" class="btn btn-primary">Search again?</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='/Quiz';">Search again?</button>
 </asp:Content>
