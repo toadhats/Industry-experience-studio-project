@@ -43,7 +43,6 @@ namespace Where2Next
 
                 using (MySqlConnection cn = new MySqlConnection(connectionStr))//connection to database
                 {
-                    cn.Open();//op the database
                     string s;
                     String Locations = "";
                     string Latitude = "";
@@ -58,7 +57,9 @@ namespace Where2Next
                     {
                         s = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from suburb_gnaf where suburb = '" + TextBox1.Text + "'";
                     }
-                    try {
+                    try
+                    {
+                        cn.Open();//op the database
                         MySqlCommand mcd = new MySqlCommand(s, cn);
                         MySqlDataReader mdr = mcd.ExecuteReader();  //create a reader
 
@@ -77,8 +78,6 @@ namespace Where2Next
          </script> ";
 
                             }
-                            mdr.Close();
-                            cn.Close();
                         }
                         else
                         {
@@ -87,10 +86,15 @@ namespace Where2Next
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
                         }
+                        mdr.Close();
+                        cn.Close();
                     }
-
                     catch (Exception ex)
-                    { 
+                    {
+                        if (cn != null)
+                        {
+                            cn.Close();
+                        }
                         fail.Attributes["style"] = "display";
                         js.Text = @"<script type='text/javascript'>
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
@@ -155,19 +159,19 @@ namespace Where2Next
                             }
                         }
                     }
-                    try
+                    query = query.Remove(query.Length - 7, 7);//Because when use above query, it will automic generate the 'union at last', therefore we need to use the method to delete the 'union'
+                                                              //Response.Write(query);//just for test.
+                    using (MySqlConnection cn = new MySqlConnection(connectionStr))
                     {
-                        query = query.Remove(query.Length - 7, 7);//Because when use above query, it will automic generate the 'union at last', therefore we need to use the method to delete the 'union'
-                        //Response.Write(query);//just for test.
-                        using (MySqlConnection cn = new MySqlConnection(connectionStr))
-                        {
+
                             string Latitude = "";
                             string Longitude = "";
                             string NAME = "";
                             string Locations = "";
                             string icon = "";
                             string marker = "";
-
+                        try
+                        {
                             cn.Open();
                             MySqlCommand mcd = new MySqlCommand(query, cn);
                             MySqlDataReader mdr = mcd.ExecuteReader();
@@ -184,14 +188,13 @@ namespace Where2Next
                                     icon = mdr.GetString(4);
                                     marker = mdr.GetString(5);
                                     Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(18);map.setCenter(" + marker + ".getPosition());});";
-                                   
+
 
                                 }
                                 js.Text = "<script type='text/javascript'>" +
 "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:14,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
-                                mdr.Close();
-                                cn.Close();
+
 
                             }
                             else
@@ -201,16 +204,22 @@ namespace Where2Next
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
                             }
+                            mdr.Close();
+                            cn.Close();
                         }
-                    }
-                    catch (Exception ERROR)
-                    {
 
-                        failservice.Attributes["style"] = "display";
-                        js.Text = @"<script type='text/javascript'>
+                        catch (Exception ex)
+                        {
+                            if (cn != null)
+                            {
+                                cn.Close();
+                            }
+                            failservice.Attributes["style"] = "display";
+                            js.Text = @"<script type='text/javascript'>
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
 
+                        }
                     }
                 }
             }
