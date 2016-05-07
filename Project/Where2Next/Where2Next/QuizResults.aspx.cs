@@ -8,7 +8,7 @@ namespace Where2Next
 {
     public partial class QuizResults : System.Web.UI.Page
     {
-        private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'";
+        private string connectionString = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=where2next; User ID=where2next; password='nakdYzWd'; table cache=true";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace Where2Next
                     }
                     else
                     {
-                        resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> <a href=\"/quiz.aspx\"> <strong> Search again? </strong> </a> </div>";
+                        resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> </div>";
                     }
                 }
                 catch (MySqlException)
@@ -63,7 +63,10 @@ namespace Where2Next
                 finally
                 {
                     if (dataReader != null)
+                    {
                         dataReader.Close();
+                        Trace.Write("Closing the data reader");
+                    }
                     else Trace.Write("DataReader was never initialised.");
                 }
             }

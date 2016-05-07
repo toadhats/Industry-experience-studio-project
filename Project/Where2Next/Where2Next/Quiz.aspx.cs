@@ -90,7 +90,7 @@ namespace Where2Next
             {
                 queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB");
             }
-            queryBuilder.Append(" GROUP BY s.SUBURB DESC;"); // Grouping by suburb name to concatenate the postcodes
+            queryBuilder.Append(" GROUP BY s.SUBURB ASC;"); // Grouping by suburb name to concatenate the postcodes
 
             var encodedQuery = Base64ForUrlEncode(queryBuilder.ToString());
             var tempDecodedQuery = Encoding.UTF8.GetString(HttpServerUtility.UrlTokenDecode(encodedQuery));
