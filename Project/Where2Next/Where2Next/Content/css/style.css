@@ -6,6 +6,9 @@
  Author URI: http://bootstraptaste.com
  */
 
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400);
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
 /* CSS Document */
 
 /*********************************************************************************/
@@ -42,7 +45,7 @@
     #logo a {
         text-decoration: none;
         color: /*rgba(255,255,255,1)*/ #222222;
-        font-weight:900;
+        font-weight: 900;
     }
 
 /*********************************************************************************/
@@ -73,24 +76,20 @@
             font-size: 1.5em;
             /*color: rgba(255,255,255,0.80);*/
             color: #222222;
-            font-weight:700;
-            font-family:"Montserrat", sans-serif;
+            font-weight: 700;
+            font-family: "Montserrat", sans-serif;
         }
 
-        /*#menu li:hover a, #menu li.active a, #menu li.active span {
-        }
-
-    #menu .active a {
-        background: #f3cc2f;
-        border-radius: 6px;
-        color: rgba(255,255,255,1);
-        color: #3f0900;
-    }*/
+/*Change colour when cursor move on*/
+            #menu li a:hover {
+                background-color: #2699f2;
+                color:white;
+            }
 
 #footer {
     width: 100%;
     height: 80px;
-    position:absolute;
+    position: absolute;
     bottom: 0;
     left: 0px;
     display: block;
@@ -772,14 +771,14 @@ img {
     text-align: center;
 }
 
-    .business-talking h2 {
+    /*.business-talking h2 {
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         padding: 0;
         margin: 20px 0 70px;
         text-transform: uppercase;
         font-size: 42px;
-        color: #fff;
+        color: #fff;*/
     }
 
 
@@ -949,7 +948,7 @@ img {
 }
 
     .copyright a {
-        color: #7cc576;
+        color: black;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s ease-in-out;

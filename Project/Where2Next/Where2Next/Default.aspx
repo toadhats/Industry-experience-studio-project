@@ -65,7 +65,7 @@
             <!--main-nav-start-->
             <div class="container">
                 <ul class="main-nav">
-                    <li><a href="#header">Home</a></li>
+                    <li><a href="#header">Top</a></li>
                     <li><a href="#service">Discover</a></li>
                     <li><a href="#Portfolio">Profile</a></li>
                     <li class="small-logo"><a href="#header">
@@ -320,7 +320,8 @@
         <section class="business-talking">
             <!--business-talking-start-->
             <div class="container">
-                <h2>Enjoy your next suburb!</h2>
+                <h2>Contact Us</h2>
+                <%--<h6>Tell us if you have any feedbacks!</h6>--%>
             </div>
         </section>
         <!--business-talking-end-->
@@ -352,15 +353,16 @@
                             <li class="facebook"><a href="https://www.facebook.com/where2next.truss"><i class="fa-facebook"></i></a></li>
                             <%--<li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>--%>
                             <li class="gplus"><a href="https://plus.google.com/u/0/106262326426235513979"><i class="fa-google-plus"></i></a></li>
-                            <%--<li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>--%>
+                            <%--<li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>--%>                            
                         </ul>
-                    </div>
+                                            </div>
                     <div class="col-lg-6 col-sm-5 wow fadeInUp delay-05s">
                         <div class="form">
-                            <input class="input-text" id="e-name" type="text" name="" value="Your Name *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+                            <img src="Images/Monash.jpg" />
+                            <%--<input class="input-text" id="e-name" type="text" name="" value="Your Name *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
                             <input class="input-text" id="e-email" type="text" name="" value="Your E-mail *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
                             <textarea class="input-text text-area" id="e-message" cols="0" rows="0" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
-                            <input class="input-btn" type="submit" value="send message">
+                            <input class="input-btn" type="submit" value="send message">--%>
                         </div>
                     </div>
                 </div>
