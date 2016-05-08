@@ -56,11 +56,11 @@
             <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             <div id="header" class="container">
                 <div id="logo">
-                    <h1><a runat="server" href="~/">Where2Next</a></h1>
+                    <h1><a runat="server" href="~/Default">Where2Next</a></h1>
                 </div>
                 <div id="menu">
                     <ul>
-                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/Default">Home</a></li>
                         <li><a runat="server" href="~/Quiz">Discover</a></li>
                         <li><a runat="server" href="~/Map">Map</a></li>
                         <li><a runat="server" href="~/Profile">Profile</a></li>
