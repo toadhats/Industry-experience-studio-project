@@ -228,7 +228,7 @@
                     <div class="team-leader-box">
                         <div class="team-leader wow fadeInDown delay-03s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/img/team-leader-pic1.jpg" alt="">
+                            <img src="Images/Jonathan.png" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
@@ -243,7 +243,7 @@
                     <div class="team-leader-box">
                         <div class="team-leader  wow fadeInDown delay-06s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/img/team-leader-pic2.jpg" alt="">
+                            <img src="Images/Colin.jpg" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
@@ -258,7 +258,7 @@
                     <div class="team-leader-box">
                         <div class="team-leader wow fadeInDown delay-09s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/img/team-leader-pic2.jpg" alt="">
+                            <img src="Images/Chen.jpg" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
@@ -273,7 +273,7 @@
                     <div class="team-leader-box">
                         <div class="team-leader wow fadeInDown delay-09s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/img/team-leader-pic2.jpg" alt="">
+                            <img src="Images/Peter.jpg" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
@@ -288,7 +288,7 @@
                     <div class="team-leader-box">
                         <div class="team-leader wow fadeInDown delay-09s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/img/team-leader-pic3.jpg" alt="">
+                            <img src="Images/Ulupi.jpg" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
