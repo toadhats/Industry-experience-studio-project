@@ -170,8 +170,10 @@
     <Content Include="Images\Burwood.jpg" />
     <Content Include="Images\Camberwell.jpg" />
     <Content Include="Images\Carnegie.jpg" />
-    <Content Include="Images\caulfield.jpg" />
+    <Content Include="Images\Caulfield.jpg" />
+    <Content Include="Images\Chen.jpg" />
     <Content Include="Images\Clayton.jpg" />
+    <Content Include="Images\Colin.jpg" />
     <Content Include="Images\ContactUsImageTemp.png" />
     <Content Include="Images\house250px.png" />
     <Content Include="Images\housewhite50px.png" />
@@ -236,6 +238,7 @@
     <Content Include="Images\img\team-leader-pic2.jpg" />
     <Content Include="Images\img\team-leader-pic3.jpg" />
     <Content Include="Images\img\wp.png" />
+    <Content Include="Images\Jonathan.png" />
     <Content Include="Images\letsmoveto.png" />
     <Content Include="Images\Logos\tetrahedron basic %28lray%29.png" />
     <Content Include="Images\Logos\tetrahedron transparent.png" />
@@ -257,6 +260,7 @@
     <Content Include="Images\Logos\w2n logo with text [50px].png" />
     <Content Include="Images\Monash.jpg" />
     <Content Include="Images\MonashCaufield.png" />
+    <Content Include="Images\Peter.jpg" />
     <Content Include="Images\pins.png" />
     <Content Include="Images\quizbuttonimage\centrelink.png" />
     <Content Include="Images\quizbuttonimage\disabilityactivity.jpg" />
@@ -277,14 +281,10 @@
     <Content Include="Images\quizbuttonimage\sportingclubs.jpg" />
     <Content Include="Images\quizbuttonimage\swimmingpools.jpg" />
     <Content Include="Images\quizbuttonimage\tafe.jpg" />
-    <Content Include="Images\quizCategories\disability.png" />
-    <Content Include="Images\quizCategories\health.jpg" />
-    <Content Include="Images\quizCategories\higher_education.jpg" />
-    <Content Include="Images\quizCategories\sport.jpg" />
-    <Content Include="Images\quizCategories\social_services.jpg" />
-    <Content Include="Images\skkilda.jpg" />
+    <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\success.jpg" />
-    <Content Include="Images\toorak.jpg" />
+    <Content Include="Images\Toorak.jpg" />
+    <Content Include="Images\Ulupi.jpg" />
     <Content Include="Map.aspx" />
     <Content Include="Mapfunction.aspx" />
     <Content Include="Profile.aspx" />
