@@ -281,6 +281,11 @@
     <Content Include="Images\quizbuttonimage\sportingclubs.jpg" />
     <Content Include="Images\quizbuttonimage\swimmingpools.jpg" />
     <Content Include="Images\quizbuttonimage\tafe.jpg" />
+    <Content Include="Images\quizCategories\disability.png" />
+    <Content Include="Images\quizCategories\health.jpg" />
+    <Content Include="Images\quizCategories\higher_education.jpg" />
+    <Content Include="Images\quizCategories\social_services.jpg" />
+    <Content Include="Images\quizCategories\sport.jpg" />
     <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\success.jpg" />
     <Content Include="Images\Toorak.jpg" />
