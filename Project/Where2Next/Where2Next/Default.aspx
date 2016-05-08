@@ -97,7 +97,7 @@
                         <br /><br />
                         <div class="service-list">
                             <div class="service-list-col1">
-                                <i class="fa-apple"></i>
+                                <i class="fa-gear"></i>
                             </div>
                             <div class="service-list-col2">
                                 <h3>Discover Steps 2</h3>
@@ -107,7 +107,7 @@
                         <br /><br />
                         <div class="service-list">
                             <div class="service-list-col1">
-                                <i class="fa-medkit"></i>
+                                <i class="fa-gear"></i>
                             </div>
                             <div class="service-list-col2">
                                 <h3>Discover Step 3</h3>
@@ -124,9 +124,6 @@
             </div>
         </section>
         <!--main-section-end-->
-
-
-
 
 
         <section class="main-section paddind" id="Portfolio">
@@ -323,16 +320,15 @@
                         <div class="contact-info-box address clearfix">
                             <h3><i class=" icon-map-marker"></i>Address:</h3>
                             <span>
-                                <br />
-                                Monash University</span>
+                                900 Dandenong Rd, Caulfield East VIC 3145</span>
                         </div>
                         <div class="contact-info-box phone clearfix">
                             <h3><i class="fa-phone"></i>Phone:</h3>
-                            <span>xxxx-xxxxxx</span>
+                            <span>(03) 9903 2000</span>
                         </div>
                         <div class="contact-info-box email clearfix">
-                            <h3><i class="fa-pencil"></i>email:</h3>
-                            <span>xxx@student.monash.edu</span>
+                            <h3><i class="fa-pencil"></i>Website:</h3>
+                            <span>monash.edu.au</span>
                         </div>
                         <%--<div class="contact-info-box hours clearfix">
                 	<h3><i class="fa-clock-o"></i>Hours:</h3>
