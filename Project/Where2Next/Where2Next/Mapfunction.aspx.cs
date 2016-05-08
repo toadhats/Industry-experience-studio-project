@@ -1,24 +1,19 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Data;
 using System.Web.Configuration;
+using System.Web.UI;
 using System.Web.UI.WebControls;
-using DataDigester;
-using System.Configuration;
-using MySql.Data.MySqlClient;
-
 
 namespace Where2Next
 {
     public partial class Mapfunction : System.Web.UI.Page
     {
-
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -77,7 +72,6 @@ namespace Where2Next
                                 js.Text = "<script type='text/javascript'>" +
                      "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:13,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
-
                             }
                         }
                         else
@@ -101,7 +95,6 @@ namespace Where2Next
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
                     }
-
                 }
             }
         }
@@ -140,14 +133,13 @@ namespace Where2Next
                     {
                         if (c.GetType().ToString().Equals("System.Web.UI.WebControls.CheckBox")) //check whether the controls are the check box
                         {
-                            CheckBox box = c as CheckBox;  //if the controls is checkbox, then collect it 
+                            CheckBox box = c as CheckBox;  //if the controls is checkbox, then collect it
 
                             if (box.Checked)
                             {
                                 if (System.Text.RegularExpressions.Regex.IsMatch(SuburbBox.Text.Trim(), "^\\d+$"))//to check whether textbox is number.
                                 {
                                     query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " where postcode='" + SuburbBox.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
-
                                 }
                                 else if (System.Text.RegularExpressions.Regex.IsMatch(SuburbBox.Text.Trim(), "^\\w+$"))//to check whether textbox is not number.
                                 {
@@ -157,7 +149,6 @@ namespace Where2Next
                                 {
                                     query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " and LATITUDE !=0 and LATITUDE is not null union ";
                                 }
-
                             }
                         }
                     }
@@ -165,13 +156,12 @@ namespace Where2Next
                                                               //Response.Write(query);//just for test.
                     using (MySqlConnection connection = new MySqlConnection(connectionStr))
                     {
-
-                            string Latitude = "";
-                            string Longitude = "";
-                            string NAME = "";
-                            string Locations = "";
-                            string icon = "";
-                            string marker = "";
+                        string Latitude = "";
+                        string Longitude = "";
+                        string NAME = "";
+                        string Locations = "";
+                        string icon = "";
+                        string marker = "";
                         try
                         {
                             connection.Open();
@@ -179,25 +169,19 @@ namespace Where2Next
                             MySqlDataReader reader = command.ExecuteReader();//create a reader
                             if (reader.HasRows)
                             {
-
-
                                 while (reader.Read())
                                 {
-                                    successservice.Attributes["style"] = "display";   
+                                    successservice.Attributes["style"] = "display";
                                     Latitude = reader.GetString(1);
                                     Longitude = reader.GetString(2);
                                     NAME = reader.GetString(0);
                                     icon = reader.GetString(4);
                                     marker = reader.GetString(5);
                                     Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(18);map.setCenter(" + marker + ".getPosition());});";
-
-
                                 }
                                 js.Text = "<script type='text/javascript'>" +
 "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:14,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
-
-
                             }
                             else
                             {
@@ -209,10 +193,9 @@ namespace Where2Next
                             reader.Close();
                             connection.Close();
                         }
-
                         catch (Exception ex)
                         {
-                            if (connection != null)   //if conncection is error,then check wheather the connection is closed 
+                            if (connection != null)   //if conncection is error,then check wheather the connection is closed
                             {
                                 connection.Close();
                             }
@@ -220,7 +203,6 @@ namespace Where2Next
                             js.Text = @"<script type='text/javascript'>
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
-
                         }
                     }
                 }

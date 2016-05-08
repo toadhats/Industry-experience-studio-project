@@ -46,7 +46,7 @@ namespace Where2Next
                             //{
                             //    imgCode += String.Format("<img src={0} alt={1}>", img, suburb);
                             //}
-                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <h3>{0}</h3> <p>{1}</p> <hr> </div> ", suburb, postcode);
+                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <a href=\"SuburbProfile?query={0}\"><h3>{0}</h3> </a> <p>{1}</p> <hr> </div> ", suburb, postcode);
                         }
                         resultsTableBuilder.Append("</div> </div>"); // close our containers
                         resultsTable.Text = resultsTableBuilder.ToString();

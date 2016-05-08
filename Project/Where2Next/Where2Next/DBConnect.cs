@@ -156,5 +156,90 @@ namespace Where2Next
             dataReader.Close();
             return services;
         }
+
+        public Suburb getSuburb(string suburbName)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                OpenConnection();
+            }
+            StringBuilder queryBuilder = new StringBuilder();
+            queryBuilder.AppendFormat("SELECT s.suburb, s.postcode, s.latitude, s.longitude, s.wikiURL, s.picURL FROM where2next.suburb_gnaf s WHERE s.suburb = '{0}'", suburbName);
+            string query = queryBuilder.ToString();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = query;
+            cmd.Connection = connection;
+            var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
+
+            if (dataReader.HasRows)
+            {
+                dataReader.Read();
+                var name = dataReader.GetString(0);
+                var postcode = dataReader.GetString(1);
+                var latitude = dataReader.GetDouble(2).ToString();
+                var longitude = dataReader.GetDouble(3).ToString();
+                var wikiUrl = dataReader.GetString(4);
+                var picUrl = dataReader.GetString(5);
+                Suburb suburb = new Suburb(name, postcode, latitude, longitude, wikiUrl, picUrl);
+                return suburb;
+            }
+            else
+            {
+                return new Suburb();
+            }
+        }
+
+        public List<Service> getServiceList(string suburbName)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                OpenConnection();
+            }
+
+            // Get the full list of tables to check
+            string getTablesQuery = "SELECT tablename from where2next.categories";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = getTablesQuery;
+            cmd.Connection = connection;
+            var dataReader = cmd.ExecuteReader(); // We're NOT closing the connection here because we'll need to use it like a lot... though we might want different behaviour entirely if I go async
+
+            List<string> tableNames = new List<string>();
+            while (dataReader.Read())
+            {
+                tableNames.Add(dataReader.GetString(0));
+            }
+            dataReader.Close(); // Didn't set the property, so this DOESN'T close the connection, just the reader that we're done with
+
+            // Iterate over all the tables getting all the relevant services This is terrible and
+            // needs to be deleted And replaced with something less disgustingly inefficient and
+            // preferably async
+            List<Service> services = new List<Service>();
+            foreach (string tableName in tableNames)
+            {
+                string tq = String.Format("SELECT s.name, s.address, s.latitude, s.longitude, s.telephone, s.type, s.postcode from where2next.{0} s where s.suburb = '{1}'", tableName, suburbName);
+                MySqlCommand getServiceCmd = new MySqlCommand();
+                getServiceCmd.CommandText = tq;
+                getServiceCmd.Connection = connection;
+                var dr = getServiceCmd.ExecuteReader(); // We're NOT closing the connection here because we'll need to use it like a lot... though we might want different
+                // Hopefully we're getting rows from a given table now...
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        var sname = dr.GetString(0);
+                        var saddress = dr.GetString(1);
+                        var slatitude = "0";// dr.GetDouble(2).ToString(); // TODO: Fix this. Make it null tolerant
+                        var slongitude = "0";// dr.GetDouble(3).ToString();
+                        var stelephone = "0"; //dr.GetString(4); //TODO: Handle nulls!
+                        var stype = dr.GetString(5);
+                        var spostcode = dr.GetString(6);
+                        Service s = new Service(stype, sname, saddress, suburbName, "VIC", spostcode, slatitude, slongitude, stelephone);
+                        services.Add(s);
+                    }
+                }
+                dr.Close();
+            }
+            return services;
+        }
     }
 }

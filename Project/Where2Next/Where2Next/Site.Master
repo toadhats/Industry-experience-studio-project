@@ -63,7 +63,8 @@
                         <li><a runat="server" href="~/Default">Home</a></li>
                         <li><a runat="server" href="~/QuizCategories">Discover</a></li>
                         <li><a runat="server" href="~/Map">Map</a></li>
-                        <li><a runat="server" href="~/Profile">Profile</a></li>
+                        <li><a runat="server" href="~/SuburbProfile?query=caulfield">Profile</a></li>
+                        <%--TODO: UGLY HACK FIX THIS--%>
                     </ul>
                 </div>
             </div>
@@ -82,7 +83,7 @@
                     <img alt="Creative Commons Licence" style="border-width: 0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
                 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Where2Next</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />
                 Using open data provided by <a xmlns:dct="http://purl.org/dc/terms/" href="http://www.data.gov.au" rel="dct:source">http://www.data.gov.au</a>.<br />
-                Using Icon provided by <a  href="http://www.flaticon.com" rel="dct:source">http://www.flaticon.com</a>.<br />
+                Using Icon provided by <a href="http://www.flaticon.com" rel="dct:source">http://www.flaticon.com</a>.<br />
             </footer>
         </div>
     </form>

@@ -76,7 +76,7 @@ namespace Where2Next
         protected void SelectService(object sender, EventArgs e)
         {
             System.Web.UI.HtmlControls.HtmlButton button = (System.Web.UI.HtmlControls.HtmlButton)sender;
-            string selection = button.ID; var buttonCssClass = sender.GetType().GetProperty("CssClass");
+            string selection = button.ID;
             selectedServices = (List<string>)ViewState["selectedServices"]; // Read list out of view state
 
             if (selectedServices.Any(s => s == selection))
