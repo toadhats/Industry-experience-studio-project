@@ -5,7 +5,7 @@
     <script src="Content/jquery.min.js"></script>
     <script src="Content/bootstrap.min.js"></script>
     <div style="text-align: center">
-        <iframe runat="server" src="Mapfunction.aspx" width="1150" height="1100" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+        <iframe runat="server" src="Mapfunction.aspx" width="1150" height="1300" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
     </div>
 
 </asp:Content>

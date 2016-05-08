@@ -1036,3 +1036,9 @@ img {
     animation-delay: 1.2s;
     -webkit-animation-delay: 1.2s;
 }
+
+/*Map Page*/
+.checkbox {
+    font-family: "Montserrat", sans-serif;
+  font-size:15px;
+}

@@ -77,13 +77,16 @@
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>fail! </strong>We cannot find any service in your suburb.
         </div>
-
+                 <div id="failconnection" class="alert alert-warning" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>fail! </strong>There are some error in database.
+        </div>
         <div id="menu" style="height: 700px; width: 230px; float: left;">
 
             <div style="text-align: center">
                 <h3>Find your suburb</h3>
                 <br />
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="SuburbBox" runat="server"></asp:TextBox><br />
                 <br />
                 <asp:Button CssClass="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
                 <asp:Button CssClass="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br />
@@ -102,7 +105,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="schooltest" Text="　　　　　School" runat="server" /></div>
+                                        <asp:CheckBox ID="schooltest" Text="　　　School" runat="server" /></div>
                                     <br />
                                 </td>
 
@@ -110,7 +113,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="centrelink" Text="　　　　　CenterLink" runat="server" /></div>
+                                        <asp:CheckBox ID="centrelink" Text="　　　CenterLink" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -118,7 +121,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="library" Text="　　　　　Library" runat="server" /></div>
+                                        <asp:CheckBox ID="library" Text="　　　Library" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -126,7 +129,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="iceskating" Text="　　　　　Ice Skating" runat="server" /></div>
+                                        <asp:CheckBox ID="iceskating" Text="　　　Ice Skating" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -134,7 +137,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="disabilityactivity" Text="　　　　　Disability" runat="server" /></div>
+                                        <asp:CheckBox ID="disabilityactivity" Text="　　　Disability" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -142,7 +145,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="artsspaces" Text="　　　　　Art Space" runat="server" /></div>
+                                        <asp:CheckBox ID="artsspaces" Text="　　　Art Space" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -150,7 +153,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="gpsuper" Text="　　　　　GP Super Clinic" runat="server" /></div>
+                                        <asp:CheckBox ID="gpsuper" Text="　　　GP Super Clinic" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -158,7 +161,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="medicare" Text="　　　　　Medicare" runat="server" /></div>
+                                        <asp:CheckBox ID="medicare" Text="　　　Medicare" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -166,7 +169,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="publicinternet" Text="　　　　　Public Internet" runat="server" /></div>
+                                        <asp:CheckBox ID="publicinternet" Text="　　　Public Internet" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -174,7 +177,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="recreation" Text="　　　　　Recreation" runat="server" /></div>
+                                        <asp:CheckBox ID="recreation" Text="　　　Recreation" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -182,28 +185,28 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="rollerskating" Text="　　　　　Rollerskating" runat="server" /></div>
+                                        <asp:CheckBox ID="rollerskating" Text="　　　Rollerskating" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="skateparks" Text="　　　　　Skate Parks" runat="server" /></div>
+                                        <asp:CheckBox ID="skateparks" Text="　　　Skate Parks" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="sportingclubsorgs" Text="　　　　　Sport Club" runat="server" /></div>
+                                        <asp:CheckBox ID="sportingclubsorgs" Text="　　　Sport Club" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox ID="swimmingpools" Text="　　　　　Swimming Pools" runat="server" /></div>
+                                        <asp:CheckBox ID="swimmingpools" Text="　　　Swimming Pools" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
