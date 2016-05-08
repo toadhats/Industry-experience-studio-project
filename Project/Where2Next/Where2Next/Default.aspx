@@ -8,8 +8,6 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1">
 
         <title>Homepage</title>
-        <%--<link rel="icon" href="favicon.png" type="image/png">
-        <link rel="shortcut icon" href="favicon.ico" type="img/x-icon">--%>
 
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
@@ -20,8 +18,6 @@
         <link href="Content/css/responsive.css" rel="stylesheet" type="text/css">
         <link href="Content/css/animate.css" rel="stylesheet" type="text/css">
 
-        <!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
-
         <script type="text/javascript" src="Scripts/js/jquery.1.8.3.min.js"></script>
         <script type="text/javascript" src="Scripts/js/bootstrap.js"></script>
         <script type="text/javascript" src="Scripts/js/jquery-scrolltofixed.js"></script>
@@ -29,15 +25,6 @@
         <script type="text/javascript" src="Scripts/js/jquery.isotope.js"></script>
         <script type="text/javascript" src="Scripts/js/wow.js"></script>
         <script type="text/javascript" src="Scripts/js/classie.js"></script>
-
-
-
-
-        <!--[if lt IE 9]>
-    <script src="js/respond-1.1.0.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/html5element.js"></script>
-<![endif]-->
 
 
     </head>
@@ -89,7 +76,7 @@
                 <h6>The Discover function helps you to discover your interest suburbs.</h6>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
-                        <div class="service-list">
+                        <%--<div class="service-list">
                             <div class="service-list-col1">
                                 <i class="fa-paw"></i>
                             </div>
@@ -97,37 +84,40 @@
                                 <h3>Quiz Function 1</h3>
                                 <p>...</p>
                             </div>
-                        </div>
+                        </div>--%>
                         <div class="service-list">
                             <div class="service-list-col1">
                                 <i class="fa-gear"></i>
                             </div>
                             <div class="service-list-col2">
-                                <h3>Quiz Function  2</h3>
-                                <p>...</p>
+                                <h3>Discover Step  1</h3>
+                                <p>Choose your favourite categories</p>
                             </div>
                         </div>
+                        <br /><br />
                         <div class="service-list">
                             <div class="service-list-col1">
                                 <i class="fa-apple"></i>
                             </div>
                             <div class="service-list-col2">
-                                <h3>Quiz Function 3</h3>
-                                <p>...</p>
+                                <h3>Discover Steps 2</h3>
+                                <p>Have a look on the results</p>
                             </div>
                         </div>
+                        <br /><br />
                         <div class="service-list">
                             <div class="service-list-col1">
                                 <i class="fa-medkit"></i>
                             </div>
                             <div class="service-list-col2">
-                                <h3>Quiz Function 4</h3>
-                                <p>...</p>
+                                <h3>Discover Step 3</h3>
+                                <p>Search Again?</p>
                             </div>
                         </div>
                     </div>
                     <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-                        <img src="Images/img/macbook-pro.png" alt="">
+                        <%--<img src="Images/img/macbook-pro.png" alt="">--%>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/z4JWujzg9uU" frameborder="0" allowfullscreen></iframe> 
                     </figure>
 
                 </div>
@@ -157,38 +147,38 @@
             <div class="portfolioContainer wow fadeInUp delay-04s">
                 <div class=" Portfolio-box printdesign">
                     <a href="#">
-                        <img src="Images/img/Portfolio-pic1.jpg" alt=""></a>
-                    <h3>Suburb Example 1</h3>
+                        <img src="Images/Caulfield.jpg" alt=""></a>
+                    <h3>Caulfield</h3>
                     <%--<p>Print Design</p>--%>
                 </div>
                 <div class="Portfolio-box webdesign">
                     <a href="#">
-                        <img src="Images/img/Portfolio-pic2.jpg" alt=""></a>
-                    <h3>Suburb Example 2</h3>
+                        <img src="Images/Clayton.jpg" alt=""></a>
+                    <h3>Clayton</h3>
                     <%--<p>Web Design</p>--%>
                 </div>
                 <div class=" Portfolio-box branding">
                     <a href="#">
-                        <img src="Images/img/Portfolio-pic3.jpg" alt=""></a>
-                    <h3>Suburb Example 3</h3>
+                        <img src="Images/Carnegie.jpg" alt=""></a>
+                    <h3>Carnegie</h3>
                     <%--<p>Branding</p>--%>
                 </div>
                 <div class=" Portfolio-box photography">
                     <a href="#">
-                        <img src="Images/img/Portfolio-pic4.jpg" alt=""></a>
-                    <h3>Suburb Example 4</h3>
+                        <img src="Images/MalvernEast.jpg" alt=""></a>
+                    <h3>Malvern East</h3>
                     <%--<p>Photography</p>--%>
                 </div>
                 <div class=" Portfolio-box branding">
                     <a href="#">
-                        <img src="Images/img/Portfolio-pic5.jpg" alt=""></a>
-                    <h3>Suburb Example 5</h3>
+                        <img src="Images/StKilda.jpg" alt=""></a>
+                    <h3>St Kilda</h3>
                     <%--<p>Branding</p>--%>
                 </div>
                 <div class=" Portfolio-box photography">
                     <a href="#">
-                        <img src="Images/img/Portfolio-pic6.jpg" alt=""></a>
-                    <h3>Suburb Example 6</h3>
+                        <img src="Images/Toorak.jpg" alt=""></a>
+                    <h3>Toorak</h3>
                     <%--<p>Photography</p>--%>
                 </div>
             </div>
@@ -242,8 +232,8 @@
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
-                                <li><a href="#" class="fa-pinterest"></a></li>
-                                <li><a href="#" class="fa-google-plus"></a></li>
+                                <%--<li><a href="#" class="fa-pinterest"></a></li>
+                                <li><a href="#" class="fa-google-plus"></a></li>--%>
                             </ul>
                         </div>
                         <h3 class="wow fadeInDown delay-03s">Jonathan Warner</h3>
@@ -257,8 +247,8 @@
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
-                                <li><a href="#" class="fa-pinterest"></a></li>
-                                <li><a href="#" class="fa-google-plus"></a></li>
+                                <%--<li><a href="#" class="fa-pinterest"></a></li>
+                                <li><a href="#" class="fa-google-plus"></a></li>--%>
                             </ul>
                         </div>
                         <h3 class="wow fadeInDown delay-06s">Rongda Xu</h3>
@@ -272,8 +262,8 @@
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
-                                <li><a href="#" class="fa-pinterest"></a></li>
-                                <li><a href="#" class="fa-google-plus"></a></li>
+                                <%--<li><a href="#" class="fa-pinterest"></a></li>
+                                <li><a href="#" class="fa-google-plus"></a></li>--%>
                             </ul>
                         </div>
                         <h3 class="wow fadeInDown delay-09s">Chen Zhou</h3>
@@ -287,8 +277,8 @@
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
-                                <li><a href="#" class="fa-pinterest"></a></li>
-                                <li><a href="#" class="fa-google-plus"></a></li>
+                                <%--<li><a href="#" class="fa-pinterest"></a></li>
+                                <li><a href="#" class="fa-google-plus"></a></li>--%>
                             </ul>
                         </div>
                         <h3 class="wow fadeInDown delay-09s">Sheng Mao</h3>
@@ -302,8 +292,8 @@
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
-                                <li><a href="#" class="fa-pinterest"></a></li>
-                                <li><a href="#" class="fa-google-plus"></a></li>
+                                <%--<li><a href="#" class="fa-pinterest"></a></li>
+                                <li><a href="#" class="fa-google-plus"></a></li>--%>
                             </ul>
                         </div>
                         <h3 class="wow fadeInDown delay-09s">Ulupi Udaya</h3>
