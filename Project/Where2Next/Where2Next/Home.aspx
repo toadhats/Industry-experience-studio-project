@@ -48,8 +48,8 @@
         <div id="division" onmousedown="startDraggingDivision();" onmouseup="stopMove();"> 
            <button id="startbtn" onclick="javascript:window.location.href='Default.aspx';" 
                style="background-color: transparent; position:absolute;left:50%;margin-left:-250px;top:50%; font-family:Courier New, Courier, monospace;
-font-size:40px;color:white;width:300px; height:150px; 
-border:none; cursor:pointer;">Start !</button>
+font-size:80px;color:white;width:300px; height:150px; 
+border:none; cursor:pointer;">Start!</button>
             <%--<input id="start" type="button"  onclick="location.href = 'Default.aspx'" />--%>
             <%--<a href='Default.aspx' class='button'>ENTER SITE</a>--%>
         </div>

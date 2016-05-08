@@ -165,7 +165,6 @@
     <Content Include="Content\home.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Home.aspx" />
-    <Content Include="Home_.aspx" />
     <Content Include="Images\Burwood.jpg" />
     <Content Include="Images\Camberwell.jpg" />
     <Content Include="Images\Carnegie.jpg" />
@@ -350,13 +349,6 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home_.aspx.cs">
-      <DependentUpon>Home_.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home_.aspx.designer.cs">
-      <DependentUpon>Home_.aspx</DependentUpon>
     </Compile>
     <Compile Include="Map.aspx.cs">
       <DependentUpon>Map.aspx</DependentUpon>
