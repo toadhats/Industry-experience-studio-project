@@ -72,7 +72,7 @@
         <section class="main-section" id="service">
             <!--main-section-start-->
             <div class="container">
-                <h2>Discover</h2>
+                <h2><a href="Quiz.aspx">Discover</a></h2>
                 <h6>The Discover function helps you to discover your interest suburbs.</h6>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
@@ -132,7 +132,7 @@
         <section class="main-section paddind" id="Portfolio">
             <!--main-section-start-->
             <div class="container">
-                <h2>Profile</h2>
+                <h2><a href="Profile.aspx">Profile</a></h2>
                 <h6>Profile helps you to know your interest suburbs.</h6>
                 <%--      <div class="portfolioFilter">  
         <ul class="Portfolio-nav wow fadeIn delay-02s">
@@ -195,7 +195,7 @@
                         <p class="client-part-haead wow fadeInDown delay-05">Search on Our Maps!</p>
                     </div>
                 </div>--%>
-                <h2>Map</h2>
+                <h2><a href="Map.aspx">Map</a></h2>
                 <h6>Search on Our Map!</h6>
                 <ul class="client wow fadeIn delay-05s">
                     <li><a href="Map.aspx">
