@@ -61,7 +61,7 @@
                 <div id="menu">
                     <ul>
                         <li><a runat="server" href="~/Default">Home</a></li>
-                        <li><a runat="server" href="~/Quiz">Discover</a></li>
+                        <li><a runat="server" href="~/QuizCategories">Discover</a></li>
                         <li><a runat="server" href="~/Map">Map</a></li>
                         <li><a runat="server" href="~/Profile">Profile</a></li>
                     </ul>

@@ -111,7 +111,7 @@ namespace Where2Next
             queryBuilder.Append("SELECT DISTINCT s.SUBURB, GROUP_CONCAT(DISTINCT s.POSTCODE ORDER BY s.POSTCODE SEPARATOR ', ') FROM SUBURB_GNAF s");
             foreach (var service in selectedServices)
             {
-                queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB");
+                queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB"); // We've benchmarked this - short of a total database redesign it's still more or less the fastest practical way.
             }
             queryBuilder.Append(" GROUP BY s.SUBURB ASC;"); // Grouping by suburb name to concatenate the postcodes
 
