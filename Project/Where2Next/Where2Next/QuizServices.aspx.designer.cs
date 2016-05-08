@@ -10,7 +10,7 @@
 namespace Where2Next {
     
     
-    public partial class QuizCategories {
+    public partial class QuizServices {
         
         /// <summary>
         /// categories control.
@@ -22,13 +22,13 @@ namespace Where2Next {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl categories;
         
         /// <summary>
-        /// displayCategories control.
+        /// displayServices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder displayCategories;
+        protected global::System.Web.UI.WebControls.PlaceHolder displayServices;
         
         /// <summary>
         /// Button1 control.

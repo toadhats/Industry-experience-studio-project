@@ -119,5 +119,42 @@ namespace Where2Next
 
             return categories;
         }
+
+        public List<Tuple<string, string>> getServicesInCategories(List<string> categories)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                OpenConnection();
+            }
+            List<Tuple<string, string>> services = new List<Tuple<string, string>>();
+            StringBuilder queryBuilder = new StringBuilder();
+            queryBuilder.Append("SELECT DISTINCT c.tablename, c.table_displayName FROM where2next.categories c WHERE c.category IN (");
+            foreach (var cat in categories)
+            {
+                queryBuilder.Append(String.Format("'{0}', ", cat));
+            }
+            queryBuilder.Append("'none');"); // Partly a hack to deal with the trailing comma, partly in case I really do end up with a "none" category at any point
+
+            string query = queryBuilder.ToString();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = query;
+            cmd.Connection = connection;
+
+            var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
+
+            if (dataReader.HasRows)
+            {
+                while (dataReader.Read())
+                {
+                    services.Add(Tuple.Create(dataReader.GetString(0), dataReader.GetString(1)));
+                }
+            }
+            else
+            {
+                Trace.Write("Failed to get list of categories");
+            }
+            dataReader.Close();
+            return services;
+        }
     }
 }

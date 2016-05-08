@@ -92,5 +92,36 @@ namespace Where2Next
                 button.Attributes.Add("class", "categoryCard categorySelected"); // Add the class that highlights the card
             }
         }
+
+        public void NextButton(object sender, EventArgs e)
+        {
+            selectedCategories = (List<string>)ViewState["selectedCategories"]; // Get the persistant list out of the view state
+            if (selectedCategories.Count == 0)
+            {
+                ClientError("Please select at least one service.");
+                return;
+            }
+            var catListString = string.Join(",", (string[])selectedCategories.ToArray());
+            Response.Redirect(String.Format("QuizServices.aspx?query={0}", catListString));
+        }
+
+        private void ClientError(string message)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<script type = 'text/javascript'>");
+            sb.Append("window.onload=function(){");
+            sb.Append("alert('");
+            sb.Append(message);
+            sb.Append("')};");
+            sb.Append("</script>");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+        }
+
+        // For encoding the completed query to pass to the results page in the URL
+        public static string Base64ForUrlEncode(string query)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(query);
+            return HttpServerUtility.UrlTokenEncode(buffer);
+        }
     }
 }

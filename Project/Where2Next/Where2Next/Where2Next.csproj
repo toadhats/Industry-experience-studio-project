@@ -162,6 +162,7 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\quiz.css" />
     <Content Include="Content\home.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Home.aspx" />
@@ -249,6 +250,7 @@
     <Content Include="Images\quizCategories\social_services.jpg" />
     <Content Include="Images\quizCategories\placeholder.jpg" />
     <Content Include="Images\quizCategories\sport.jpg" />
+    <Content Include="Images\quizServices\placeholder.jpg" />
     <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\Toorak.jpg" />
     <Content Include="Images\Ulupi.jpg" />
@@ -277,6 +279,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="QuizCategories.aspx" />
+    <Content Include="QuizServices.aspx" />
     <Content Include="Scripts\js\home.js" />
     <Content Include="SuburbPic.aspx" />
     <None Include="Properties\PublishProfiles\where2next - Web Deploy.pubxml" />
@@ -410,6 +413,13 @@
     </Compile>
     <Compile Include="QuizResults.aspx.designer.cs">
       <DependentUpon>QuizResults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuizServices.aspx.cs">
+      <DependentUpon>QuizServices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuizServices.aspx.designer.cs">
+      <DependentUpon>QuizServices.aspx</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
     <Compile Include="Settings.cs" />

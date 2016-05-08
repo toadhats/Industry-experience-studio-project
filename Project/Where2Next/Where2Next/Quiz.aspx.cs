@@ -76,8 +76,6 @@ namespace Where2Next
             selectedServices = (List<string>)ViewState["selectedServices"]; // Get the persistant list out of the view state
             if (selectedServices.Count == 0)
             {
-                // Console.Error.WriteLine("Attempting to create a query, but user has not selected
-                // anything"); // An error should be displayed to the user in this case
                 ClientError("Please select at least one service.");
                 return;
             }
