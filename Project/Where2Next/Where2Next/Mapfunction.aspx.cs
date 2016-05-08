@@ -60,8 +60,8 @@ namespace Where2Next
                     }
                     try
                     {
-                        connection.Open();//op the database
-                        MySqlCommand command = new MySqlCommand(query, connection);
+                        connection.Open();//open the database
+                        MySqlCommand command = new MySqlCommand(query, connection);//make a query
                         MySqlDataReader reader = command.ExecuteReader();  //create a reader
 
                         if (reader.HasRows)
@@ -124,7 +124,7 @@ namespace Where2Next
                 successLocation.Attributes["style"] = "display:none";
                 failLocation.Attributes["style"] = "display:none";
                 successservice.Attributes["style"] = "display:none";
-                failservice.Attributes["style"] = "display:none";
+                failservice.Attributes["style"] = "display:none";//hide all of the alert
                 string query = "";
                 String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
                 if (SuburbBox.Text == "")
@@ -140,7 +140,7 @@ namespace Where2Next
                     {
                         if (c.GetType().ToString().Equals("System.Web.UI.WebControls.CheckBox")) //check whether the controls are the check box
                         {
-                            CheckBox box = c as CheckBox;  //if the controls is the test box, then collect it 
+                            CheckBox box = c as CheckBox;  //if the controls is checkbox, then collect it 
 
                             if (box.Checked)
                             {
@@ -175,15 +175,15 @@ namespace Where2Next
                         try
                         {
                             connection.Open();
-                            MySqlCommand command = new MySqlCommand(query, connection);
-                            MySqlDataReader reader = command.ExecuteReader();
+                            MySqlCommand command = new MySqlCommand(query, connection);//make a connection
+                            MySqlDataReader reader = command.ExecuteReader();//create a reader
                             if (reader.HasRows)
                             {
 
 
                                 while (reader.Read())
                                 {
-                                    successservice.Attributes["style"] = "display";
+                                    successservice.Attributes["style"] = "display";   
                                     Latitude = reader.GetString(1);
                                     Longitude = reader.GetString(2);
                                     NAME = reader.GetString(0);
@@ -212,7 +212,7 @@ namespace Where2Next
 
                         catch (Exception ex)
                         {
-                            if (connection != null)
+                            if (connection != null)   //if conncection is error,then check wheather the connection is closed 
                             {
                                 connection.Close();
                             }
