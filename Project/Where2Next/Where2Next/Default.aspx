@@ -25,11 +25,9 @@
         <script type="text/javascript" src="Scripts/js/jquery.isotope.js"></script>
         <script type="text/javascript" src="Scripts/js/wow.js"></script>
         <script type="text/javascript" src="Scripts/js/classie.js"></script>
-
-
     </head>
     <body>
-        <div style="overflow: hidden;">          
+        <div style="overflow: hidden;">
             <header class="header" id="header">
                 <!--header-start-->
                 <div class="container">
@@ -41,12 +39,11 @@
                     <ul class="we-create animated fadeInUp delay-1s">
                         <li>Our aim is to help you find a suitable suburb to live!</li>
                     </ul>
-                    <a class="link animated fadeInUp delay-1s" href="quiz.aspx">Get Started</a>
+                    <a class="link animated fadeInUp delay-1s" href="QuizCategories.aspx">Get Started</a>
                 </div>
         </div>
         </header>
         <!--header-end-->
-
 
         <nav class="main-nav-outer" id="test">
             <!--main-nav-start-->
@@ -57,7 +54,7 @@
                     <li><a href="#Portfolio">Profile</a></li>
                     <li class="small-logo"><a href="#header">
                         <img src="Images/Logos/w2n%20logo%20house%20only%20[100px].png" alt=""></a></li>
-                    
+
                     <li><a href="#client">Map</a></li>
                     <li><a href="#team">About Us</a></li>
                     <li><a href="#contact">Contact Us</a></li>
@@ -67,12 +64,10 @@
         </nav>
         <!--main-nav-end-->
 
-
-
         <section class="main-section" id="service">
             <!--main-section-start-->
             <div class="container">
-                <h2><a href="Quiz.aspx">Discover</a></h2>
+                <h2><a href="QuizCategories.aspx">Discover</a></h2>
                 <h6>The Discover function helps you to discover your interest suburbs.</h6>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
@@ -94,7 +89,8 @@
                                 <p>Choose your favourite categories</p>
                             </div>
                         </div>
-                        <br /><br />
+                        <br />
+                        <br />
                         <div class="service-list">
                             <div class="service-list-col1">
                                 <i class="fa-gear"></i>
@@ -104,7 +100,8 @@
                                 <p>Have a look on the results</p>
                             </div>
                         </div>
-                        <br /><br />
+                        <br />
+                        <br />
                         <div class="service-list">
                             <div class="service-list-col1">
                                 <i class="fa-gear"></i>
@@ -117,21 +114,19 @@
                     </div>
                     <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
                         <%--<img src="Images/img/macbook-pro.png" alt="">--%>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/z4JWujzg9uU" frameborder="0" allowfullscreen></iframe> 
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/z4JWujzg9uU" frameborder="0" allowfullscreen></iframe>
                     </figure>
-
                 </div>
             </div>
         </section>
         <!--main-section-end-->
-
 
         <section class="main-section paddind" id="Portfolio">
             <!--main-section-start-->
             <div class="container">
                 <h2><a href="Profile.aspx">Profile</a></h2>
                 <h6>Profile helps you to know your interest suburbs.</h6>
-                <%--      <div class="portfolioFilter">  
+                <%--      <div class="portfolioFilter">
         <ul class="Portfolio-nav wow fadeIn delay-02s">
         	<li><a href="#" data-filter="*" class="current" >All</a></li>
             <li><a href="#" data-filter=".branding" >Branding</a></li>
@@ -181,7 +176,6 @@
             </div>
         </section>
         <!--main-section-end-->
-
 
         <section class="main-section client-part" id="client">
             <!--main-section client-part-start-->
@@ -302,8 +296,6 @@
         </section>
         <!--main-section team-end-->
 
-
-
         <section class="business-talking">
             <!--business-talking-start-->
             <div class="container">
@@ -319,8 +311,7 @@
                     <div class="col-lg-6 col-sm-7 wow fadeInLeft">
                         <div class="contact-info-box address clearfix">
                             <h3><i class=" icon-map-marker"></i>Address:</h3>
-                            <span>
-                                900 Dandenong Rd, Caulfield East VIC 3145</span>
+                            <span>900 Dandenong Rd, Caulfield East VIC 3145</span>
                         </div>
                         <div class="contact-info-box phone clearfix">
                             <h3><i class="fa-phone"></i>Phone:</h3>
@@ -339,9 +330,9 @@
                             <li class="facebook"><a href="https://www.facebook.com/where2next.truss"><i class="fa-facebook"></i></a></li>
                             <%--<li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>--%>
                             <li class="gplus"><a href="https://plus.google.com/u/0/106262326426235513979"><i class="fa-google-plus"></i></a></li>
-                            <%--<li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>--%>                            
+                            <%--<li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>--%>
                         </ul>
-                                            </div>
+                    </div>
                     <div class="col-lg-6 col-sm-5 wow fadeInUp delay-05s">
                         <div class="form">
                             <img src="Images/Monash.jpg" />
@@ -356,16 +347,15 @@
         </div>
         <footer class="footer">
             <div class="container">
-                
+
                 <span class="copyright">Copyright © 2015 | <a href="http://bootstraptaste.com/">Bootstrap Themes</a> by BootstrapTaste</span>
             </div>
-            <!-- 
-        All links in the footer should remain intact. 
+            <!--
+        All links in the footer should remain intact.
         Licenseing information is available at: http://bootstraptaste.com/license/
         You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Knight
     -->
         </footer>
-
 
         <script type="text/javascript">
             $(document).ready(function (e) {
@@ -387,9 +377,7 @@
               }
             );
             wow.init();
-
         </script>
-
 
         <script type="text/javascript">
             $(window).load(function () {
@@ -415,12 +403,10 @@
 
             $(window).load(function () {
 
-
                 var $container = $('.portfolioContainer'),
                     $body = $('body'),
                     colW = 375,
                     columns = null;
-
 
                 $container.isotope({
                     // disable window resizing
@@ -455,11 +441,7 @@
                 });
 
             });
-
         </script>
-
-
     </body>
     </html>
-
 </asp:Content>
