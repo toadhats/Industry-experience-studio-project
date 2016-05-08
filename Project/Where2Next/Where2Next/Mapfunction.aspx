@@ -47,7 +47,6 @@
 <head id="Head1" runat="server">
     <title>Where2Next Map Page </title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="Content/css/style.css" rel="stylesheet" type="text/css" />
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
@@ -78,16 +77,19 @@
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>fail! </strong>We cannot find any service in your suburb.
         </div>
-
+         <div id="failconnection" class="alert alert-warning" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>fail! </strong>There are some error in database.
+        </div>
         <div id="menu" style="height: 700px; width: 230px; float: left;">
 
             <div style="text-align: center">
                 <h3>Find your suburb</h3>
                 <br />
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="SuburbBox" runat="server"></asp:TextBox><br />
                 <br />
-                <asp:Button CssClass="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" Font-Names="sans-serif" />
-                <asp:Button CssClass="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" Font-Names="sans-serif" /><br />
+                <asp:Button CssClass="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
+                <asp:Button CssClass="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br />
                 <br />
                 <div id="demo" class="collapse">
                     <br />
@@ -103,7 +105,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="schooltest" Text="School" runat="server" /></div>
+                                        <asp:CheckBox ID="schooltest" Text="　　　School" runat="server" /></div>
                                     <br />
                                 </td>
 
@@ -111,7 +113,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="centrelink" Text="CenterLink" runat="server" /></div>
+                                        <asp:CheckBox ID="centrelink" Text="　　　CenterLink" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -119,7 +121,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="library" Text="Library" runat="server" /></div>
+                                        <asp:CheckBox ID="library" Text="　　　Library" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -127,7 +129,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="iceskating" Text="Ice Skating" runat="server" /></div>
+                                        <asp:CheckBox ID="iceskating" Text="　　　Ice Skating" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -135,7 +137,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="disabilityactivity" Text="Disability" runat="server" /></div>
+                                        <asp:CheckBox ID="disabilityactivity" Text="　　　Disability" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -143,7 +145,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="artsspaces" Text="Art Space" runat="server" /></div>
+                                        <asp:CheckBox ID="artsspaces" Text="　　　Art Space" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -151,7 +153,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="gpsuper" Text="GP Super Clinic" runat="server" /></div>
+                                        <asp:CheckBox ID="gpsuper" Text="　　　GP Super Clinic" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -159,7 +161,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="medicare" Text="Medicare" runat="server" /></div>
+                                        <asp:CheckBox ID="medicare" Text="　　　Medicare" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -167,7 +169,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="publicinternet" Text="Public Internet" runat="server" /></div>
+                                        <asp:CheckBox ID="publicinternet" Text="　　　Public Internet" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -175,7 +177,7 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="recreation" Text="Recreation" runat="server" /></div>
+                                        <asp:CheckBox ID="recreation" Text="　　　Recreation" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -183,28 +185,28 @@
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="rollerskating" Text="Rollerskating" runat="server" /></div>
+                                        <asp:CheckBox ID="rollerskating" Text="　　　Rollerskating" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="skateparks" Text="Skate Parks" runat="server" /></div>
+                                        <asp:CheckBox ID="skateparks" Text="　　　Skate Parks" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="sportingclubsorgs" Text="Sport Club" runat="server" /></div>
+                                        <asp:CheckBox ID="sportingclubsorgs" Text="　　　Sport Club" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div style="float: left;">
-                                        <asp:CheckBox CssClass="checkbox" ID="swimmingpools" Text="Swimming Pools" runat="server" /></div>
+                                        <asp:CheckBox ID="swimmingpools" Text="　　　Swimming Pools" runat="server" /></div>
                                     <br />
                                 </td>
                             </tr>
@@ -213,11 +215,11 @@
                         </tbody>
                     </table>
 
-                    <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" Width="180" Height="50" BackColor="#2699f2" />
+                    <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" Width="200" Height="60" />
                 </div>
                 <br />
                 <div style="text-align: center">
-                    <h4>Click to find services</h4>
+                    <h3>Click to find services</h3>
                 </div>
                 <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Filter</button>
                 <br />
