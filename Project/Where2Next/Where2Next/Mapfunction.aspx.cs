@@ -124,10 +124,10 @@ namespace Where2Next
                 successLocation.Attributes["style"] = "display:none";
                 failLocation.Attributes["style"] = "display:none";
                 successservice.Attributes["style"] = "display:none";
-                failservice.Attributes["style"] = "display:none"; //hide all of the alert
+                failservice.Attributes["style"] = "display:none";
                 string query = "";
-                String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'"; //this is connection string
-                if (SuburbBox.Text == "")   //check if the suburbBox is null
+                String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
+                if (SuburbBox.Text == "")
                 {
                     fail.Attributes["style"] = "display";
                     js.Text = @"<script type='text/javascript'>
@@ -140,7 +140,7 @@ namespace Where2Next
                     {
                         if (c.GetType().ToString().Equals("System.Web.UI.WebControls.CheckBox")) //check whether the controls are the check box
                         {
-                            CheckBox box = c as CheckBox;  //if the controls is the checkbox, then collect it 
+                            CheckBox box = c as CheckBox;  //if the controls is the test box, then collect it 
 
                             if (box.Checked)
                             {
