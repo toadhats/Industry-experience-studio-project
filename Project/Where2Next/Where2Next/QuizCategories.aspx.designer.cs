@@ -22,21 +22,12 @@ namespace Where2Next {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl categories;
         
         /// <summary>
-        /// cat_education control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cat_education;
-        
-        /// <summary>
         /// displayCategories control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal displayCategories;
+        protected global::System.Web.UI.WebControls.PlaceHolder displayCategories;
     }
 }

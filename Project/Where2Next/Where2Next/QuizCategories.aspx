@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="QuizCategories.aspx.cs" Inherits="Where2Next.QuizCategories" %>
+﻿<%@ Page Title="Where2Next - Discover" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="QuizCategories.aspx.cs" Inherits="Where2Next.QuizCategories" %>
 
 <asp:Content ContentPlaceHolderID="extraHeadContent" runat="server">
 
@@ -96,6 +96,13 @@
                 display: inline-block;
                 object-fit: contain;
             }
+
+        .categorySelected {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            border: 3px solid #00F18A;
+            border-radius: 2px;
+            border-collapse: collapse;
+        }
     </style>
 </asp:Content>
 
@@ -103,12 +110,6 @@
 
     <h1 class="tableHeading">Select the categories you're interested in:</h1>
     <div id="categories" runat="server" class="cardContainer">
-        <div id="cat_education" runat="server" class="categoryCard">
-            <h4>Education</h4>
-            <hr />
-            <img src="Images/quizCategories/school.jpg" alt="education" />
-        </div>
-
-        <asp:Literal ID="displayCategories" runat="server" />
+        <asp:PlaceHolder ID="displayCategories" runat="server" />
     </div>
 </asp:Content>
