@@ -117,7 +117,7 @@
         </div>
         <div class="col-sm-6 col-md-3">
             <div class="thumbnail">
-                <img src="/Images/skkilda.jpg"
+                <img src="/Images/StKilda.jpg"
                     alt="">
                 <div class="caption">
                     <h3>St Kilda</h3>
