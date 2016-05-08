@@ -45,8 +45,9 @@
 
         </div>
 
-        <div id="division" onmousedown="startDraggingDivision();" onmouseup="stopMove();">
-        </div>
+        <div id="division" onmousedown="startDraggingDivision();" onmouseup="stopMove();"> 
+           <button onclick="" style="background-color: transparent;font-size:40px;color:white;width:300px; height:150px; border:none; cursor:pointer;">Start Here</button></div>
+
 
         <div id="water" onmousedown="startMove();" onmouseup="stopMove();"></div>
 
