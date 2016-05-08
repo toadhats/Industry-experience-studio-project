@@ -19,7 +19,8 @@ let alterWait (time: int) =
     ()
 
 System.Console.CancelKeyPress.Add(
-    fun _ -> File.AppendAllText("fails.txt", (sprintf "Stopped test at %s%s" (System.DateTime.Now.ToLongTimeString()) nl)) |> ignore)
+    fun _ -> File.AppendAllText("fails.txt", (sprintf "Stopped test at %s%s" (System.DateTime.Now.ToLongTimeString()) nl)) |> ignore;
+             File.AppendAllText("fails.txt", (sprintf "%d Fails, %g%% success rate%s" fails ((float (attempts - fails) / float attempts) * 100.0) (nl + nl))))
 
 [<EntryPoint>]
 let main argsv =
