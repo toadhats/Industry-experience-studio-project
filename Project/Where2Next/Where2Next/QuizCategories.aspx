@@ -106,12 +106,9 @@
         <div id="cat_education" runat="server" class="categoryCard">
             <h4>Education</h4>
             <hr />
-            <img src="Images/quizbuttonimage/school.jpg" alt="education" />
+            <img src="Images/quizCategories/school.jpg" alt="education" />
         </div>
-        <div id="cat_" runat="server" class="categoryCard">
-            <h4>Education</h4>
-            <hr />
-            <img src="Images/quizbuttonimage/school.jpg" alt="Alternate Text" />
-        </div>
+
+        <asp:Literal ID="displayCategories" runat="server" />
     </div>
 </asp:Content>

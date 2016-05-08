@@ -247,6 +247,7 @@
     <Content Include="Images\quizCategories\health.jpg" />
     <Content Include="Images\quizCategories\higher_education.jpg" />
     <Content Include="Images\quizCategories\social_services.jpg" />
+    <Content Include="Images\quizCategories\placeholder.jpg" />
     <Content Include="Images\quizCategories\sport.jpg" />
     <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\Toorak.jpg" />
@@ -343,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="DBConnect.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
