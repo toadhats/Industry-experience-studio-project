@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Mobile.master.cs" Inherits="Where2Next.Site_Mobile" %>
+
 <%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
 
 <!DOCTYPE html>
@@ -6,12 +7,14 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>Where2Next</title>
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <%--    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />    --%>
+    <asp:ContentPlaceHolder ID="extraHeadContent" runat="server" />
+
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="Content/Site.css">
 </head>
 <body>
-   <form runat="server">
+    <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -41,7 +44,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/"><img src="Images/house-white-50px.png" width="30" height="30"/>Where2Next</a>
+                    <a class="navbar-brand" runat="server" href="~/">
+                        <img src="Images/house-white-50px.png" width="30" height="30" />Where2Next</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -60,19 +64,19 @@
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Truss</p>
-                <p><asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Black"
-                    NavigateUrl="http://www.google.com"
-                    Text="About US" /></p>
+                <p>
+                    <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Black"
+                        NavigateUrl="http://www.google.com"
+                        Text="About US" />
+                </p>
 
-                
-
-                <p><asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Black"
-                    NavigateUrl="http://www.google.com"
-                    Text="Contact US" /></p>
-                    
+                <p>
+                    <asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Black"
+                        NavigateUrl="http://www.google.com"
+                        Text="Contact US" />
+                </p>
             </footer>
         </div>
-
     </form>
 </body>
 </html>
