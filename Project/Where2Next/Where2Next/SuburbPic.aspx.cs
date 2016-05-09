@@ -9,6 +9,8 @@ using System.IO;
 using System.Net;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+
 
 
 
@@ -18,7 +20,9 @@ namespace Where2Next
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            js.Text = @"<script type='text/javascript'>
+                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
+         </script> ";
         }
    
 
@@ -77,9 +81,16 @@ namespace Where2Next
             String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
             using (MySqlConnection cn = new MySqlConnection(connectionStr))
             {
-                cn.Open();
-                Response.Write("can link to mysql");
-                cn.Close();
+                try
+                {
+                    cn.Open();
+                    Response.Write("can link to mysql");
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("cannot link to mysql");
+                }
             }
 
 
@@ -90,20 +101,67 @@ namespace Where2Next
             String connectionStr = @"Data Source=au-cdbr-azure-southeast-a.cloudapp.net; Database=Where2Next; User ID=bcb3c5458db67d; password='2821061a'";
             using (MySqlConnection cn = new MySqlConnection(connectionStr))
             {
-                cn.Open();
-                Response.Write("can link to mysql");
-                cn.Close();
+                try {
+                    cn.Open();
+                    Response.Write("can link to mysql");
+                    cn.Close();
+                }
+                catch(Exception ex)
+                {
+                    Response.Write("cannot link to mysql");
+                }
             }
         }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            String connectionStr = @"Data Source=13.73.117.189; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
-            using (MySqlConnection cn = new MySqlConnection(connectionStr))
+            string connetionString = null;
+            String Locations = "";
+            double Latitude ;
+            double Longitude;
+            string Suburb = "";
+            string marker = "";
+            string query = "";
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtUrl.Text.Trim(), "^\\d+$"))   //To check if the check the textbox is number
             {
-                cn.Open();
-                Response.Write("can link to mysql");
-                cn.Close();
+                query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where postcode = " + txtUrl.Text;
+            }
+            else
+            {
+                query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where suburb = '" + txtUrl.Text + "'";
+            }
+            SqlConnection connection;
+            connetionString = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            connection = new SqlConnection(connetionString);
+            try {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Latitude = reader.GetDouble(1);
+                        Longitude = reader.GetDouble(2);
+                        Suburb = reader.GetString(0); //Suburb name
+                        marker = reader.GetString(3);
+                        Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: 'Images/ICon/pins.png'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'Welcome to " + Suburb + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(16);map.setCenter(" + marker + ".getPosition());});";
+                         js.Text = "<script type='text/javascript'>" +
+                         "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:13,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
+                        </script> ";
+                    }
+                }
+                else
+                {
+                    js.Text = @"<script type='text/javascript'>
+                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
+         </script> ";
+                    Response.Write("Can not found the suburb in victoria ");
+                }
+                reader.Close();
+                connection.Close();
+            } catch (Exception ex) {
+                Response.Write("Can not open connection! ");
             }
         }
     }
