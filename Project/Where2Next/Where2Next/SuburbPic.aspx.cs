@@ -20,10 +20,21 @@ namespace Where2Next
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            js.Text = @"<script type='text/javascript'>
-                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
-         </script> ";
-        }
+            string connetionString = "";
+            SqlConnection connection;
+             connetionString = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            connection = new SqlConnection(connetionString);
+            try
+            {
+                connection.Open();
+                Response.Write("suceed");
+                connection.Close();
+            }
+            catch (Exception ex){
+                    Response.Write("fail to connect");
+            }
+            }
+
    
 
         protected void Button1_Click(object sender, EventArgs e)
