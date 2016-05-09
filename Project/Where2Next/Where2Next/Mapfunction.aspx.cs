@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -35,37 +34,37 @@ namespace Where2Next
                 failLocation.Attributes["style"] = "display:none";
                 successservice.Attributes["style"] = "display:none";
                 failservice.Attributes["style"] = "display:none";   //display all of the label for the map
-                String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
+                String connetionString = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-                using (MySqlConnection connection = new MySqlConnection(connectionStr))//connection to database
+                using (SqlConnection connection = new SqlConnection(connetionString))//connection to database
                 {
                     string query;
                     String Locations = "";
-                    string Latitude = "";
-                    string Longitude = "";
+                    double Latitude ;
+                    double Longitude;
                     string Suburb = "";
                     string marker = "";
                     if (System.Text.RegularExpressions.Regex.IsMatch(SuburbBox.Text.Trim(), "^\\d+$"))   //To check if the check the textbox is number
                     {
-                        query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from suburb_gnaf where postcode = " + SuburbBox.Text;
+                        query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where postcode = " + SuburbBox.Text;
                     }
                     else
                     {
-                        query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from suburb_gnaf where suburb = '" + SuburbBox.Text + "'";
+                        query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where suburb = '" + SuburbBox.Text + "'";
                     }
                     try
                     {
                         connection.Open();//open the database
-                        MySqlCommand command = new MySqlCommand(query, connection);//make a query
-                        MySqlDataReader reader = command.ExecuteReader();  //create a reader
+                        SqlCommand command = new SqlCommand(query, connection);//make a query
+                        SqlDataReader reader = command.ExecuteReader();  //create a reader
 
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
                                 success.Attributes["style"] = "display";
-                                Latitude = reader.GetString(1);   //Laititude
-                                Longitude = reader.GetString(2);//Longitude
+                                Latitude = reader.GetDouble(1);   //Laititude
+                                Longitude = reader.GetDouble(2);//Longitude
                                 Suburb = reader.GetString(0); //Suburb name
                                 marker = reader.GetString(3);
                                 Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: 'Images/ICon/pins.png'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'Welcome to " + Suburb + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(16);map.setCenter(" + marker + ".getPosition());});";
@@ -119,7 +118,7 @@ namespace Where2Next
                 successservice.Attributes["style"] = "display:none";
                 failservice.Attributes["style"] = "display:none";//hide all of the alert
                 string query = "";
-                String connectionStr = @"Data Source=bitnami-mysql-3526.cloudapp.net; Database=Where2Next; User ID=where2next; password='nakdYzWd'";
+                String connectionStr = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 if (SuburbBox.Text == "")
                 {
                     fail.Attributes["style"] = "display";
@@ -139,25 +138,25 @@ namespace Where2Next
                             {
                                 if (System.Text.RegularExpressions.Regex.IsMatch(SuburbBox.Text.Trim(), "^\\d+$"))//to check whether textbox is number.
                                 {
-                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " where postcode='" + SuburbBox.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
+                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from where2next." + box.ID + " where postcode='" + SuburbBox.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
                                 }
                                 else if (System.Text.RegularExpressions.Regex.IsMatch(SuburbBox.Text.Trim(), "^\\w+$"))//to check whether textbox is not number.
                                 {
-                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " where suburb='" + SuburbBox.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
+                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from where2next." + box.ID + " where suburb='" + SuburbBox.Text + "' and LATITUDE !=0 and LATITUDE is not null union ";
                                 }
                                 else
                                 {
-                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from " + box.ID + " and LATITUDE !=0 and LATITUDE is not null union ";
+                                    query = query + "select NAME,LATITUDE,LONGITUDE,address,icon,replace(CONCAT(suburb,id),' ','') as marker from where2next." + box.ID + " and LATITUDE !=0 and LATITUDE is not null union ";
                                 }
                             }
                         }
                     }
                     query = query.Remove(query.Length - 7, 7);//Because when use above query, it will automic generate the 'union at last', therefore we need to use the method to delete the 'union'
                                                               //Response.Write(query);//just for test.
-                    using (MySqlConnection connection = new MySqlConnection(connectionStr))
+                    using (SqlConnection connection = new SqlConnection(connectionStr))
                     {
-                        string Latitude = "";
-                        string Longitude = "";
+                        double Latitude ;
+                        double Longitude ;
                         string NAME = "";
                         string Locations = "";
                         string icon = "";
@@ -165,23 +164,25 @@ namespace Where2Next
                         try
                         {
                             connection.Open();
-                            MySqlCommand command = new MySqlCommand(query, connection);//make a connection
-                            MySqlDataReader reader = command.ExecuteReader();//create a reader
+                            SqlCommand command = new SqlCommand(query, connection);//make a connection
+                            SqlDataReader reader = command.ExecuteReader();//create a reader
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
                                 {
                                     successservice.Attributes["style"] = "display";
-                                    Latitude = reader.GetString(1);
-                                    Longitude = reader.GetString(2);
+                                    Latitude = reader.GetDouble(1);
+                                    Longitude = reader.GetDouble(2);
                                     NAME = reader.GetString(0);
                                     icon = reader.GetString(4);
                                     marker = reader.GetString(5);
                                     Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(18);map.setCenter(" + marker + ".getPosition());});";
-                                }
-                                js.Text = "<script type='text/javascript'>" +
+                                    js.Text = "<script type='text/javascript'>" +
 "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:14,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
+                                }
+
+
                             }
                             else
                             {
