@@ -45,7 +45,7 @@ let main argsv =
 
         if (response.Contains "<div class=\"resultCard\">") then
             printfn "%s: Query succeeded" timeEnd |> ignore
-            alterWait 10 |> ignore
+            alterWait (waitTime / 5) |> ignore
             if (failing) then
                 File.AppendAllText("fails.txt", (sprintf "*** %s: Database connected successfully again ***%s" timeBegin nl)) |> ignore
                 failing <- false
@@ -57,7 +57,7 @@ let main argsv =
 
             if (not failing) then
                 failing <- true
-                waitTime <- min (waitTime / 4) 5
+                waitTime <- 10
 
         if Console.KeyAvailable then
             match Console.ReadKey().Key with
