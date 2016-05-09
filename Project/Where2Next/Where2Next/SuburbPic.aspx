@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SuburbPic.aspx.cs" Inherits="Where2Next.WebForm1" %>
 
 <!DOCTYPE html>
-
+<script
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
         <link href="Content/bootstrap.min.css" rel="stylesheet">
@@ -41,20 +43,24 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search Now" />
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="SQL server" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="cleanDB" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="VM　　　" Width="26px" />
         <br />
+        <br />
+        VM and cleanDB can test the connection not for the map<br />
         <br />
         <br />
         <asp:Literal ID="js" runat="server"></asp:Literal>
-    
+    <div id="map_canvas" style="background-color: #EEEEEE; height: 1000px; width: 900px; float: left;">
+            </div>
         <br />
         <br />
         <br />
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="VM" />
 &nbsp;&nbsp;
-        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="cleanDB" />
-&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="VM WITH IP" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <br />
     
     </div>

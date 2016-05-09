@@ -282,6 +282,7 @@
     <Content Include="QuizServices.aspx" />
     <Content Include="Scripts\js\home.js" />
     <Content Include="SuburbPic.aspx" />
+    <Content Include="test.aspx" />
     <None Include="Properties\PublishProfiles\where2next - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -460,6 +461,13 @@
     </Compile>
     <Compile Include="SuburbPic.aspx.designer.cs">
       <DependentUpon>SuburbPic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
