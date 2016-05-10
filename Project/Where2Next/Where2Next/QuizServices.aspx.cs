@@ -63,7 +63,7 @@ namespace Where2Next
                     System.Web.UI.HtmlControls.HtmlButton cat = new System.Web.UI.HtmlControls.HtmlButton();
                     cat.ID = service.Item1; // set the ID of this element to the category name to keep things sane
                     cat.Attributes.Add("runat", "server"); // Not sure if we need this, since the placeholder is already runat server
-                    cat.Attributes.Add("CommandArgument", service.Item1); // We don't really need to keep using this, we could just use the id, but it feels right
+                    cat.Attributes.Add("CommandArgument", service.Item1); // We don't really need to keep using this, we're just using the id
                     cat.Attributes.Add("class", "categoryCard"); // the default state (not selected)
                     cat.InnerHtml = String.Format("<h4>{1}</h4> <hr/> <img src =\"{2}\" alt=\"{1}\" />", service.Item1, service.Item2, image); // Putting our custom interface content into the element
                     cat.ServerClick += new EventHandler(SelectService); // SEEMS to work like the OnClick did on an <asp:Button>. Took me like 4 hours to work out.

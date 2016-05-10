@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Where2Next
 {
     public class DBConnect : IDisposable
     {
-        private MySqlConnection connection;
+        private SqlConnection connection;
 
         private string server;
 
@@ -29,16 +30,14 @@ namespace Where2Next
         // I kind of like this pattern of having a seperate Initialise() method
         private void Initialise()
         {
-            server = "bitnami-mysql-3526.cloudapp.net";
-            database = "where2next";
-            uid = "where2next";
-            password = "nakdYzWd";
+            server = ""; // maybe go back to using this approach
+            database = ""; // or maybe don't
+            uid = "";
+            password = "";
             string connectionString;
-            // TODO: refactor this to use a formatted string
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "User ID=" + uid + ";" + "PASSWORD=" + password + ";";
+            connectionString = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-            connection = new MySqlConnection(connectionString);
+            connection = new SqlConnection(connectionString);
         }
 
         // Opens the connection to the database while handling any resulting exceptions and helping
@@ -50,7 +49,7 @@ namespace Where2Next
                 connection.Open();
                 return true;
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 // Exception handling based on error codes, mainly to help with debugging:
                 // 0: Cannot connect to server.
@@ -77,7 +76,7 @@ namespace Where2Next
                 connection.Close();
                 return true;
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 Console.Error.WriteLine(ex.Message);
                 return false;
@@ -98,7 +97,7 @@ namespace Where2Next
             List<Tuple<string, string>> categories = new List<Tuple<string, string>>();
 
             string query = "SELECT DISTINCT category, category_displayname FROM where2next.categories";
-            MySqlCommand cmd = new MySqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.CommandText = query;
             cmd.Connection = connection;
 
@@ -136,7 +135,7 @@ namespace Where2Next
             queryBuilder.Append("'none');"); // Partly a hack to deal with the trailing comma, partly in case I really do end up with a "none" category at any point
 
             string query = queryBuilder.ToString();
-            MySqlCommand cmd = new MySqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.CommandText = query;
             cmd.Connection = connection;
 
@@ -166,7 +165,7 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
             queryBuilder.AppendFormat("SELECT s.suburb, s.postcode, s.latitude, s.longitude, s.wikiURL, s.picURL FROM where2next.suburb_gnaf s WHERE s.suburb = '{0}'", suburbName);
             string query = queryBuilder.ToString();
-            MySqlCommand cmd = new MySqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.CommandText = query;
             cmd.Connection = connection;
             var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
@@ -198,7 +197,7 @@ namespace Where2Next
 
             // Get the full list of tables to check
             string getTablesQuery = "SELECT tablename from where2next.categories";
-            MySqlCommand cmd = new MySqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.CommandText = getTablesQuery;
             cmd.Connection = connection;
             var dataReader = cmd.ExecuteReader(); // We're NOT closing the connection here because we'll need to use it like a lot... though we might want different behaviour entirely if I go async
@@ -217,10 +216,10 @@ namespace Where2Next
             foreach (string tableName in tableNames)
             {
                 string tq = String.Format("SELECT s.name, s.address, s.latitude, s.longitude, s.telephone, s.type, s.postcode from where2next.{0} s where s.suburb = '{1}'", tableName, suburbName);
-                MySqlCommand getServiceCmd = new MySqlCommand();
+                SqlCommand getServiceCmd = new SqlCommand();
                 getServiceCmd.CommandText = tq;
                 getServiceCmd.Connection = connection;
-                var dr = getServiceCmd.ExecuteReader(); // We're NOT closing the connection here because we'll need to use it like a lot... though we might want different
+                var dr = getServiceCmd.ExecuteReader(); // We're NOT setting up to close the connection here because we'll need to use it bunch of times\
                 // Hopefully we're getting rows from a given table now...
                 if (dr.HasRows)
                 {
