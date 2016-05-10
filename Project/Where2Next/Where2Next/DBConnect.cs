@@ -88,6 +88,19 @@ namespace Where2Next
             connection.Dispose();
         }
 
+        public SqlDataReader sendQuery(string query)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                OpenConnection();
+            }
+            SqlCommand command = new SqlCommand(query, connection);
+            command.CommandTimeout = 60; // Ugly hack to check if timeouts are causing the problem, be careful with this
+            SqlDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
+
+            return dataReader;
+        }
+
         public List<Tuple<string, string>> getCategoryNames()
         {
             if (connection.State == ConnectionState.Closed)
@@ -212,12 +225,13 @@ namespace Where2Next
             }
             dataReader.Close(); // Didn't set the property, so this DOESN'T close the connection, just the reader that we're done with
 
-            // Iterate over all the tables getting all the relevant services This is terrible and
-            // needs to be deleted And replaced with something less disgustingly inefficient and
-            // preferably async
+            // Iterate over all the tables getting all the relevant services. This is terrible and
+            // should be async.
             List<Service> services = new List<Service>();
             foreach (string tableName in tableNames)
             {
+                // One weird trick discovered by an idiot for parameterising a table name. Only
+                // safe-ish because it's not user input.
                 SqlCommand getServiceCmd = new SqlCommand(string.Format("SELECT s.name, s.address, s.latitude, s.longitude, s.telephone, s.type, s.postcode from where2next.{0} s where s.suburb = @suburbname", tableName), connection);
                 SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40);
                 snameParam.IsNullable = false;
@@ -225,8 +239,7 @@ namespace Where2Next
                 getServiceCmd.Parameters.Add(snameParam);
                 getServiceCmd.Prepare();
 
-                var dr = getServiceCmd.ExecuteReader(); // We're NOT setting up to close the connection here because we'll need to use it bunch of times\
-                // Hopefully we're getting rows from a given table now...
+                var dr = getServiceCmd.ExecuteReader(); // We're NOT setting up to close the connection here because we'll need to use it bunch of times
                 if (dr.HasRows)
                 {
                     while (dr.Read())
@@ -243,7 +256,7 @@ namespace Where2Next
                         services.Add(s);
                     }
                 }
-                dr.Close(); // Double checking I closed this...
+                dr.Close();
             }
             return services;
         }

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using System.Web;
 
@@ -23,37 +24,40 @@ namespace Where2Next
                 // Console.WriteLine("Arrived at page with encoded query {0}", Request["query"]);
                 var query = Base64ForUrlDecode(Request["query"]);
                 Trace.Write("Attempting connection to SQL db");
-                MySqlDataReader dataReader = null;
+                SqlDataReader dataReader = null;
 
                 try
                 {
-                    dataReader = sendQuery(query);
-
-                    if (dataReader.HasRows)
+                    using (DBConnect db = new DBConnect())
                     {
-                        StringBuilder resultsTableBuilder = new StringBuilder();
-                        resultsTableBuilder.Append("<div class=\"table\">" // Start of whole container
-                                                 + "<div class=\"tableHeading\"><h2> The following suburbs meet your requirements: </h2></div>" // Heading cell
-                                                 + "<div class=\"cardContainer\">"); // Inner container to fill with result cards
+                        dataReader = db.sendQuery(query);
 
-                        while (dataReader.Read())
+                        if (dataReader.HasRows)
                         {
-                            string suburb = dataReader.GetString(0); // These are basically magic numbers ew
-                            string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
-                            //string img = dataReader.GetString(2);
-                            //string imgCode = "";
-                            //if (img.Length > 0)
-                            //{
-                            //    imgCode += String.Format("<img src={0} alt={1}>", img, suburb);
-                            //}
-                            resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <a href=\"SuburbProfile?query={0}\"><h3>{0}</h3> </a> <p>{1}</p> <hr> </div> ", suburb, postcode);
+                            StringBuilder resultsTableBuilder = new StringBuilder();
+                            resultsTableBuilder.Append("<div class=\"table\">" // Start of whole container
+                                                     + "<div class=\"tableHeading\"><h2> The following suburbs meet your requirements: </h2></div>" // Heading cell
+                                                     + "<div class=\"cardContainer\">"); // Inner container to fill with result cards
+
+                            while (dataReader.Read())
+                            {
+                                string suburb = dataReader.GetString(0); // These are basically magic numbers ew
+                                string postcode = dataReader.GetString(1); // I don't like how I need to look in another file to see what I'm doing here
+                                                                           //string img = dataReader.GetString(2);
+                                                                           //string imgCode = "";
+                                                                           //if (img.Length > 0)
+                                                                           //{
+                                                                           //    imgCode += String.Format("<img src={0} alt={1}>", img, suburb);
+                                                                           //}
+                                resultsTableBuilder.AppendFormat("<div class=\"resultCard\"> <a href=\"SuburbProfile?query={0}\"><h3>{0}</h3> </a> <p>{1}</p> <hr> </div> ", suburb, postcode);
+                            }
+                            resultsTableBuilder.Append("</div> </div>"); // close our containers
+                            resultsTable.Text = resultsTableBuilder.ToString();
                         }
-                        resultsTableBuilder.Append("</div> </div>"); // close our containers
-                        resultsTable.Text = resultsTableBuilder.ToString();
-                    }
-                    else
-                    {
-                        resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> </div>";
+                        else
+                        {
+                            resultsTable.Text = "<div class=\"sorryCard\" > <h2> We're still looking for your ideal suburb </h2> </div>";
+                        }
                     }
                 }
                 catch (MySqlException)
@@ -69,30 +73,6 @@ namespace Where2Next
                     }
                     else Trace.Write("DataReader was never initialised.");
                 }
-            }
-        }
-
-        public MySqlDataReader sendQuery(string query)
-        {
-            MySqlConnection connection = null;
-            try
-            {
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.CommandTimeout = 60; // Ugly hack to check if timeouts are causing the problem, be careful with this
-                MySqlDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
-
-                return dataReader;
-            }
-            catch (Exception e)
-            {
-                Trace.Warn(e.Message);
-                Trace.Warn(e.Source);
-                Trace.Warn(e.StackTrace);
-                Trace.Warn(e.HelpLink);
-                if (connection != null) connection.Close();
-                throw e;
             }
         }
 

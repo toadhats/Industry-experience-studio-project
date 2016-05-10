@@ -108,7 +108,7 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
 
             // construct query and send to DB
-            queryBuilder.Append("SELECT DISTINCT s.SUBURB, GROUP_CONCAT(DISTINCT s.POSTCODE ORDER BY s.POSTCODE SEPARATOR ', ') FROM SUBURB_GNAF s");
+            queryBuilder.Append("SELECT DISTINCT s.SUBURB, dbo.GROUP_CONCAT_D(DISTINCT s.POSTCODE, N',') FROM SUBURB_GNAF s"); // So glad someone ported group_concat() to MS SQL
             foreach (var service in selectedServices)
             {
                 queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB"); // We've benchmarked this - short of a total database redesign it's still more or less the fastest practical way.
