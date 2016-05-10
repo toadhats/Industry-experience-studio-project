@@ -162,19 +162,21 @@ namespace Where2Next
             {
                 OpenConnection();
             }
-            StringBuilder queryBuilder = new StringBuilder();
-            queryBuilder.AppendFormat("SELECT s.suburb, s.postcode, s.latitude, s.longitude, s.wikiURL, s.picURL FROM where2next.suburb_gnaf s WHERE s.suburb = '{0}'", suburbName);
-            string query = queryBuilder.ToString();
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = query;
-            cmd.Connection = connection;
+            SqlCommand cmd = new SqlCommand(null, connection);
+            cmd.CommandText = "SELECT s.suburb, s.postcode, s.latitude, s.longitude, s.wikiURL, s.picURL FROM where2next.suburb_gnaf s WHERE s.suburb = @suburbname";
+            SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40); // Limit to 40 chars because we don't need more, excessive capabilities tend to present risks
+            snameParam.IsNullable = false;
+            snameParam.Value = suburbName;
+            cmd.Parameters.Add(snameParam);
+            cmd.Prepare();
+
             var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
 
             if (dataReader.HasRows)
             {
                 dataReader.Read();
                 var name = dataReader.GetString(0);
-                var postcode = dataReader.GetString(1);
+                var postcode = dataReader.GetInt32(1).ToString();
                 var latitude = dataReader.GetDouble(2).ToString();
                 var longitude = dataReader.GetDouble(3).ToString();
                 var wikiUrl = dataReader.GetString(4);
@@ -231,7 +233,7 @@ namespace Where2Next
                         var slongitude = "0";// dr.GetDouble(3).ToString();
                         var stelephone = "0"; //dr.GetString(4); //TODO: Handle nulls!
                         var stype = dr.GetString(5);
-                        var spostcode = dr.GetString(6);
+                        var spostcode = dr.GetInt32(6).ToString();
                         Service s = new Service(stype, sname, saddress, suburbName, "VIC", spostcode, slatitude, slongitude, stelephone);
                         services.Add(s);
                     }
