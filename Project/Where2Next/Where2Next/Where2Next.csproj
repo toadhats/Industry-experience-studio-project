@@ -255,7 +255,15 @@
     <Content Include="Images\quizCategories\placeholder.jpg" />
     <Content Include="Images\quizCategories\sport.jpg" />
     <Content Include="Images\quizCategories\sport.png" />
+    <Content Include="Images\quizServices\gpsuper.png" />
     <Content Include="Images\quizServices\placeholder.jpg" />
+    <Content Include="Images\quizServices\placeholder.png" />
+    <Content Include="Images\quizServices\school_primary.png" />
+    <Content Include="Images\quizServices\skateparks.png" />
+    <Content Include="Images\quizServices\sport_bicycle.png" />
+    <Content Include="Images\quizServices\sport_cricket.png" />
+    <Content Include="Images\quizServices\sport_other.png" />
+    <Content Include="Images\quizServices\sport_soccer.png" />
     <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\Toorak.jpg" />
     <Content Include="Images\Ulupi.jpg" />
