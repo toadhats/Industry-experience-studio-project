@@ -1,2 +1,0 @@
-Notes while debugging connectivity issues:
-

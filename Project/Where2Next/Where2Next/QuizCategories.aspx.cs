@@ -54,10 +54,10 @@ namespace Where2Next
                 categoryList = db.getCategoryNames();
                 foreach (Tuple<string, string> category in categoryList)
                 {
-                    var image = "Images/quizCategories/" + category.Item1 + ".jpg"; // Todo: Handle .png as well, or just use .png probably
+                    var image = "Images/quizCategories/" + category.Item1 + ".png"; // Todo: Handle .png as well, or just use .png probably
                     if (!File.Exists(Server.MapPath(image)))
                     {
-                        image = "Images/quizCategories/placeholder.jpg"; // Todo: Placeholder image that isn't a pile of random footballs
+                        image = "Images/quizCategories/placeholder.png"; // Todo: Placeholder image that isn't a pile of random footballs
                     }
 
                     System.Web.UI.HtmlControls.HtmlButton cat = new System.Web.UI.HtmlControls.HtmlButton();
