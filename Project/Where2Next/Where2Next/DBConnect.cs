@@ -184,27 +184,28 @@ namespace Where2Next
             cmd.Parameters.Add(snameParam);
             cmd.Prepare();
 
-            var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
-
-            if (dataReader.HasRows)
+            using (var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection)) // This should close the connection for us when the reader is closed
             {
-                dataReader.Read();
-                var name = dataReader.GetString(0);
-                var postcode = dataReader.GetInt32(1).ToString();
-                var latitude = dataReader.GetDouble(2).ToString();
-                var longitude = dataReader.GetDouble(3).ToString();
-                var wikiUrl = dataReader.GetString(4);
-                var picUrl = dataReader.GetString(5);
-                Suburb suburb = new Suburb(name, postcode, latitude, longitude, wikiUrl, picUrl);
-                return suburb;
-            }
-            else
-            {
-                return new Suburb();
+                if (dataReader.HasRows)
+                {
+                    dataReader.Read();
+                    var name = dataReader.GetString(0);
+                    var postcode = dataReader.GetInt32(1).ToString();
+                    var latitude = dataReader.GetDouble(2).ToString();
+                    var longitude = dataReader.GetDouble(3).ToString();
+                    var wikiUrl = dataReader.GetString(4);
+                    var picUrl = dataReader.GetString(5);
+                    Suburb suburb = new Suburb(name, postcode, latitude, longitude, wikiUrl, picUrl);
+                    return suburb;
+                }
+                else
+                {
+                    return new Suburb();
+                }
             }
         }
 
-        public List<Service> getServiceList(string suburbName)
+        public List<Tuple<Tuple<string, string>, List<Service>>> getServiceList(string suburbName)
         {
             if (connection.State == ConnectionState.Closed)
             {
@@ -212,27 +213,28 @@ namespace Where2Next
             }
 
             // Get the full list of tables to check
-            string getTablesQuery = "SELECT tablename from where2next.categories";
+            string getTablesQuery = "SELECT tablename, table_displayname from where2next.categories order by category";
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = getTablesQuery;
             cmd.Connection = connection;
             var dataReader = cmd.ExecuteReader(); // We're NOT closing the connection here because we'll need to use it like a lot... though we might want different behaviour entirely if I go async
 
-            List<string> tableNames = new List<string>();
+            var tableNames = new List<Tuple<string, string>>();
             while (dataReader.Read())
             {
-                tableNames.Add(dataReader.GetString(0));
+                tableNames.Add(new Tuple<string, string>(dataReader.GetString(0), dataReader.GetString(1)));
             }
             dataReader.Close(); // Didn't set the property, so this DOESN'T close the connection, just the reader that we're done with
 
+            List<Tuple<Tuple<string, string>, List<Service>>> services = new List<Tuple<Tuple<string, string>, List<Service>>>(); // Ok maybe this is getting out of hand now...
             // Iterate over all the tables getting all the relevant services. This is terrible and
             // should be async.
-            List<Service> services = new List<Service>();
-            foreach (string tableName in tableNames)
+            foreach (Tuple<string, string> tableName in tableNames)
             {
+                var subList = new Tuple<Tuple<string, string>, List<Service>>(tableName, new List<Service>());
                 // One weird trick discovered by an idiot for parameterising a table name. Only
                 // safe-ish because it's not user input.
-                SqlCommand getServiceCmd = new SqlCommand(string.Format("SELECT s.name, s.address, s.latitude, s.longitude, s.telephone, s.type, s.postcode from where2next.{0} s where s.suburb = @suburbname", tableName), connection);
+                SqlCommand getServiceCmd = new SqlCommand(string.Format("SELECT s.name, s.address, s.latitude, s.longitude, s.telephone, s.type, s.postcode from where2next.{0} s where s.suburb = @suburbname", tableName.Item1), connection);
                 SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40);
                 snameParam.IsNullable = false;
                 snameParam.Value = suburbName;
@@ -253,11 +255,13 @@ namespace Where2Next
 
                         var spostcode = string.Format("{0}", dr["postcode"] as Int32? ?? 0); // I keep wanting to use |> to do this but I can't...
                         Service s = new Service(stype, sname, saddress, suburbName, "VIC", spostcode, slatitude, slongitude, stelephone);
-                        services.Add(s);
+                        subList.Item2.Add(s);
                     }
                 }
                 dr.Close();
+                services.Add(subList);
             }
+            CloseConnection(); // Have to close it manually because I kept it open throughout the loops
             return services;
         }
     }

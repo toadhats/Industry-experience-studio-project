@@ -22,6 +22,8 @@ namespace Where2Next
             if (suburbName.Length > 0)
             {
                 Page.Title = String.Format("Where2Next Profile: {0}", suburbName);
+
+                // This probably needs to be wrapped in a try/catch
                 suburb = getSuburb(suburbName);
 
                 // Create title of card
@@ -33,21 +35,30 @@ namespace Where2Next
                     Image suburbPic = new Image();
                     suburbPic.AlternateText = suburb.Name;
                     suburbPic.ImageUrl = suburb.PicUrl;
-                    suburbPic.ImageAlign = ImageAlign.Right;
-                    suburbPic.Width = 400;
+                    suburbPic.ImageAlign = ImageAlign.TextTop;
+                    suburbPic.Width = 600;
                     profileCard.Controls.Add(suburbPic);
                 }
 
                 // Get list of services
-                var services = getServices().OrderBy(x => x.serviceType).ThenBy(x => x.serviceType);
+                var services = getServices().OrderBy(x => x.Item1);
+
+                //var services = getServices().OrderBy(x => x.serviceType).ThenBy(x => x.serviceType);
                 var sb = new StringBuilder();
-                sb.Append("<table class=\"serviceTable\"><tr><th>Services</th></tr>");
+                sb.Append("<table class=\"serviceTable\"><tr><thead><h3>Services<h3></thead></tr>");
                 // TODO: Insert section headings between each subset of results belonging to a type
                 //       of service? Alternatively, just make sure all the type fields are meaningful
                 // to the user.
-                foreach (Service service in services)
+                foreach (var subList in services)
                 {
-                    sb.AppendFormat("<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>", service.serviceType, service.serviceName, service.address);
+                    if (subList.Item2.Count >= 1)
+                    {
+                        sb.AppendFormat("<tr><th>{0}</th></tr>", subList.Item1.Item2);
+                        foreach (var service in subList.Item2.OrderBy(x => x.serviceName))
+                        {
+                            sb.AppendFormat("<tr><td>{0}</td><td>{1}</td></tr>", service.serviceName, service.address);
+                        }
+                    }
                 }
                 sb.Append("</table>");
                 profileCard.Controls.Add(new LiteralControl(sb.ToString()));
@@ -65,12 +76,12 @@ namespace Where2Next
                 }
                 else
                 {
-                    throw new Exception("Didn't get a suburb from the database");
+                    throw new Exception("Didn't get a suburb from the database"); // BUG: A nonexistent or malformed suburb name that returns no results throws an exception here
                 }
             }
         }
 
-        public List<Service> getServices()
+        public List<Tuple<Tuple<string, string>, List<Service>>> getServices()
         {
             using (DBConnect db = new DBConnect())
             {
