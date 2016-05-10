@@ -244,12 +244,17 @@
     <Content Include="Images\quizbuttonimage\sportingclubs.jpg" />
     <Content Include="Images\quizbuttonimage\swimmingpools.jpg" />
     <Content Include="Images\quizbuttonimage\tafe.jpg" />
+    <Content Include="Images\quizCategories\culture.png" />
     <Content Include="Images\quizCategories\disability.png" />
     <Content Include="Images\quizCategories\health.jpg" />
     <Content Include="Images\quizCategories\higher_education.jpg" />
+    <Content Include="Images\quizCategories\placeholder.png" />
+    <Content Include="Images\quizCategories\publicservices.png" />
+    <Content Include="Images\quizCategories\socialservices.png" />
     <Content Include="Images\quizCategories\social_services.jpg" />
     <Content Include="Images\quizCategories\placeholder.jpg" />
     <Content Include="Images\quizCategories\sport.jpg" />
+    <Content Include="Images\quizCategories\sport.png" />
     <Content Include="Images\quizServices\placeholder.jpg" />
     <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\Toorak.jpg" />
