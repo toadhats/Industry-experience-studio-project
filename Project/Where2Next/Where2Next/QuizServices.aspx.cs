@@ -108,12 +108,12 @@ namespace Where2Next
             StringBuilder queryBuilder = new StringBuilder();
 
             // construct query and send to DB
-            queryBuilder.Append("SELECT DISTINCT s.SUBURB, dbo.GROUP_CONCAT_D(DISTINCT s.POSTCODE, N',') FROM SUBURB_GNAF s"); // So glad someone ported group_concat() to MS SQL
+            queryBuilder.Append("SELECT DISTINCT s.SUBURB, dbo.GROUP_CONCAT_D(DISTINCT s.POSTCODE, N',') FROM where2next.SUBURB_GNAF s"); // So glad someone ported group_concat() to MS SQL
             foreach (var service in selectedServices)
             {
-                queryBuilder.Append(" INNER JOIN " + service + " ON s.SUBURB = " + service + ".SUBURB"); // We've benchmarked this - short of a total database redesign it's still more or less the fastest practical way.
+                queryBuilder.Append(" INNER JOIN where2next." + service + " ON s.SUBURB = where2next." + service + ".SUBURB"); // We've benchmarked this - short of a total database redesign it's still more or less the fastest practical way.
             }
-            queryBuilder.Append(" GROUP BY s.SUBURB ASC;"); // Grouping by suburb name to concatenate the postcodes
+            queryBuilder.Append(" GROUP BY s.SUBURB ORDER BY s.SUBURB;"); // Grouping by suburb name to concatenate the postcodes
 
             var encodedQuery = Base64ForUrlEncode(queryBuilder.ToString());
             var tempDecodedQuery = Encoding.UTF8.GetString(HttpServerUtility.UrlTokenDecode(encodedQuery));
