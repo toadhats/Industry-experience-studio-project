@@ -87,7 +87,7 @@
                         <img src="Images/Logos/w2n%20logo%20house%20only%20[100px].png" alt=""></a></li>
 
                     <li><a href="Map.aspx">Map</a></li>
-                     <li><a href="~/SuburbProfile?query=caulfield">Profile</a></li>
+                     <li><a href="SuburbProfile?query=caulfield">Profile</a></li>
                    <%-- <li><a href="#team">About Us</a></li>
                     <li><a href="#contact">Contact Us</a></li>--%>
                 </ul>
