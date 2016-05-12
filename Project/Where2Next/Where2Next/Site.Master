@@ -46,7 +46,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div id="header-wrapper">
+       <%-- <div id="header-wrapper">
             <div id="google_translate_element"></div>
             <script type="text/javascript">
                 function googleTranslateElementInit() {
@@ -64,11 +64,37 @@
                         <li><a runat="server" href="~/QuizCategories">Discover</a></li>
                         <li><a runat="server" href="~/Map">Map</a></li>
                         <li><a runat="server" href="~/SuburbProfile?query=caulfield">Profile</a></li>
-                        <%--TODO: UGLY HACK FIX THIS--%>
+                       
                     </ul>
                 </div>
+                   </div>
+        </div>--%>
+                <nav class="main-nav-outer" id="test">
+            <!--main-nav-start-->
+            <div class="container">
+                <div id="google_translate_element"></div>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                }
+            </script>
+            <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                <ul class="main-nav">
+                    <li><a href="Default.aspx">Home</a></li>
+                    <li><a href="QuizCategories.aspx">Discover</a></li>
+                   
+                    <li class="small-logo"><a href="#header">
+                        <img src="Images/Logos/w2n%20logo%20house%20only%20[100px].png" alt=""></a></li>
+
+                    <li><a href="Map.aspx">Map</a></li>
+                     <li><a href="~/SuburbProfile?query=caulfield">Profile</a></li>
+                   <%-- <li><a href="#team">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>--%>
+                </ul>
+                <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
             </div>
-        </div>
+        </nav>
+            
 
         <div class="container body-content">
 

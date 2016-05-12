@@ -265,6 +265,50 @@ namespace Where2Next
             return services;
         }
 
+        public List<Tuple<string, double, double, string>> getSuburbLocation(string suburbName)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                OpenConnection();
+            }
+            List<Tuple<string, double, double, string>> suburb = new List<Tuple<string, double, double, string>>();
+            string query;
+            if (System.Text.RegularExpressions.Regex.IsMatch(suburbName.Trim(), "^\\d+$"))
+            {
+                query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where suburb = @suburbname";
+            }
+            else
+            {
+                query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where suburb = @suburbname";
+            }
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = query;
+            cmd.Connection = connection;
+            SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40); // Limit to 40 chars because we don't need more, excessive capabilities tend to present risks
+            snameParam.IsNullable = false;
+            snameParam.Value = suburbName;
+            cmd.Parameters.Add(snameParam);
+            cmd.Prepare();
+            var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
+
+            if (dataReader.HasRows)
+            {
+                while (dataReader.Read())
+                {
+                    suburb.Add(Tuple.Create(dataReader.GetString(0), dataReader.GetDouble(1), dataReader.GetDouble(2), dataReader.GetString(3)));
+                }
+            }
+            else
+            {
+                Trace.Write("Failed to find the suburb");
+            }
+
+            dataReader.Close();
+
+            return suburb;
+        }
+
         public SuburbPriceData getHousePriceOfSuburb(string suburbName)
         {
             if (connection.State == ConnectionState.Closed)
