@@ -1,15 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Where2Next._Default" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <!doctype html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, maximum-scale=1">
-
-        <title>Homepage</title>
-
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<asp:Content ContentPlaceHolderID="extraHeadContent" runat="server">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
 
         <link href="Content/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -25,6 +17,101 @@
         <script type="text/javascript" src="Scripts/js/jquery.isotope.js"></script>
         <script type="text/javascript" src="Scripts/js/wow.js"></script>
         <script type="text/javascript" src="Scripts/js/classie.js"></script>
+
+    <script type="text/javascript">
+            $(document).ready(function (e) {
+                $('#test').scrollToFixed();
+                $('.res-nav_click').click(function () {
+                    $('.main-nav').slideToggle();
+                    return false
+
+                });
+
+            });
+        </script>
+
+        <script>
+            wow = new WOW(
+              {
+                  animateClass: 'animated',
+                  offset: 100
+              }
+            );
+            wow.init();
+        </script>
+
+        <script type="text/javascript">
+            $(window).load(function () {
+
+                $('.main-nav li a').bind('click', function (event) {
+                    var $anchor = $(this);
+
+                    $('html, body').stop().animate({
+                        scrollTop: $($anchor.attr('href')).offset().top - 102
+                    }, 1500, 'easeInOutExpo');
+                    /*
+                    if you don't want to use the easing effects:
+                    $('html, body').stop().animate({
+                        scrollTop: $($anchor.attr('href')).offset().top
+                    }, 1000);
+                    */
+                    event.preventDefault();
+                });
+            })
+        </script>
+
+        <script type="text/javascript">
+
+            $(window).load(function () {
+
+                var $container = $('.portfolioContainer'),
+                    $body = $('body'),
+                    colW = 375,
+                    columns = null;
+
+                $container.isotope({
+                    // disable window resizing
+                    resizable: true,
+                    masonry: {
+                        columnWidth: colW
+                    }
+                });
+
+                $(window).smartresize(function () {
+                    // check if columns has changed
+                    var currentColumns = Math.floor(($body.width() - 30) / colW);
+                    if (currentColumns !== columns) {
+                        // set new column count
+                        columns = currentColumns;
+                        // apply width to container manually, then trigger relayout
+                        $container.width(columns * colW)
+                          .isotope('reLayout');
+                    }
+
+                }).smartresize(); // trigger resize to set container width
+                $('.portfolioFilter a').click(function () {
+                    $('.portfolioFilter .current').removeClass('current');
+                    $(this).addClass('current');
+
+                    var selector = $(this).attr('data-filter');
+                    $container.isotope({
+
+                        filter: selector,
+                    });
+                    return false;
+                });
+
+            });
+        </script>
+</asp:Content>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, maximum-scale=1">
+        <title>Homepage</title>        
     </head>
     <body>
         <div style="overflow: hidden;">
@@ -124,7 +211,7 @@
 
         <section class="main-section paddind" id="Portfolio">
             <!--main-section-start-->
-            <div class="container">
+            <div class="container clearfix">
                 <h2><a href="SuburbProfile?query=caulfield">Profile</a></h2>
                 <h6>Profile helps you to know your interest suburbs.</h6>
                 <%--      <div class="portfolioFilter">
@@ -137,38 +224,38 @@
         </ul>
        </div> --%>
             </div>
-            <div class="portfolioContainer wow fadeInUp delay-04s">
+            <div class="portfolioContainer wow fadeInUp delay-04s clearfix">
                 <div class=" Portfolio-box printdesign">
                     <a href="#">
                         <img src="Images/Caulfield.jpg" alt=""></a>
                     <h3>Caulfield</h3>
                     <%--<p>Print Design</p>--%>
                 </div>
-                <div class="Portfolio-box webdesign">
+                <div class="Portfolio-box webdesign clearfix">
                     <a href="#">
                         <img src="Images/Clayton.jpg" alt=""></a>
                     <h3>Clayton</h3>
                     <%--<p>Web Design</p>--%>
                 </div>
-                <div class=" Portfolio-box branding">
+                <div class=" Portfolio-box branding clearfix">
                     <a href="#">
                         <img src="Images/Carnegie.jpg" alt=""></a>
                     <h3>Carnegie</h3>
                     <%--<p>Branding</p>--%>
                 </div>
-                <div class=" Portfolio-box photography">
+                <div class=" Portfolio-box photography clearfix">
                     <a href="#">
                         <img src="Images/MalvernEast.jpg" alt=""></a>
                     <h3>Malvern East</h3>
                     <%--<p>Photography</p>--%>
                 </div>
-                <div class=" Portfolio-box branding">
+                <div class=" Portfolio-box branding clearfix">
                     <a href="#">
                         <img src="Images/StKilda.jpg" alt=""></a>
                     <h3>St Kilda</h3>
                     <%--<p>Branding</p>--%>
                 </div>
-                <div class=" Portfolio-box photography">
+                <div class=" Portfolio-box photography clearfix">
                     <a href="#">
                         <img src="Images/Toorak.jpg" alt=""></a>
                     <h3>Toorak</h3>
@@ -177,10 +264,11 @@
             </div>
         </section>
         <!--main-section-end-->
+        
 
-        <section class="main-section client-part" id="client">
+        <section class="main-section client-part clearfix" id="client">
             <!--main-section client-part-start-->
-            <div class="container">
+            <div class="container clearfix">
                 <%--<b class="quote-right wow fadeInDown delay-03"><i class="fa-quote-right"></i></b>
                 <div class="row">
                     <div class="col-lg-12">
@@ -232,7 +320,7 @@
                         <span class="wow fadeInDown delay-03s">Programmer</span>
                         <%--     <p class="wow fadeInDown delay-03s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
                     </div>
-                    <div class="team-leader-box">
+                    <div class="team-leader-box clearfix">
                         <div class="team-leader  wow fadeInDown delay-06s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
                             <img src="Images/Colin.jpg" alt="">
@@ -247,7 +335,7 @@
                         <span class="wow fadeInDown delay-06s">Programmer</span>
                         <%--<p class="wow fadeInDown delay-06s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
                     </div>
-                    <div class="team-leader-box">
+                    <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
                             <img src="Images/Chen.jpg" alt="">
@@ -262,7 +350,7 @@
                         <span class="wow fadeInDown delay-09s">UI & Database</span>
                         <%-- <p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
                     </div>
-                    <div class="team-leader-box">
+                    <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
                             <img src="Images/Peter.jpg" alt="">
@@ -277,7 +365,7 @@
                         <span class="wow fadeInDown delay-09s">Design</span>
                         <%--<p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
                     </div>
-                    <div class="team-leader-box">
+                    <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
                             <img src="Images/Ulupi.jpg" alt="">
@@ -358,91 +446,7 @@
     -->
         </footer>
 
-        <script type="text/javascript">
-            $(document).ready(function (e) {
-                $('#test').scrollToFixed();
-                $('.res-nav_click').click(function () {
-                    $('.main-nav').slideToggle();
-                    return false
-
-                });
-
-            });
-        </script>
-
-        <script>
-            wow = new WOW(
-              {
-                  animateClass: 'animated',
-                  offset: 100
-              }
-            );
-            wow.init();
-        </script>
-
-        <script type="text/javascript">
-            $(window).load(function () {
-
-                $('.main-nav li a').bind('click', function (event) {
-                    var $anchor = $(this);
-
-                    $('html, body').stop().animate({
-                        scrollTop: $($anchor.attr('href')).offset().top - 102
-                    }, 1500, 'easeInOutExpo');
-                    /*
-                    if you don't want to use the easing effects:
-                    $('html, body').stop().animate({
-                        scrollTop: $($anchor.attr('href')).offset().top
-                    }, 1000);
-                    */
-                    event.preventDefault();
-                });
-            })
-        </script>
-
-        <script type="text/javascript">
-
-            $(window).load(function () {
-
-                var $container = $('.portfolioContainer'),
-                    $body = $('body'),
-                    colW = 375,
-                    columns = null;
-
-                $container.isotope({
-                    // disable window resizing
-                    resizable: true,
-                    masonry: {
-                        columnWidth: colW
-                    }
-                });
-
-                $(window).smartresize(function () {
-                    // check if columns has changed
-                    var currentColumns = Math.floor(($body.width() - 30) / colW);
-                    if (currentColumns !== columns) {
-                        // set new column count
-                        columns = currentColumns;
-                        // apply width to container manually, then trigger relayout
-                        $container.width(columns * colW)
-                          .isotope('reLayout');
-                    }
-
-                }).smartresize(); // trigger resize to set container width
-                $('.portfolioFilter a').click(function () {
-                    $('.portfolioFilter .current').removeClass('current');
-                    $(this).addClass('current');
-
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({
-
-                        filter: selector,
-                    });
-                    return false;
-                });
-
-            });
-        </script>
+        
     </body>
     </html>
 </asp:Content>
