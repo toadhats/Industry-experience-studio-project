@@ -72,6 +72,13 @@
                 <nav class="main-nav-outer" id="test">
             <!--main-nav-start-->
             <div class="container">
+                <div id="google_translate_element"></div>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                }
+            </script>
+            <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                 <ul class="main-nav">
                     <li><a href="Default.aspx">Home</a></li>
                     <li><a href="QuizCategories.aspx">Discover</a></li>
