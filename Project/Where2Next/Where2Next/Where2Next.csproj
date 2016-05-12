@@ -163,6 +163,8 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\quiz.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\home.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Home.aspx" />
@@ -296,6 +298,21 @@
     <Content Include="Scripts\js\home.js" />
     <Content Include="SuburbPic.aspx" />
     <Content Include="test.aspx" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\Montserrat-Black.otf" />
+    <Content Include="Content\fonts\Montserrat-Bold.otf" />
+    <Content Include="Content\fonts\Montserrat-ExtraBold.otf" />
+    <Content Include="Content\fonts\Montserrat-Hairline.otf" />
+    <Content Include="Content\fonts\Montserrat-Light.otf" />
+    <Content Include="Content\fonts\Montserrat-Regular.otf" />
+    <Content Include="Content\fonts\Montserrat-SemiBold.otf" />
+    <Content Include="Content\fonts\Montserrat-UltraLight.otf" />
     <None Include="Properties\PublishProfiles\where2next - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

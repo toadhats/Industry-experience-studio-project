@@ -43,7 +43,6 @@ namespace Where2Next
                 // Get list of services
                 var services = getServices().OrderBy(x => x.Item1);
 
-                //var services = getServices().OrderBy(x => x.serviceType).ThenBy(x => x.serviceType);
                 var sb = new StringBuilder();
                 sb.Append("<table class=\"serviceTable\"><tr><thead><h3>Services<h3></thead></tr>");
                 foreach (var subList in services)
