@@ -25,6 +25,7 @@ namespace Where2Next
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            List<Tuple<string, double, double, string>> suburbList;
             if (IsPostBack)
             {
                 failconnection.Attributes["style"] = "display:none";
@@ -34,62 +35,35 @@ namespace Where2Next
                 failLocation.Attributes["style"] = "display:none";
                 successservice.Attributes["style"] = "display:none";
                 failservice.Attributes["style"] = "display:none";   //display all of the label for the map
-                String connetionString = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-                using (SqlConnection connection = new SqlConnection(connetionString))//connection to database
+
+                using (DBConnect db = new DBConnect())
                 {
-                    string query;
+
                     String Locations = "";
-                    double Latitude ;
+                    double Latitude;
                     double Longitude;
-                    string Suburb = "";
+                    string Suburb = SuburbBox.Text;
                     string marker = "";
-                    if (System.Text.RegularExpressions.Regex.IsMatch(SuburbBox.Text.Trim(), "^\\d+$"))   //To check if the check the textbox is number
+                    suburbList = db.getSuburbLocation(Suburb);
+                    if (suburbList.Count > 0)
                     {
-                        query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where postcode = " + SuburbBox.Text;
+                        success.Attributes["style"] = "display";
+                        foreach (Tuple<string, double, double, string> suburb in suburbList)
+                        {
+                            Suburb = suburb.Item1;
+                            Latitude = suburb.Item2;   //Laititude
+                            Longitude = suburb.Item3;//Longitude
+                            marker = suburb.Item4;
+                            Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: 'Images/ICon/pins.png'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'Welcome to " + Suburb + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(16);map.setCenter(" + marker + ".getPosition());});";
+                            js.Text = "<script type='text/javascript'>" +
+                 "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:13,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
+         </script> ";
+                        }
                     }
                     else
                     {
-                        query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where suburb = '" + SuburbBox.Text + "'";
-                    }
-                    try
-                    {
-                        connection.Open();//open the database
-                        SqlCommand command = new SqlCommand(query, connection);//make a query
-                        SqlDataReader reader = command.ExecuteReader();  //create a reader
-
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                success.Attributes["style"] = "display";
-                                Latitude = reader.GetDouble(1);   //Laititude
-                                Longitude = reader.GetDouble(2);//Longitude
-                                Suburb = reader.GetString(0); //Suburb name
-                                marker = reader.GetString(3);
-                                Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: 'Images/ICon/pins.png'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'Welcome to " + Suburb + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(16);map.setCenter(" + marker + ".getPosition());});";
-                                js.Text = "<script type='text/javascript'>" +
-                     "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:13,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
-         </script> ";
-                            }
-                        }
-                        else
-                        {
-                            fail.Attributes["style"] = "display";
-                            js.Text = @"<script type='text/javascript'>
-                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
-         </script> ";
-                        }
-                        reader.Close();
-                        connection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        if (connection != null)
-                        {
-                            connection.Close();
-                        }
-                        failconnection.Attributes["style"] = "display";
+                        failLocation.Attributes["style"] = "display";
                         js.Text = @"<script type='text/javascript'>
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
