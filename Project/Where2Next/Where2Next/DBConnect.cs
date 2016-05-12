@@ -264,5 +264,38 @@ namespace Where2Next
             CloseConnection(); // Have to close it manually because I kept it open throughout the loops
             return services;
         }
+
+        public SuburbPriceData getHousePriceOfSuburb(string suburbName)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                OpenConnection();
+            }
+            var priceQuery = "select ranking, suburb, price1, price2, price3, price4, price5 from where2next.suburbPrice2 where suburb = @suburbname";
+            SqlCommand cmd = new SqlCommand(priceQuery, connection);
+            SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40);
+            snameParam.IsNullable = false;
+            snameParam.Value = suburbName;
+            cmd.Parameters.Add(snameParam);
+            cmd.Prepare();
+
+            using (var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+            {
+                if (dataReader.HasRows && dataReader.Read()) // this relies on the (shaky) assumption that if the first condition evaluates to false, the program will stop checking...
+                {
+                    var rank = dataReader.GetInt64(0) as long? ?? 0;
+                    var name = (string)dataReader["suburb"] as string ?? "null";
+                    var price1 = (int)dataReader["price1"] as int? ?? 0;
+                    var price2 = (int)dataReader["price2"] as int? ?? 0;
+                    var price3 = (int)dataReader["price3"] as int? ?? 0;
+                    var price4 = (int)dataReader["price4"] as int? ?? 0;
+                    var price5 = (int)dataReader["price5"] as int? ?? 0;
+
+                    var priceData = new SuburbPriceData(rank, name, price1, price2, price3, price4, price5);
+                    return priceData;
+                }
+                else return new SuburbPriceData(); // The 'nullish' version of our data object
+            }
+        }
     }
 }

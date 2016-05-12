@@ -115,4 +115,38 @@ namespace Where2Next
             this.PicUrl = picUrl;
         }
     }
+
+    public class SuburbPriceData
+    {
+        public readonly long ranking;
+        public readonly string suburbName;
+        public readonly int price1, price2, price3, price4, price5;
+        public readonly bool exists; // Attempted home-brew optional?
+
+        public SuburbPriceData(long ranking, string suburbName, int price1, int price2, int price3, int price4, int price5)
+        {
+            this.ranking = ranking;
+            this.suburbName = suburbName;
+            this.price1 = price1;
+            this.price2 = price2;
+            this.price3 = price3;
+            this.price4 = price4;
+            this.price5 = price5;
+            exists = true;
+        }
+
+        // The empty constructor returns an invalid object which is flagged accordingly. I'm just
+        // playing games here, this is a pattern I'm experimenting with (diy optionals?)
+        public SuburbPriceData()
+        {
+            exists = false;
+            this.ranking = default(long);
+            this.suburbName = default(string);
+            this.price1 = default(int);
+            this.price2 = default(int);
+            this.price3 = default(int);
+            this.price4 = default(int);
+            this.price5 = default(int);
+        }
+    }
 }

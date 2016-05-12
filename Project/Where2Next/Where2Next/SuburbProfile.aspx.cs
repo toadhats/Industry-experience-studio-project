@@ -35,8 +35,8 @@ namespace Where2Next
                     Image suburbPic = new Image();
                     suburbPic.AlternateText = suburb.Name;
                     suburbPic.ImageUrl = suburb.PicUrl;
-                    suburbPic.ImageAlign = ImageAlign.TextTop;
-                    suburbPic.Width = 600;
+                    suburbPic.CssClass = "suburbPic";
+                    suburbPic.ImageAlign = ImageAlign.AbsMiddle;
                     profileCard.Controls.Add(suburbPic);
                 }
 
@@ -46,9 +46,6 @@ namespace Where2Next
                 //var services = getServices().OrderBy(x => x.serviceType).ThenBy(x => x.serviceType);
                 var sb = new StringBuilder();
                 sb.Append("<table class=\"serviceTable\"><tr><thead><h3>Services<h3></thead></tr>");
-                // TODO: Insert section headings between each subset of results belonging to a type
-                //       of service? Alternatively, just make sure all the type fields are meaningful
-                // to the user.
                 foreach (var subList in services)
                 {
                     if (subList.Item2.Count >= 1)
@@ -62,6 +59,15 @@ namespace Where2Next
                 }
                 sb.Append("</table>");
                 profileCard.Controls.Add(new LiteralControl(sb.ToString()));
+
+                // Get house price data if we can
+                var priceData = getSuburbPriceData();
+                if (priceData.exists)
+                {
+                    var priceDataBuilder = new StringBuilder();
+                    priceDataBuilder.AppendFormat("<div class=\"priceCard\"><p>The average house price in {0} is <strong>{1:C0}</strong><br> &nbsp; <em>#{2} in Victoria</em>", priceData.suburbName, priceData.price5, priceData.ranking); // This would be a LOT better if I wrote something to handle ordinals (e.g. 1st, 2nd, 3rd). Maybe later.
+                    profileCard.Controls.Add(new LiteralControl(priceDataBuilder.ToString()));
+                }
             }
         }
 
@@ -78,6 +84,15 @@ namespace Where2Next
                 {
                     throw new Exception("Didn't get a suburb from the database"); // BUG: A nonexistent or malformed suburb name that returns no results throws an exception here
                 }
+            }
+        }
+
+        public SuburbPriceData getSuburbPriceData()
+        {
+            using (DBConnect db = new DBConnect())
+            {
+                var priceData = db.getHousePriceOfSuburb(suburbName);
+                return priceData;
             }
         }
 

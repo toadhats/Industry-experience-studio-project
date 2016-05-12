@@ -21,14 +21,42 @@
 
     <style>
         .serviceTable {
-            padding: "10px";
-        }
-        .serviceTable tr {
-            padding: "5px";
+            padding: 10px;
+            display: inline-block;
+            width: auto;
+            float: left;
         }
 
-        .serviceTable td {
-            padding: 15px;
+            .serviceTable tr {
+                padding: 5px;
+            }
+
+            .serviceTable td {
+                padding: 15px;
+            }
+
+        .suburbPic {
+            display: inline-block;
+            float: right;
+            max-width: 38%;
+            height: auto;
+            padding: 6px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+
+        .priceCard {
+            display: inline-block;
+            float: right;
+            max-width: 38%;
+            padding: 6px;
+            margin-top: 32px;
+            
+        }
+
+        .priceCard p {
+            float: left;
+            text-align: start;
+            font-family: Montserrat, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
     </style>
 </asp:Content>
