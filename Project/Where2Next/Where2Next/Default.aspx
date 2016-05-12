@@ -31,10 +31,11 @@
             <header class="header" id="header">
                 <!--header-start-->
                 <div class="container">
-                    <figure class="logo animated fadeInDown delay-07s">
+                    <br /><br /><br /><br /><br /><br />
+                   <%-- <figure class="logo animated fadeInDown delay-07s">
                         <a href="#">
                             <img src="Images/house250px.png" alt=""></a>
-                    </figure>
+                    </figure>--%>
                     <h1 class="animated fadeInDown delay-07s">Welcome To Where2Next</h1>
                     <ul class="we-create animated fadeInUp delay-1s">
                         <li>Our aim is to help you find a suitable suburb to live!</li>
@@ -45,7 +46,7 @@
         </header>
         <!--header-end-->
 
-        <nav class="main-nav-outer" id="test">
+        <%--<nav class="main-nav-outer" id="test">
             <!--main-nav-start-->
             <div class="container">
                 <ul class="main-nav">
@@ -61,7 +62,7 @@
                 </ul>
                 <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
             </div>
-        </nav>
+        </nav>--%>
         <!--main-nav-end-->
 
         <section class="main-section" id="service">
