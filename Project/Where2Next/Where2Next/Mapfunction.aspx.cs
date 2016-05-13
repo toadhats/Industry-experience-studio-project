@@ -32,7 +32,6 @@ namespace Where2Next
 
                 using (DBConnect db = new DBConnect())
                 {
-
                     String Locations = "";
                     double Latitude;
                     double Longitude;
@@ -96,6 +95,7 @@ namespace Where2Next
                   var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
         }
+
         protected void Button3_Click(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -139,8 +139,8 @@ namespace Where2Next
                                                               //Response.Write(query);//just for test.
                     using (SqlConnection connection = new SqlConnection(connectionStr))
                     {
-                        double Latitude ;
-                        double Longitude ;
+                        double Latitude;
+                        double Longitude;
                         string NAME = "";
                         string Locations = "";
                         string icon = "";
@@ -165,8 +165,6 @@ namespace Where2Next
 "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:14,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
                                 }
-
-
                             }
                             else
                             {
