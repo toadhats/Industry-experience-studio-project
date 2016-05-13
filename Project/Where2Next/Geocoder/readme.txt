@@ -1,5 +1,5 @@
 ﻿NAME
-	Geocoder - a script for maintaining geospatial information in the Where2Next database. 
+	Geocoder
 
 SYNOPSIS
 	geocoder [-t] table...
