@@ -99,7 +99,7 @@
                 -webkit-border-radius: 3px;
                 -moz-border-radius: 3px;
                 border-radius: 3px;
-                color: #D9230F;
+                color: #428bca;
             }
 
         .search-query:focus + button {
