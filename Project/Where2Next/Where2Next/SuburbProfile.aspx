@@ -38,7 +38,7 @@
         .suburbPic {
             display: inline-block;
             /*float: right;*/
-            max-width: 38%;
+            max-width: 75%;
             height: auto;
             padding: 6px;
             margin-bottom: 24px;
@@ -104,9 +104,9 @@
         <div class="row">
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                    <input type="text" class="search-query form-control" placeholder="Search" />
+                    <input type="text" class="search-query form-control" placeholder="Search" id="suburbSearchText" runat="server" />
                     <span class="input-group-btn">
-                        <button class="btn btn-info" type="button">
+                        <button class="btn btn-info" type="button" onserverclick="SearchButton" runat="server">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>

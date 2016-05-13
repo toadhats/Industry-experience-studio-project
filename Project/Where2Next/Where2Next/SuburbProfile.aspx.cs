@@ -15,7 +15,7 @@ namespace Where2Next
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request["query"] != null)
+            if (!IsPostBack && Request["query"] != null)
             {
                 suburbName = Request["query"];
                 Search(suburbName);
@@ -33,6 +33,8 @@ namespace Where2Next
             Page.Title = String.Format("Where2Next Profile: {0}", suburbName);
 
             suburb = getSuburb(suburbName);
+
+            profileCard.Controls.Clear();
 
             // Create title of card
             profileCard.Controls.Add(new LiteralControl(String.Format("<h1>{0}</h1><h3>{1}</h3><hr/>", suburb.Name, suburb.Postcode)));
@@ -52,7 +54,7 @@ namespace Where2Next
             var services = getServices().OrderBy(x => x.Item1);
 
             var sb = new StringBuilder();
-            sb.Append("<table class=\"serviceTable\"><tr><thead><h3>Services<h3></thead></tr>");
+            sb.Append("<table class=\"serviceTable\"><thead><tr><th><h3>Services</h3></th></tr></thead><tbody>");
             foreach (var subList in services)
             {
                 if (subList.Item2.Count >= 1)
@@ -64,7 +66,7 @@ namespace Where2Next
                     }
                 }
             }
-            sb.Append("</table>");
+            sb.Append("</tbody></table>");
             profileCard.Controls.Add(new LiteralControl(sb.ToString()));
 
             // Get house price data if we can
@@ -79,6 +81,14 @@ namespace Where2Next
             return true;
         }
 
+        public void SearchButton(object sender, EventArgs e)
+        {
+            // Grab the contents of the text box.
+            var input = suburbSearchText.Value; // I was trying to avoid a postback, but I realised I can't. Should have used JQuery or something
+            suburbName = input; // Should probably just stop using the global var
+            Search(input);
+        }
+
         public Suburb getSuburb(string suburbName)
         {
             using (DBConnect db = new DBConnect())
@@ -90,7 +100,7 @@ namespace Where2Next
                 }
                 else
                 {
-                    throw new Exception("Didn't get a suburb from the database"); // BUG: A nonexistent or malformed suburb name that returns no results throws an exception here
+                    throw new Exception("Didn't get a suburb from the database"); // TODO: Handle this exception
                 }
             }
         }
