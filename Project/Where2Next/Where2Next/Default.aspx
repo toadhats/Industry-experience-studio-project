@@ -2,107 +2,107 @@
 
 <asp:Content ContentPlaceHolderID="extraHeadContent" runat="server">
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
 
-        <link href="Content/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="Content/css/style.css" rel="stylesheet" type="text/css">
-        <link href="Content/css/font-awesome.css" rel="stylesheet" type="text/css">
-        <link href="Content/css/responsive.css" rel="stylesheet" type="text/css">
-        <link href="Content/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="Content/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="Content/css/style.css" rel="stylesheet" type="text/css">
+    <link href="Content/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="Content/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="Content/css/animate.css" rel="stylesheet" type="text/css">
 
-        <script type="text/javascript" src="Scripts/js/jquery.1.8.3.min.js"></script>
-        <script type="text/javascript" src="Scripts/js/bootstrap.js"></script>
-        <script type="text/javascript" src="Scripts/js/jquery-scrolltofixed.js"></script>
-        <script type="text/javascript" src="Scripts/js/jquery.easing.1.3.js"></script>
-        <script type="text/javascript" src="Scripts/js/jquery.isotope.js"></script>
-        <script type="text/javascript" src="Scripts/js/wow.js"></script>
-        <script type="text/javascript" src="Scripts/js/classie.js"></script>
+    <script type="text/javascript" src="Scripts/js/jquery.1.8.3.min.js"></script>
+    <script type="text/javascript" src="Scripts/js/bootstrap.js"></script>
+    <script type="text/javascript" src="Scripts/js/jquery-scrolltofixed.js"></script>
+    <script type="text/javascript" src="Scripts/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="Scripts/js/jquery.isotope.js"></script>
+    <script type="text/javascript" src="Scripts/js/wow.js"></script>
+    <script type="text/javascript" src="Scripts/js/classie.js"></script>
 
     <script type="text/javascript">
-            $(document).ready(function (e) {
-                $('#test').scrollToFixed();
-                $('.res-nav_click').click(function () {
-                    $('.main-nav').slideToggle();
-                    return false
-
-                });
+        $(document).ready(function (e) {
+            $('#test').scrollToFixed();
+            $('.res-nav_click').click(function () {
+                $('.main-nav').slideToggle();
+                return false
 
             });
-        </script>
 
-        <script>
-            wow = new WOW(
-              {
-                  animateClass: 'animated',
-                  offset: 100
-              }
-            );
-            wow.init();
-        </script>
+        });
+    </script>
 
-        <script type="text/javascript">
-            $(window).load(function () {
+    <script>
+        wow = new WOW(
+          {
+              animateClass: 'animated',
+              offset: 100
+          }
+        );
+        wow.init();
+    </script>
 
-                $('.main-nav li a').bind('click', function (event) {
-                    var $anchor = $(this);
+    <script type="text/javascript">
+        $(window).load(function () {
 
-                    $('html, body').stop().animate({
-                        scrollTop: $($anchor.attr('href')).offset().top - 102
-                    }, 1500, 'easeInOutExpo');
-                    /*
-                    if you don't want to use the easing effects:
-                    $('html, body').stop().animate({
-                        scrollTop: $($anchor.attr('href')).offset().top
-                    }, 1000);
-                    */
-                    event.preventDefault();
-                });
-            })
-        </script>
+            $('.main-nav li a').bind('click', function (event) {
+                var $anchor = $(this);
 
-        <script type="text/javascript">
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top - 102
+                }, 1500, 'easeInOutExpo');
+                /*
+                if you don't want to use the easing effects:
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top
+                }, 1000);
+                */
+                event.preventDefault();
+            });
+        })
+    </script>
 
-            $(window).load(function () {
+    <script type="text/javascript">
 
-                var $container = $('.portfolioContainer'),
-                    $body = $('body'),
-                    colW = 375,
-                    columns = null;
+        $(window).load(function () {
 
+            var $container = $('.portfolioContainer'),
+                $body = $('body'),
+                colW = 375,
+                columns = null;
+
+            $container.isotope({
+                // disable window resizing
+                resizable: true,
+                masonry: {
+                    columnWidth: colW
+                }
+            });
+
+            $(window).smartresize(function () {
+                // check if columns has changed
+                var currentColumns = Math.floor(($body.width() - 30) / colW);
+                if (currentColumns !== columns) {
+                    // set new column count
+                    columns = currentColumns;
+                    // apply width to container manually, then trigger relayout
+                    $container.width(columns * colW)
+                      .isotope('reLayout');
+                }
+
+            }).smartresize(); // trigger resize to set container width
+            $('.portfolioFilter a').click(function () {
+                $('.portfolioFilter .current').removeClass('current');
+                $(this).addClass('current');
+
+                var selector = $(this).attr('data-filter');
                 $container.isotope({
-                    // disable window resizing
-                    resizable: true,
-                    masonry: {
-                        columnWidth: colW
-                    }
+
+                    filter: selector,
                 });
-
-                $(window).smartresize(function () {
-                    // check if columns has changed
-                    var currentColumns = Math.floor(($body.width() - 30) / colW);
-                    if (currentColumns !== columns) {
-                        // set new column count
-                        columns = currentColumns;
-                        // apply width to container manually, then trigger relayout
-                        $container.width(columns * colW)
-                          .isotope('reLayout');
-                    }
-
-                }).smartresize(); // trigger resize to set container width
-                $('.portfolioFilter a').click(function () {
-                    $('.portfolioFilter .current').removeClass('current');
-                    $(this).addClass('current');
-
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({
-
-                        filter: selector,
-                    });
-                    return false;
-                });
-
+                return false;
             });
-        </script>
+
+        });
+    </script>
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -111,21 +111,26 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, maximum-scale=1">
-        <title>Homepage</title>        
+        <title>Homepage</title>
     </head>
     <body>
         <div style="overflow: hidden;">
             <header class="header" id="header">
                 <!--header-start-->
                 <div class="container">
-                    <br /><br /><br /><br /><br /><br />
-                   <%-- <figure class="logo animated fadeInDown delay-07s">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <%-- <figure class="logo animated fadeInDown delay-07s">
                         <a href="#">
                             <img src="Images/house250px.png" alt=""></a>
                     </figure>--%>
                     <h1 class="animated fadeInDown delay-07s">Welcome To Where2Next</h1>
                     <ul class="we-create animated fadeInUp delay-1s">
-                        <li>Our aim is to help you find a suitable suburb to live!</li>
+                        <li>Our aim is to help you find the perfect place to live!</li>
                     </ul>
                     <a class="link animated fadeInUp delay-1s" href="QuizCategories.aspx">Get Started</a>
                 </div>
@@ -201,7 +206,7 @@
                         </div>
                     </div>
                     <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-                        <%--<img src="Images/img/macbook-pro.png" alt="">--%>
+
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/z4JWujzg9uU" frameborder="0" allowfullscreen></iframe>
                     </figure>
                 </div>
@@ -212,51 +217,42 @@
         <section class="main-section paddind" id="Portfolio">
             <!--main-section-start-->
             <div class="container clearfix">
-                <h2><a href="SuburbProfile?query=caulfield">Profile</a></h2>
+                <h2><a href="SuburbProfile">Profile</a></h2>
                 <h6>Profile helps you to know your interest suburbs.</h6>
-                <%--      <div class="portfolioFilter">
-        <ul class="Portfolio-nav wow fadeIn delay-02s">
-        	<li><a href="#" data-filter="*" class="current" >All</a></li>
-            <li><a href="#" data-filter=".branding" >Branding</a></li>
-            <li><a href="#" data-filter=".webdesign" >Web design</a></li>
-            <li><a href="#" data-filter=".printdesign" >Print design</a></li>
-            <li><a href="#" data-filter=".photography" >Photography</a></li>
-        </ul>
-       </div> --%>
             </div>
             <div class="portfolioContainer wow fadeInUp delay-04s clearfix">
                 <div class=" Portfolio-box printdesign">
-                    <a href="#">
+                    <a href="SuburbProfile?query=caulfield">
                         <img src="Images/Caulfield.jpg" alt=""></a>
                     <h3>Caulfield</h3>
                     <%--<p>Print Design</p>--%>
                 </div>
                 <div class="Portfolio-box webdesign clearfix">
-                    <a href="#">
+                    <a href="SuburbProfile?query=clayton">
                         <img src="Images/Clayton.jpg" alt=""></a>
                     <h3>Clayton</h3>
                     <%--<p>Web Design</p>--%>
                 </div>
                 <div class=" Portfolio-box branding clearfix">
-                    <a href="#">
+                    <a href="SuburbProfile?query=carnegie">
                         <img src="Images/Carnegie.jpg" alt=""></a>
                     <h3>Carnegie</h3>
                     <%--<p>Branding</p>--%>
                 </div>
                 <div class=" Portfolio-box photography clearfix">
-                    <a href="#">
+                    <a href="SuburbProfile?query=malvern east">
                         <img src="Images/MalvernEast.jpg" alt=""></a>
                     <h3>Malvern East</h3>
                     <%--<p>Photography</p>--%>
                 </div>
                 <div class=" Portfolio-box branding clearfix">
-                    <a href="#">
+                    <a href="SuburbProfile?query=st kilda">
                         <img src="Images/StKilda.jpg" alt=""></a>
                     <h3>St Kilda</h3>
                     <%--<p>Branding</p>--%>
                 </div>
                 <div class=" Portfolio-box photography clearfix">
-                    <a href="#">
+                    <a href="SuburbProfile?query=toorak">
                         <img src="Images/Toorak.jpg" alt=""></a>
                     <h3>Toorak</h3>
                     <%--<p>Photography</p>--%>
@@ -264,7 +260,6 @@
             </div>
         </section>
         <!--main-section-end-->
-        
 
         <section class="main-section client-part clearfix" id="client">
             <!--main-section client-part-start-->
@@ -445,8 +440,6 @@
         You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Knight
     -->
         </footer>
-
-        
     </body>
     </html>
 </asp:Content>

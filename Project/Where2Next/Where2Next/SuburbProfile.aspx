@@ -35,6 +35,18 @@
                 padding: 15px;
             }
 
+            .serviceTable th {
+                padding-top: 6px;
+            }
+
+            .serviceTable thead th {
+                padding-bottom: 12px;
+            }
+
+                .serviceTable thead th h3 {
+                    font-size: x-large;
+                }
+
         .suburbPic {
             display: inline-block;
             /*float: right;*/
@@ -100,20 +112,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <%--Search bar--%>
-    <div class="container">
+    <asp:Panel class="container" runat="server" DefaultButton="DummySearchButton">
         <div class="row">
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
                     <input type="text" class="search-query form-control" placeholder="Search" id="suburbSearchText" runat="server" />
                     <span class="input-group-btn">
-                        <button class="btn btn-info" type="button" onserverclick="SearchButton" runat="server">
+                        <button id="SearchIcon" class="btn btn-info" type="button" onserverclick="SearchButton" runat="server">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
                 </div>
             </div>
         </div>
-    </div>
+    </asp:Panel>
+    <asp:Button runat="server" ID="DummySearchButton" Style="display: none;" OnClick="SearchButton" />
 
     <asp:Panel ID="profileCard" CssClass="profileCard" runat="server" HorizontalAlign="Center" ScrollBars="Auto" Wrap="false">
         <%--Mostly everything's getting injected into here programmatically--%>
