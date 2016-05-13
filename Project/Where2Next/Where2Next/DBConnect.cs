@@ -273,22 +273,31 @@ namespace Where2Next
             }
             List<Tuple<string, double, double, string>> suburb = new List<Tuple<string, double, double, string>>();
             string query;
+            SqlCommand cmd = new SqlCommand();
+            
+            cmd.Connection = connection;
             if (System.Text.RegularExpressions.Regex.IsMatch(suburbName.Trim(), "^\\d+$"))
             {
-                query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where suburb = @suburbname";
+                query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where postcode = @suburbpostcode";
+                SqlParameter snameParam = new SqlParameter("@suburbpostcode", SqlDbType.Int, 40);
+                snameParam.IsNullable = false;
+                snameParam.Value = Convert.ToInt32(suburbName);
+                cmd.Parameters.Add(snameParam);
             }
             else
             {
                 query = "select suburb,Latitude,Longitude,replace(CONCAT(suburb,postcode),' ','') as marker from where2next.suburb_gnaf where suburb = @suburbname";
+                SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40);
+                snameParam.IsNullable = false;
+                snameParam.Value = suburbName;
+                cmd.Parameters.Add(snameParam);
             }
 
-            SqlCommand cmd = new SqlCommand();
             cmd.CommandText = query;
-            cmd.Connection = connection;
-            SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40); // Limit to 40 chars because we don't need more, excessive capabilities tend to present risks
-            snameParam.IsNullable = false;
-            snameParam.Value = suburbName;
-            cmd.Parameters.Add(snameParam);
+            // Limit to 40 chars because we don't need more, excessive capabilities tend to present risks
+            
+            
+            
             cmd.Prepare();
             var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
 
