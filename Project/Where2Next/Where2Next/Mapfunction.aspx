@@ -88,8 +88,8 @@
                 <br />
                 <asp:TextBox ID="SuburbBox" runat="server"></asp:TextBox><br />
                 <br />
-                <asp:Button CssClass="btn btn-default" ID="Button1" runat="server" Text="Search Now" OnClick="Button1_Click" />
-                <asp:Button CssClass="btn btn-default" ID="Button2" runat="server" Text="My location" OnClick="Button2_Click" /><br />
+                <asp:Button CssClass="btn btn-default" ID="findSubBut" runat="server" Text="Search Now" OnClick="findSubBut_Click" />
+                <asp:Button CssClass="btn btn-default" ID="LocationBut" runat="server" Text="My location" OnClick="LocationBut_Click" /><br />
                 <br />
                 <div id="demo" class="collapse">
                     <br />

@@ -103,22 +103,22 @@ namespace Where2Next {
         protected global::System.Web.UI.WebControls.TextBox SuburbBox;
         
         /// <summary>
-        /// Button1 control.
+        /// findSubBut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button findSubBut;
         
         /// <summary>
-        /// Button2 control.
+        /// LocationBut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button LocationBut;
         
         /// <summary>
         /// schooltest control.

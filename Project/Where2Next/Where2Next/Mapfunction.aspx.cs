@@ -23,19 +23,12 @@ namespace Where2Next
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void findSubBut_Click(object sender, EventArgs e)
         {
             List<Tuple<string, double, double, string>> suburbList;
             if (IsPostBack)
             {
-                failconnection.Attributes["style"] = "display:none";
-                success.Attributes["style"] = "display:none";
-                fail.Attributes["style"] = "display:none";
-                successLocation.Attributes["style"] = "display:none";
-                failLocation.Attributes["style"] = "display:none";
-                successservice.Attributes["style"] = "display:none";
-                failservice.Attributes["style"] = "display:none";   //display all of the label for the map
-
+                hideAllLable();
 
                 using (DBConnect db = new DBConnect())
                 {
@@ -63,16 +56,13 @@ namespace Where2Next
                     }
                     else
                     {
-                        failLocation.Attributes["style"] = "display";
-                        js.Text = @"<script type='text/javascript'>
-                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
-         </script> ";
+                        failTogetMap();
                     }
                 }
             }
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void LocationBut_Click(object sender, EventArgs e)
         {
             if (IsPostBack)
             {
@@ -80,17 +70,37 @@ namespace Where2Next
             }
         }
 
+        public void hideAllLable()
+        {
+            failconnection.Attributes["style"] = "display:none";
+            success.Attributes["style"] = "display:none";
+            fail.Attributes["style"] = "display:none";
+            successLocation.Attributes["style"] = "display:none";
+            failLocation.Attributes["style"] = "display:none";
+            successservice.Attributes["style"] = "display:none";
+            failservice.Attributes["style"] = "display:none";   //display al
+        }
+
+        public void failTogetMap()
+        {
+            failLocation.Attributes["style"] = "display";
+            js.Text = @"<script type='text/javascript'>
+                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
+         </script> ";
+        }
+
+        public void failToConnect()
+        {
+            failconnection.Attributes["style"] = "display";
+            js.Text = @"<script type='text/javascript'>
+                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
+         </script> ";
+        }
         protected void Button3_Click(object sender, EventArgs e)
         {
             if (IsPostBack)
             {
-                failconnection.Attributes["style"] = "display:none";
-                success.Attributes["style"] = "display:none";
-                fail.Attributes["style"] = "display:none";
-                successLocation.Attributes["style"] = "display:none";
-                failLocation.Attributes["style"] = "display:none";
-                successservice.Attributes["style"] = "display:none";
-                failservice.Attributes["style"] = "display:none";//hide all of the alert
+                hideAllLable();
                 string query = "";
                 String connectionStr = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 if (SuburbBox.Text == "")
@@ -160,10 +170,7 @@ namespace Where2Next
                             }
                             else
                             {
-                                failservice.Attributes["style"] = "display";
-                                js.Text = @"<script type='text/javascript'>
-                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
-         </script> ";
+                                failTogetMap();
                             }
                             reader.Close();
                             connection.Close();
@@ -174,10 +181,7 @@ namespace Where2Next
                             {
                                 connection.Close();
                             }
-                            failconnection.Attributes["style"] = "display";
-                            js.Text = @"<script type='text/javascript'>
-                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
-         </script> ";
+                            failToConnect();
                         }
                     }
                 }
