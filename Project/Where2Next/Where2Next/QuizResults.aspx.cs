@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -60,7 +59,7 @@ namespace Where2Next
                         }
                     }
                 }
-                catch (MySqlException)
+                catch (SqlException)
                 {
                     resultsTable.Text = "<div class=\"sorryCard\" > <h2> Whoops, something went wrong. </h2>";
                 }

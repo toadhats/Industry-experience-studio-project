@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -274,7 +273,7 @@ namespace Where2Next
             List<Tuple<string, double, double, string>> suburb = new List<Tuple<string, double, double, string>>();
             string query;
             SqlCommand cmd = new SqlCommand();
-            
+
             cmd.Connection = connection;
             if (System.Text.RegularExpressions.Regex.IsMatch(suburbName.Trim(), "^\\d+$"))
             {
@@ -292,7 +291,7 @@ namespace Where2Next
                 snameParam.Value = suburbName;
                 cmd.Parameters.Add(snameParam);
             }
-            cmd.CommandText = query; 
+            cmd.CommandText = query;
             cmd.Prepare();
             var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
 

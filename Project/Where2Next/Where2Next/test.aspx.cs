@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 
 namespace Where2Next
 {
@@ -24,21 +23,19 @@ namespace Where2Next
                 connection.Open();
                 SqlCommand command = new SqlCommand("update guest.CONNECTION set number = number +1 where type ='SUCCESS'; ", connection);
                 command.ExecuteNonQuery();
-                Response.Write("suceed "+ num);
+                Response.Write("suceed " + num);
                 connection.Close();
             }
             catch (Exception ex)
             {
                 Response.Write("fail to connect");
                 String connectionfail = @"Data Source=au-cdbr-azure-southeast-a.cloudapp.net; Database=Where2Next; User ID=bcb3c5458db67d; password='2821061a'";
-                using (MySqlConnection cn = new MySqlConnection(connectionfail))
+                using (SqlConnection cn = new SqlConnection(connectionfail))
                 {
-                   
-                        cn.Open();
-                    MySqlCommand command = new MySqlCommand("update CONNECTION set number = number +1 where type ='fail';", cn);
+                    cn.Open();
+                    SqlCommand command = new SqlCommand("update CONNECTION set number = number +1 where type ='fail';", cn);
                     command.ExecuteNonQuery();
                     cn.Close();
-
                 }
             }
         }
