@@ -310,8 +310,6 @@ E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\
 E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\Microsoft.Web.Infrastructure.dll
 E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\Microsoft.WindowsAzure.Configuration.dll
 E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\Microsoft.WindowsAzure.Storage.dll
-E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.dll
-E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.Entity.EF6.dll
 E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\Newtonsoft.Json.dll
 E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\System.Spatial.dll
 E:\Documents\Uni\Industry Experience\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\System.Web.Optimization.dll
