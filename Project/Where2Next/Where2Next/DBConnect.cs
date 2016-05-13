@@ -292,12 +292,7 @@ namespace Where2Next
                 snameParam.Value = suburbName;
                 cmd.Parameters.Add(snameParam);
             }
-
-            cmd.CommandText = query;
-            // Limit to 40 chars because we don't need more, excessive capabilities tend to present risks
-            
-            
-            
+            cmd.CommandText = query; 
             cmd.Prepare();
             var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
 
