@@ -1,5 +1,5 @@
 ﻿using Geocoder;
-using MySql.Data.MySqlClient;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,12 +17,6 @@ namespace Geocoder
     {
         private SqlConnection connection;
 
-        //private string server;
-
-        //private string database;
-        //private string uid;
-        //private string password;
-
         // Constructor
         public DBConnect()
         {
@@ -32,10 +26,6 @@ namespace Geocoder
         // I kind of like this pattern of having a seperate Initialise() method
         private void Initialise()
         {
-            //server = ""; // maybe go back to using this approach
-            //database = ""; // or maybe don't
-            //uid = "";
-            //password = "";
             string connectionString;
             connectionString = "Server=tcp:where2next.database.windows.net,1433;Database=Where2NextMS;User ID=where2next@where2next;Password='d8wV>?skM59j';Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
@@ -74,7 +64,7 @@ namespace Geocoder
             }
         }
 
-        //Close connection. This isn't vital as we don't need to stress about number of connections, but it might help prevent weirdness.
+        //Close connection
         private bool CloseConnection()
         {
             if (connection.State == ConnectionState.Closed)
@@ -105,7 +95,7 @@ namespace Geocoder
                 OpenConnection();
             }
             SqlCommand command = new SqlCommand(query, connection);
-            command.CommandTimeout = 60; // Ugly hack to check if timeouts are causing the problem, be careful with this
+            command.CommandTimeout = 30; // I think 30 might be the default but I'm setting it anyway
             SqlDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
 
             return dataReader;
@@ -204,10 +194,10 @@ namespace Geocoder
             {
                 OpenConnection();
             }
-            // Using a prepared statement now to mitigate the gaping security hole that is sending
-            // user input to the database
+            // Using a prepared statement to mitigate the gaping security hole that is sending user
+            // input to the database
             SqlCommand cmd = new SqlCommand("SELECT s.suburb, s.postcode, s.latitude, s.longitude, s.wikiURL, s.picURL FROM where2next.suburb_gnaf s WHERE s.suburb = @suburbname", connection); // much better to do this in a single line
-            SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40); // Limit to 40 chars because we don't need more, excessive capabilities tend to present risks
+            SqlParameter snameParam = new SqlParameter("@suburbname", SqlDbType.VarChar, 40); // Limit to 40 chars because we don't need more, I checked.
             snameParam.IsNullable = false;
             snameParam.Value = suburbName;
             cmd.Parameters.Add(snameParam);
@@ -274,8 +264,8 @@ namespace Geocoder
                 if (dr.HasRows)
                 {
                     while (dr.Read())
-                    {// Discovered the nil coalescing operator.
-                        var stype = dr["type"] as string ?? "—"; // Moved this here so we can use it to generate a service name if we get a null
+                    {
+                        var stype = dr["type"] as string ?? "—"; // So we can use it to generate a service name if we get a null
                         var sname = dr["name"] as string ?? string.Format("{0} {1}", suburbName, stype); // If the name field of the service is empty, then invent a name based on suburb name and service type.
                         var saddress = dr["address"] as string ?? "—";
                         var slatitude = string.Format("{0}", dr["latitude"] as double? ?? default(double)); // Not sure this is the most elegant way of doing this
@@ -323,7 +313,7 @@ namespace Geocoder
             }
             cmd.CommandText = query;
             cmd.Prepare();
-            var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // This should close the connection for us when the reader is closed
+            var dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
             if (dataReader.HasRows)
             {
@@ -378,7 +368,6 @@ namespace Geocoder
         //Connection wrapper around the method to update latitude and longitude of a service
         public void UpdateLatLongWithConnection(string table, int id, double latitude, double longitude)
         {
-            //Open connection
             if (this.OpenConnection() == true)
             {
                 UpdateLatLong(table, id, latitude, longitude);
