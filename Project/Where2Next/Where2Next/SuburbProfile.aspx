@@ -37,10 +37,11 @@
 
         .suburbPic {
             display: inline-block;
-            float: right;
+            /*float: right;*/
             max-width: 38%;
             height: auto;
             padding: 6px;
+            margin-bottom: 24px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         }
 
