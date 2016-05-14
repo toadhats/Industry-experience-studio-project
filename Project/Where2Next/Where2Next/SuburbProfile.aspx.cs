@@ -82,12 +82,29 @@ namespace Where2Next
 
                 // Get house price data if we can
                 var priceData = getSuburbPriceData();
-                if (priceData.exists)
+                var priceDataBuilder = new StringBuilder();
+                priceDataBuilder.Append("<div class=\"priceCard\">");
+                foreach (var data in priceData)
                 {
-                    var priceDataBuilder = new StringBuilder();
-                    priceDataBuilder.AppendFormat("<div class=\"priceCard\"><p>The average house price in {0} is <strong>{1:C0}</strong><br> &nbsp; <em>#{2} in Victoria</em> </p> </div>", lti.ToTitleCase(priceData.suburbName.ToLower()), priceData.price5, priceData.ranking); // This would be a LOT better if I wrote something to handle ordinals (e.g. 1st, 2nd, 3rd). Maybe later.
-                    profileCard.Controls.Add(new LiteralControl(priceDataBuilder.ToString()));
+                    if (data.exists)
+                    {
+                        string dwellingType = "";
+                        switch (priceData.IndexOf(data))
+                        {
+                            case 0:
+                                dwellingType = "house";
+                                break;
+
+                            case 1:
+                                dwellingType = "unit";
+                                break;
+                        }
+                        priceDataBuilder.AppendFormat("<p>The median {3} price in {0} is <strong>{1:C0}</strong><br> &nbsp; <em>#{2} in Victoria</em> </p> <br>", lti.ToTitleCase(data.suburbName.ToLower()), data.price5, data.ranking, dwellingType); // This would be a LOT better if I wrote something to handle ordinals (e.g. 1st, 2nd, 3rd). Maybe later.
+                    }
                 }
+                priceDataBuilder.Append("</div>");
+                profileCard.Controls.Add(new LiteralControl(priceDataBuilder.ToString()));
+
                 return true;
             }
             catch (Exception)
@@ -132,12 +149,14 @@ namespace Where2Next
             }
         }
 
-        public SuburbPriceData getSuburbPriceData()
+        public List<SuburbPriceData> getSuburbPriceData()
         {
             using (DBConnect db = new DBConnect())
             {
-                var priceData = db.getHousePriceOfSuburb(suburbName);
-                return priceData;
+                var prices = new List<SuburbPriceData>();
+                prices.Add(db.getHousePriceOfSuburb(suburbName));
+                prices.Add(db.getUnitPriceOfSuburb(suburbName));
+                return prices;
             }
         }
 

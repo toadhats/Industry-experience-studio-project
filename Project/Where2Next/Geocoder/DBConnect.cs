@@ -399,7 +399,7 @@ namespace Geocoder
         public List<Tuple<int, string, string>> GetRowsWithoutCoords(string table)
         {
             var ids = new List<Tuple<int, string, string>>();
-            string query = "SELECT * FROM where2next." + table + " WHERE (address IS NOT NULL) AND (id IS NOT NULL) AND (suburb IS NOT NULL) AND ((latitude IS NULL or latitude > 0) OR (longitude IS NULL or longitude < 0))";
+            string query = "SELECT * FROM where2next." + table + " WHERE (address IS NOT NULL) AND (id IS NOT NULL) AND (suburb IS NOT NULL) AND ((latitude IS NULL or latitude >= 0) OR (longitude IS NULL or longitude <= 0))";
 
             if (this.OpenConnection() == true)
             {
