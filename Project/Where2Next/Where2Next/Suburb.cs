@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,10 @@ namespace Where2Next
 {
     public class Suburb
     {
+        public const double GPO_LAT = -37.8139;
+        public const double GPO_LONG = 144.9634;
+        public readonly GeoCoordinate GPO_COORDINATES = new GeoCoordinate(GPO_LAT, GPO_LONG);
+
         private string name;
         private string postcode;
         private string latitude;
@@ -92,6 +97,19 @@ namespace Where2Next
             set
             {
                 picUrl = value;
+            }
+        }
+
+        // Gets the distance from the CBD (GPO) in kilometres, using the GeoCoordinate class from System.Device. Is this a bad idea?
+        public double DistanceFromCity
+        {
+            get
+            {
+                var doubleLat = Convert.ToDouble(this.latitude);
+                var doubleLong = Convert.ToDouble(this.longitude);
+                GeoCoordinate suburbLocation = new GeoCoordinate(doubleLat, doubleLong);
+                var distance = suburbLocation.GetDistanceTo(GPO_COORDINATES) / 1000.0; // We want the distance in km
+                return distance;
             }
         }
 

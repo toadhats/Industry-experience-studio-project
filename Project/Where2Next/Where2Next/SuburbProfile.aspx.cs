@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -12,6 +13,10 @@ namespace Where2Next
     {
         private Suburb suburb;
         private string suburbName = "";
+        private TextInfo lti = new CultureInfo("en-GB", false).TextInfo; // We use this to fix capitalisation. Gave it a very short name to improve readability later.
+        // NOTE: TextInfo toTitleCase() method does NOT work on strings that are all caps, which for
+        //       some reason most of our suburb names are. Need to use toLower() first, which feels
+        //       like an ugly hack, so maybe all this logic should be moved into the Suburb class itself?
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +35,7 @@ namespace Where2Next
         {
             if (!suburbName.All(x => Char.IsLetter(x) || Char.IsWhiteSpace(x) || x.Equals('-'))) return false; // keeps any garbage away from the rest of the method. Suburb names don't have numbers or symbols
 
-            Page.Title = String.Format("Where2Next Profile: {0}", suburbName);
+            Page.Title = string.Format("Where2Next Profile: {0}", lti.ToTitleCase(suburbName.ToLower()));
 
             try
             {
@@ -39,7 +44,7 @@ namespace Where2Next
                 profileCard.Controls.Clear();
 
                 // Create title of card
-                profileCard.Controls.Add(new LiteralControl(String.Format("<h1>{0}</h1><h3>{1}</h3><hr/>", suburb.Name, suburb.Postcode)));
+                profileCard.Controls.Add(new LiteralControl(string.Format("<h1>{0}</h1><h3>{1}</h3><hr/>", lti.ToTitleCase(suburb.Name.ToLower()), suburb.Postcode)));
 
                 // Try adding a picture
                 if (suburb.PicUrl.Length > 0)
@@ -71,12 +76,16 @@ namespace Where2Next
                 sb.Append("</tbody></table>");
                 profileCard.Controls.Add(new LiteralControl(sb.ToString()));
 
+                // Add info about distance from CBD
+                var distanceFromCityInfo = string.Format("<div class=\"distanceCard\"> <p>{0} is {1:0.0}km from the Melbourne CBD.</p> </div>", lti.ToTitleCase(suburb.Name.ToLower()), suburb.DistanceFromCity);
+                profileCard.Controls.Add(new LiteralControl(distanceFromCityInfo));
+
                 // Get house price data if we can
                 var priceData = getSuburbPriceData();
                 if (priceData.exists)
                 {
                     var priceDataBuilder = new StringBuilder();
-                    priceDataBuilder.AppendFormat("<div class=\"priceCard\"><p>The average house price in {0} is <strong>{1:C0}</strong><br> &nbsp; <em>#{2} in Victoria</em>", priceData.suburbName, priceData.price5, priceData.ranking); // This would be a LOT better if I wrote something to handle ordinals (e.g. 1st, 2nd, 3rd). Maybe later.
+                    priceDataBuilder.AppendFormat("<div class=\"priceCard\"><p>The average house price in {0} is <strong>{1:C0}</strong><br> &nbsp; <em>#{2} in Victoria</em> </p> </div>", lti.ToTitleCase(priceData.suburbName.ToLower()), priceData.price5, priceData.ranking); // This would be a LOT better if I wrote something to handle ordinals (e.g. 1st, 2nd, 3rd). Maybe later.
                     profileCard.Controls.Add(new LiteralControl(priceDataBuilder.ToString()));
                 }
                 return true;

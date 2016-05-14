@@ -57,6 +57,18 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         }
 
+        .distanceCard {
+            display:inline-block;
+            float: right;
+            max-width: 38%;
+            padding: 6px;
+            margin-top: 32px;
+        }
+
+        .distanceCard p {
+            font-family: Montserrat, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
         .priceCard {
             display: inline-block;
             float: right;
