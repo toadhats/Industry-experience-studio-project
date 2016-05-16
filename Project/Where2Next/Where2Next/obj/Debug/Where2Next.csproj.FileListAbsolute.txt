@@ -182,8 +182,6 @@ D:\ProgrammeData\GitHub\Industry-experience-studio-project\Project\Where2Next\Wh
 D:\ProgrammeData\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\obj\Debug\Where2Next.pdb
 C:\Git\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.dll
 C:\Git\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.Entity.EF6.dll
-D:\ProgrammeData\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.dll
-D:\ProgrammeData\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\MySql.Data.Entity.EF6.dll
 C:\Users\Anran\Documents\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\roslyn\csc.exe
 C:\Users\Anran\Documents\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Anran\Documents\GitHub\Industry-experience-studio-project\Project\Where2Next\Where2Next\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll

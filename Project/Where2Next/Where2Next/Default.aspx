@@ -133,6 +133,8 @@
                         <li>Our aim is to help you find the perfect place to live!</li>
                     </ul>
                     <a class="link animated fadeInUp delay-1s" href="QuizCategories.aspx">Get Started</a>
+                    <br /><br />
+                    <img src="Images/arrows.jpg" style="max-width:100%; left:50%;margin-left:auto;" />
                 </div>
         </div>
         </header>
@@ -189,7 +191,7 @@
                                 <i class="fa-gear"></i>
                             </div>
                             <div class="service-list-col2">
-                                <h3>Discover Steps 2</h3>
+                                <h3>Discover Step 2</h3>
                                 <p>Have a look on the results</p>
                             </div>
                         </div>
