@@ -161,6 +161,7 @@
     <Content Include="Content\home.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Home.aspx" />
+    <Content Include="Images\arrows.jpg" />
     <Content Include="Images\Burwood.jpg" />
     <Content Include="Images\Camberwell.jpg" />
     <Content Include="Images\Carnegie.jpg" />
