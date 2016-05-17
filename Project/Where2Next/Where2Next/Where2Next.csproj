@@ -259,6 +259,13 @@
     <Content Include="Images\quizServices\sport_cricket.png" />
     <Content Include="Images\quizServices\sport_other.png" />
     <Content Include="Images\quizServices\sport_soccer.png" />
+    <Content Include="Images\quizServices\sport_baseball.png" />
+    <Content Include="Images\quizServices\sport_auskick.png" />
+    <Content Include="Images\quizServices\artsspaces.png" />
+    <Content Include="Images\quizServices\school_special.png" />
+    <Content Include="Images\quizServices\school_secondary.png" />
+    <Content Include="Images\quizServices\school_language.png" />
+    <Content Include="Images\quizServices\tafe.png" />
     <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\Toorak.jpg" />
     <Content Include="Images\Ulupi.jpg" />
