@@ -328,7 +328,7 @@
                         </div>
                         <h3 class="wow fadeInDown delay-06s">Rongda Xu</h3>
                         <span class="wow fadeInDown delay-06s">Programmer</span>
-                        <p class="wow fadeInDown delay-06s">???</p>
+                        <p class="wow fadeInDown delay-06s">xurongda6@gamil.com</p>
                     </div>
                     <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
