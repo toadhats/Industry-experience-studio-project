@@ -136,7 +136,7 @@ namespace Where2Next
                             }
                         }
                     }
-                    if (query.Length > 7)
+                    if (query.Length > 8)
                     {
                         query = query.Remove(query.Length - 7, 7);//Because when use above query, it will automic generate the 'union at last', therefore we need to use the method to delete the 'union'
                                                                   //Response.Write(query);//just for test.
