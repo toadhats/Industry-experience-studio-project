@@ -136,7 +136,7 @@ namespace Where2Next
                             }
                         }
                     }
-                    if (query.Length >= 7)
+                    if (query.Length > 7)
                     {
                         query = query.Remove(query.Length - 7, 7);//Because when use above query, it will automic generate the 'union at last', therefore we need to use the method to delete the 'union'
                                                                   //Response.Write(query);//just for test.
@@ -189,6 +189,9 @@ namespace Where2Next
                     else
                     {
                         servicesnull.Attributes["style"] = "display";
+                        js.Text = @"<script type='text/javascript'>
+                  var myCenter = new google.maps.LatLng(-37.930, 145.120);function initialize(){var mapProp = {center:myCenter,zoom:9,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + "" + @" }google.maps.event.addDomListener(window, 'load', initialize);
+         </script> ";
                     }
                 }
             }
