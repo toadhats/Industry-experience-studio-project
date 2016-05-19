@@ -133,8 +133,6 @@
                         <li>Our aim is to help you find the perfect place to live!</li>
                     </ul>
                     <a class="link animated fadeInUp delay-1s" href="QuizCategories.aspx">Get Started</a>
-                    <br /><br />
-                    <img src="Images/arrows.jpg" style="max-width:100%; left:50%;margin-left:auto;" />
                 </div>
         </div>
         </header>
