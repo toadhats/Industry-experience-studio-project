@@ -358,7 +358,7 @@
                         </div>
                         <h3 class="wow fadeInDown delay-09s">Sheng Mao</h3>
                         <span class="wow fadeInDown delay-09s">Design</span>
-                        <p class="wow fadeInDown delay-09s">???</p>
+                        <p class="wow fadeInDown delay-09s">maosheng421@gmail.com</p>
                     </div>
                     <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
