@@ -16,6 +16,7 @@
     <div id="categories" runat="server" class="cardContainer">
         <asp:PlaceHolder ID="displayCategories" runat="server" />
     </div>
+    
     <asp:Panel runat="server" HorizontalAlign="Center">
         <asp:Button ID="Button1" runat="server" Text="Search Now" Width="300" Height="100" Font-Size="XX-Large" Font-Bold="true" OnClick="NextButton" />
     </asp:Panel>
