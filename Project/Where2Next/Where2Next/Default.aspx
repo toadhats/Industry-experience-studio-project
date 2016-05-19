@@ -133,8 +133,6 @@
                         <li>Our aim is to help you find the perfect place to live!</li>
                     </ul>
                     <a class="link animated fadeInUp delay-1s" href="QuizCategories.aspx">Get Started</a>
-                    <br /><br />
-                    <img src="Images/arrows.jpg" style="max-width:100%; left:50%;margin-left:auto;" />
                 </div>
         </div>
         </header>
@@ -163,7 +161,7 @@
             <!--main-section-start-->
             <div class="container">
                 <h2><a href="QuizCategories.aspx">Discover</a></h2>
-                <h6>The Discover function helps you to discover your interest suburbs.</h6>
+                <h6>The Discover function helps you to discover your perfect suburbs.</h6>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
                         <%--<div class="service-list">
@@ -220,7 +218,7 @@
             <!--main-section-start-->
             <div class="container clearfix">
                 <h2><a href="SuburbProfile">Profile</a></h2>
-                <h6>Profile helps you to know your interest suburbs.</h6>
+                <h6>Profile helps you to get to know Victoria.</h6>
             </div>
             <div class="portfolioContainer wow fadeInUp delay-04s clearfix">
                 <div class=" Portfolio-box printdesign">
@@ -305,7 +303,7 @@
                     <div class="team-leader-box">
                         <div class="team-leader wow fadeInDown delay-03s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/Jonathan.png" alt="">
+                            <img src="Images/Jonathan.jpg" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
@@ -315,12 +313,12 @@
                         </div>
                         <h3 class="wow fadeInDown delay-03s">Jonathan Warner</h3>
                         <span class="wow fadeInDown delay-03s">Programmer</span>
-                        <%--     <p class="wow fadeInDown delay-03s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
+                             <p class="wow fadeInDown delay-03s">limule@icloud.com</p>
                     </div>
                     <div class="team-leader-box clearfix">
                         <div class="team-leader  wow fadeInDown delay-06s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/Colin.jpg" alt="">
+                            <img src="Images/Rongda.jpg" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
@@ -330,7 +328,7 @@
                         </div>
                         <h3 class="wow fadeInDown delay-06s">Rongda Xu</h3>
                         <span class="wow fadeInDown delay-06s">Programmer</span>
-                        <%--<p class="wow fadeInDown delay-06s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
+                        <p class="wow fadeInDown delay-06s">xurongda6@gamil.com</p>
                     </div>
                     <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
@@ -345,12 +343,12 @@
                         </div>
                         <h3 class="wow fadeInDown delay-09s">Chen Zhou</h3>
                         <span class="wow fadeInDown delay-09s">UI & Database</span>
-                        <%-- <p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
+                         <p class="wow fadeInDown delay-09s">zhouc0528@163.com</p>
                     </div>
                     <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
                             <div class="team-leader-shadow"><a href="#"></a></div>
-                            <img src="Images/Peter.jpg" alt="">
+                            <img src="Images/Sheng.jpg" alt="">
                             <ul>
                                 <li><a href="#" class="fa-twitter"></a></li>
                                 <li><a href="#" class="fa-facebook"></a></li>
@@ -360,7 +358,7 @@
                         </div>
                         <h3 class="wow fadeInDown delay-09s">Sheng Mao</h3>
                         <span class="wow fadeInDown delay-09s">Design</span>
-                        <%--<p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
+                        <p class="wow fadeInDown delay-09s">maosheng421@gmail.com</p>
                     </div>
                     <div class="team-leader-box clearfix">
                         <div class="team-leader wow fadeInDown delay-09s">
@@ -375,7 +373,7 @@
                         </div>
                         <h3 class="wow fadeInDown delay-09s">Ulupi Udaya</h3>
                         <span class="wow fadeInDown delay-09s">Documentation</span>
-                        <%--<p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>--%>
+                        <p class="wow fadeInDown delay-09s">ulupiuday@gmail.com</p>
                     </div>
                 </div>
             </div>
