@@ -74,6 +74,7 @@ namespace Where2Next
             failconnection.Attributes["style"] = "display:none";
             success.Attributes["style"] = "display:none";
             fail.Attributes["style"] = "display:none";
+            servicesnull.Attributes["style"] = "display:none";
             successLocation.Attributes["style"] = "display:none";
             failLocation.Attributes["style"] = "display:none";
             successservice.Attributes["style"] = "display:none";
@@ -135,52 +136,59 @@ namespace Where2Next
                             }
                         }
                     }
-                    query = query.Remove(query.Length - 7, 7);//Because when use above query, it will automic generate the 'union at last', therefore we need to use the method to delete the 'union'
-                                                              //Response.Write(query);//just for test.
-                    using (SqlConnection connection = new SqlConnection(connectionStr))
+                    if (query.Length >= 7)
                     {
-                        double Latitude;
-                        double Longitude;
-                        string NAME = "";
-                        string Locations = "";
-                        string icon = "";
-                        string marker = "";
-                        try
+                        query = query.Remove(query.Length - 7, 7);//Because when use above query, it will automic generate the 'union at last', therefore we need to use the method to delete the 'union'
+                                                                  //Response.Write(query);//just for test.
+                        using (SqlConnection connection = new SqlConnection(connectionStr))
                         {
-                            connection.Open();
-                            SqlCommand command = new SqlCommand(query, connection);//make a connection
-                            SqlDataReader reader = command.ExecuteReader();//create a reader
-                            if (reader.HasRows)
+                            double Latitude;
+                            double Longitude;
+                            string NAME = "";
+                            string Locations = "";
+                            string icon = "";
+                            string marker = "";
+                            try
                             {
-                                while (reader.Read())
+                                connection.Open();
+                                SqlCommand command = new SqlCommand(query, connection);//make a connection
+                                SqlDataReader reader = command.ExecuteReader();//create a reader
+                                if (reader.HasRows)
                                 {
-                                    successservice.Attributes["style"] = "display";
-                                    Latitude = reader.GetDouble(1);
-                                    Longitude = reader.GetDouble(2);
-                                    NAME = reader.GetString(0);
-                                    icon = reader.GetString(4);
-                                    marker = reader.GetString(5);
-                                    Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(18);map.setCenter(" + marker + ".getPosition());});";
-                                    js.Text = "<script type='text/javascript'>" +
-"var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:14,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
+                                    while (reader.Read())
+                                    {
+                                        successservice.Attributes["style"] = "display";
+                                        Latitude = reader.GetDouble(1);
+                                        Longitude = reader.GetDouble(2);
+                                        NAME = reader.GetString(0);
+                                        icon = reader.GetString(4);
+                                        marker = reader.GetString(5);
+                                        Locations += Environment.NewLine + " var suburb = new google.maps.LatLng(" + Latitude + ", " + Longitude + ");var " + marker + " = new google.maps.Marker({position: suburb,icon: '" + icon + "'});" + marker + ".setMap(map);var infowindow = new google.maps.InfoWindow({content:'" + NAME + "'});infowindow.open(map," + marker + "); google.maps.event.addListener(" + marker + ", 'click', function () {map.setZoom(18);map.setCenter(" + marker + ".getPosition());});";
+                                        js.Text = "<script type='text/javascript'>" +
+    "var myCenter = new google.maps.LatLng(" + Latitude + "," + Longitude + "); function initialize(){var mapProp = {center:myCenter,zoom:14,mapTypeId:google.maps.MapTypeId.ROADMAP};var map=new google.maps.Map(document.getElementById('map_canvas'),mapProp);" + Locations + @" }google.maps.event.addDomListener(window, 'load', initialize);
          </script> ";
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                failTogetMap();
-                            }
-                            reader.Close();
-                            connection.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            if (connection != null)   //if conncection is error,then check wheather the connection is closed
-                            {
+                                else
+                                {
+                                    failTogetMap();
+                                }
+                                reader.Close();
                                 connection.Close();
                             }
-                            failToConnect();
+                            catch (Exception ex)
+                            {
+                                if (connection != null)   //if conncection is error,then check wheather the connection is closed
+                                {
+                                    connection.Close();
+                                }
+                                failToConnect();
+                            }
                         }
+                    }
+                    else
+                    {
+                        servicesnull.Attributes["style"] = "display";
                     }
                 }
             }
