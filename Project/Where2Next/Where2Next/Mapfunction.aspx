@@ -221,13 +221,13 @@
                 <div style="text-align: center">
                     <h3>Click to find services</h3>
                 </div>
-                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Filter</button>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Show Services</button>
                 <br />
             </div>
         </div>
         <asp:Panel ID="Panel1" runat="server">
             <asp:Literal ID="js" runat="server"></asp:Literal>
-            <div id="map_canvas" style="background-color: #EEEEEE; height: 1000px; width: 900px; float: left;">
+            <div id="map_canvas" style="background-color: #EEEEEE; height: 970px; width: 900px; float: left;">
             </div>
 
         </asp:Panel>
