@@ -168,7 +168,6 @@
     <Content Include="Images\Caulfield.jpg" />
     <Content Include="Images\Chen.jpg" />
     <Content Include="Images\Clayton.jpg" />
-    <Content Include="Images\Colin.jpg" />
     <Content Include="Images\house250px.png" />
     <Content Include="Images\housewhite50px.png" />
     <Content Include="Images\Icon\artsspaces.png" />
@@ -200,7 +199,7 @@
     <Content Include="Images\Icon\sportingclubsorgs.png" />
     <Content Include="Images\Icon\swimmingpools.png" />
     <Content Include="Images\Icon\tafe.png" />
-    <Content Include="Images\Jonathan.png" />
+    <Content Include="Images\Jonathan.jpg" />
     <Content Include="Images\letsmoveto.png" />
     <Content Include="Images\Logos\tetrahedron basic %28lray%29.png" />
     <Content Include="Images\Logos\tetrahedron transparent.png" />
@@ -222,7 +221,6 @@
     <Content Include="Images\Logos\w2n logo with text [50px].png" />
     <Content Include="Images\Monash.jpg" />
     <Content Include="Images\MonashCaufield.png" />
-    <Content Include="Images\Peter.jpg" />
     <Content Include="Images\pins.png" />
     <Content Include="Images\quizbuttonimage\centrelink.png" />
     <Content Include="Images\quizbuttonimage\disabilityactivity.jpg" />
@@ -260,13 +258,39 @@
     <Content Include="Images\quizServices\sport_cricket.png" />
     <Content Include="Images\quizServices\sport_other.png" />
     <Content Include="Images\quizServices\sport_soccer.png" />
+    <Content Include="Images\quizServices\sport_baseball.png" />
+    <Content Include="Images\quizServices\sport_auskick.png" />
+    <Content Include="Images\quizServices\artsspaces.png" />
+    <Content Include="Images\quizServices\school_special.png" />
+    <Content Include="Images\quizServices\school_secondary.png" />
+    <Content Include="Images\quizServices\school_language.png" />
+    <Content Include="Images\quizServices\tafe.png" />
+    <Content Include="Images\quizServices\rollerskating.png" />
+    <Content Include="Images\quizServices\sport_softball.png" />
+    <Content Include="Images\quizServices\sport_swimming.png" />
+    <Content Include="Images\quizServices\swimmingpools.png" />
+    <Content Include="Images\quizServices\iceskating.png" />
+    <Content Include="Images\quizServices\library.png" />
+    <Content Include="Images\quizServices\medicare.png" />
+    <Content Include="Images\quizServices\sport_basketball.png" />
+    <Content Include="Images\quizServices\sport_bowling.png" />
+    <Content Include="Images\quizServices\sport_croquet.png" />
+    <Content Include="Images\quizServices\sport_golf.png" />
+    <Content Include="Images\quizServices\sport_netball.png" />
+    <Content Include="Images\quizServices\sport_aflclub.png" />
+    <Content Include="Images\quizServices\sport_baseball.png" />
+    <Content Include="Images\quizServices\sport_auskick.png" />
+    <Content Include="Images\quizCategories\education.png" />
+    <Content Include="Images\quizCategories\health.png" />
+    <Content Include="Images\quizCategories\recreation.png" />
+    <Content Include="Images\Rongda.jpg" />
+    <Content Include="Images\Sheng.jpg" />
     <Content Include="Images\StKilda.jpg" />
     <Content Include="Images\Toorak.jpg" />
     <Content Include="Images\Ulupi.jpg" />
     <Content Include="Map.aspx" />
     <Content Include="Mapfunction.aspx" />
     <Content Include="Profile.aspx" />
-    <Content Include="Quiz.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -290,8 +314,6 @@
     <Content Include="QuizCategories.aspx" />
     <Content Include="QuizServices.aspx" />
     <Content Include="Scripts\js\home.js" />
-    <Content Include="SuburbPic.aspx" />
-    <Content Include="test.aspx" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
@@ -408,13 +430,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Quiz.aspx.cs">
-      <DependentUpon>Quiz.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Quiz.aspx.designer.cs">
-      <DependentUpon>Quiz.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -479,20 +494,6 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
     <Compile Include="WebBrowser.cs" />
-    <Compile Include="SuburbPic.aspx.cs">
-      <DependentUpon>SuburbPic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SuburbPic.aspx.designer.cs">
-      <DependentUpon>SuburbPic.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

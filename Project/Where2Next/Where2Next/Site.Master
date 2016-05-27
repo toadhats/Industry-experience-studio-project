@@ -83,7 +83,7 @@
                     <li><a href="Default.aspx">Home</a></li>
                     <li><a href="QuizCategories.aspx">Discover</a></li>
                    
-                    <li class="small-logo"><a href="#header">
+                    <li class="small-logo"><a href="Default.aspx">
                         <img src="Images/Logos/w2n%20logo%20house%20only%20[100px].png" alt=""></a></li>
 
                     <li><a href="Map.aspx">Map</a></li>

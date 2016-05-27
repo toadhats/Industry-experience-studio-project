@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geocoder", "Geocoder\Geocod
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CrashTestDummy", "CrashTestDummy\CrashTestDummy.fsproj", "{A80ED5F6-ECD5-4FAF-97E8-C06023DF3F4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Where2Next.Tests", "Where2Next.Tests\Where2Next.Tests.csproj", "{81E33CAA-EBB3-48FD-ABC7-A9CB1C1D9075}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{A80ED5F6-ECD5-4FAF-97E8-C06023DF3F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80ED5F6-ECD5-4FAF-97E8-C06023DF3F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A80ED5F6-ECD5-4FAF-97E8-C06023DF3F4B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81E33CAA-EBB3-48FD-ABC7-A9CB1C1D9075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81E33CAA-EBB3-48FD-ABC7-A9CB1C1D9075}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81E33CAA-EBB3-48FD-ABC7-A9CB1C1D9075}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81E33CAA-EBB3-48FD-ABC7-A9CB1C1D9075}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

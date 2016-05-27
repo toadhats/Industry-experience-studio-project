@@ -14,6 +14,7 @@
         fail.style.display = 'none';
         failservice.style.display = 'none';
         successservice.style.display = 'none';
+        servicesnull.style.display = 'none';
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -67,7 +68,7 @@
         </div>
         <div id="failLocation" class="alert alert-warning" runat="server" style="display: none">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>fail! </strong>We cannot find your location.
+            <strong>fail! </strong>We cannot find services in your suburb.
         </div>
         <div id="successservice" class="alert alert-success" runat="server" style="display: none">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -81,6 +82,11 @@
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>fail! </strong>There are some error in database.
         </div>
+         <div id="servicesnull" class="alert alert-warning" runat="server" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>fail! </strong>Please select service first .
+        </div>
+
         <div id="menu" style="height: 700px; width: 230px; float: left;">
 
             <div style="text-align: center">
@@ -218,16 +224,21 @@
                     <asp:Button CssClass="btn btn-primary" ID="Button4" runat="server" OnClick="Button3_Click" Text="Search Now" Width="200" Height="60" />
                 </div>
                 <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <div style="text-align: center">
                     <h3>Click to find services</h3>
                 </div>
-                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Filter</button>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Show Services</button>
                 <br />
             </div>
         </div>
         <asp:Panel ID="Panel1" runat="server">
             <asp:Literal ID="js" runat="server"></asp:Literal>
-            <div id="map_canvas" style="background-color: #EEEEEE; height: 1000px; width: 900px; float: left;">
+            <div id="map_canvas" style="background-color: #EEEEEE; height: 970px; width: 900px; float: left;">
             </div>
 
         </asp:Panel>
